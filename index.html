@@ -479,6 +479,20 @@
         .battle-stat span:first-child { color: var(--text-muted); }
         .battle-stat span:last-child { font-weight: 600; }
 
+        .tip-banner {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .tip-icon { font-size: 1.3rem; }
     </style>
 </head>
 <body>
@@ -497,6 +511,11 @@
         
         <!-- Only visible on desktop -->
         <button id="compareBtn" class="btn-compare" onclick="toggleComparison()">👁️ Mostrar Ranking Anterior</button>
+    </div>
+
+    <div class="tip-banner">
+        <span class="tip-icon">💡</span>
+        <span class="tip-text"><strong>Modo Batalla:</strong> Selecciona de 2 a 3 jugadores usando las casillas a la izquierda de sus nombres para compararlos cara a cara.</span>
     </div>
 
     <div class="table-container">
