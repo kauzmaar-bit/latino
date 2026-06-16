@@ -1,555 +1,220 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking del Gremio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Ranking del Gremio Latino</title>
+    
+    <!-- Google Fonts: Orbitron for numbers/tech, Rajdhani for text -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#121212',
+                        darker: '#0a0a0a',
+                        panel: 'rgba(30, 41, 59, 0.5)',
+                        neonCyan: '#00f2fe',
+                        neonLime: '#a3e635',
+                        neonMagenta: '#ff0844',
+                    },
+                    fontFamily: {
+                        sans: ['Rajdhani', 'sans-serif'],
+                        mono: ['Orbitron', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --bg-color: #0b0f19;
-            --panel-bg: rgba(20, 25, 40, 0.85);
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-            --border: rgba(255, 255, 255, 0.1);
-            --border-heavy: rgba(255, 255, 255, 0.25);
-            --up-color: #22c55e;
-            --down-color: #ef4444;
-            --same-color: #94a3b8;
-            --new-color: #f59e0b;
-        }
+        /* Custom scrollbar and glows */
         body {
-            margin: 0;
-            padding: 20px;
-            font-family: 'Outfit', sans-serif;
-            background: var(--bg-color);
-            background-image: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 40%),
-                              radial-gradient(circle at bottom left, rgba(192, 132, 252, 0.1), transparent 40%);
-            color: var(--text-main);
-            min-height: 100vh;
-        }
-        @media (min-width: 768px) {
-            body { padding: 40px; }
-        }
-        h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 5px;
-            background: linear-gradient(to right, #38bdf8, #c084fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        @media (min-width: 768px) {
-            h1 { font-size: 2.5rem; }
-        }
-        p.subtitle {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-size: 1rem;
+            background-color: #121212;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 8, 68, 0.05), transparent 25%);
+            color: #e2e8f0;
         }
         
-        /* Sorting Controls */
-        .controls-container {
-            background: rgba(0,0,0,0.4);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 25px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        @media (min-width: 768px) {
-            .controls-container {
-                flex-direction: row;
-                align-items: center;
-                padding: 15px 20px;
-            }
+        .glow-title {
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
         }
         
-        .controls-label { font-weight: 600; color: var(--text-main); }
-        
-        .radio-group {
-            display: flex;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-            padding: 4px;
-            gap: 4px;
-            width: 100%;
-            justify-content: space-between;
-        }
-        @media (min-width: 768px) {
-            .radio-group { width: auto; justify-content: flex-start; }
-        }
-        .radio-group input[type="radio"] { display: none; }
-        .radio-group label {
-            flex: 1;
-            text-align: center;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            color: var(--text-muted);
-        }
-        .radio-group input[type="radio"]:checked + label {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-compare {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 10px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-        @media (min-width: 768px) {
-            .btn-compare {
-                width: auto;
-                margin-left: auto;
-                padding: 8px 16px;
-            }
-        }
-        .btn-compare:hover { background: rgba(255,255,255,0.1); }
-        .btn-compare.active {
-            background: rgba(192, 132, 252, 0.15);
-            border-color: #c084fc;
-            color: #c084fc;
-            box-shadow: 0 2px 8px rgba(192, 132, 252, 0.3);
-        }
-        
-        /* Floating Battle Button */
-        #battleBtn {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: 1.1rem;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.5);
-            z-index: 1000;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0;
-            pointer-events: none;
-        }
-        #battleBtn.visible {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
-        #battleBtn:hover {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.6);
-        }
-
-        .table-container {
-            background: var(--panel-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow-x: auto;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            white-space: nowrap;
-        }
-        th, td {
-            padding: 12px 14px;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-        th {
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        tbody tr { transition: background-color 0.2s; }
-        tbody tr:hover { background-color: rgba(255,255,255,0.05); }
-        
-        /* Sticky Column Fix & Styling */
-        td.nombre-container, th.nombre-header {
-            position: sticky;
-            left: 0;
-            background: #0d121f; 
-            z-index: 10;
-            text-align: left;
-            border-right: 2px solid var(--border-heavy);
-        }
-        th.nombre-header {
-            z-index: 11;
-            background: #111827;
-        }
-        .nombre-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        
-        .compare-checkbox {
+        /* Checkbox styling */
+        .cyber-checkbox {
             appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--border-heavy);
+            width: 22px; height: 22px;
+            border: 2px solid #334155;
             border-radius: 4px;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
             cursor: pointer;
             position: relative;
             transition: all 0.2s;
         }
-        .compare-checkbox:checked {
-            background: #f59e0b;
-            border-color: #f59e0b;
+        .cyber-checkbox:checked {
+            background: #a3e635;
+            border-color: #a3e635;
+            box-shadow: 0 0 10px rgba(163, 230, 53, 0.5);
         }
-        .compare-checkbox:checked::after {
+        .cyber-checkbox:checked::after {
             content: '✔';
             position: absolute;
-            color: white;
-            font-size: 12px;
+            color: #000;
+            font-size: 14px;
+            font-weight: 900;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
         }
 
-        /* Interactive Name */
-        .player-name {
-            font-weight: 700;
-            color: #e2e8f0;
-        }
-        
-        .btn-perfil {
-            background: rgba(59, 130, 246, 0.15);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #60a5fa;
-            border-radius: 4px;
-            padding: 2px 8px;
-            font-size: 0.75rem;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            margin-left: auto;
-        }
-        .btn-perfil:hover {
-            background: rgba(59, 130, 246, 0.3);
-            color: #fff;
-        }
-        
-        .rank-number {
-            font-weight: 800;
-            color: #fff;
-            min-width: 25px;
-            display: inline-block;
-        }
-        
-        .trend-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4px 6px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            min-width: 32px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        .trend-up { background: rgba(34, 197, 94, 0.15); color: var(--up-color); border: 1px solid rgba(34, 197, 94, 0.3); }
-        .trend-down { background: rgba(239, 68, 68, 0.15); color: var(--down-color); border: 1px solid rgba(239, 68, 68, 0.3); }
-        .trend-same { background: rgba(148, 163, 184, 0.1); color: var(--same-color); border: 1px solid rgba(148, 163, 184, 0.2); }
-        .trend-new { background: rgba(245, 158, 11, 0.15); color: var(--new-color); border: 1px solid rgba(245, 158, 11, 0.3); font-size: 0.65rem; letter-spacing: 0.5px; text-transform: uppercase; }
+        /* Top 3 Ranks Borders */
+        .rank-1 { border-left: 4px solid #fbbf24; background: linear-gradient(90deg, rgba(251,191,36,0.15) 0%, transparent 100%); }
+        .rank-2 { border-left: 4px solid #e2e8f0; background: linear-gradient(90deg, rgba(226,232,240,0.1) 0%, transparent 100%); }
+        .rank-3 { border-left: 4px solid #b45309; background: linear-gradient(90deg, rgba(180,83,9,0.1) 0%, transparent 100%); }
 
-        .badge {
-            padding: 4px 10px;
-            border-radius: 99px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-        }
-        .badge.leyenda { background: linear-gradient(135deg, #ef4444, #991b1b); color: white; box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
-        .badge.campeón { background: linear-gradient(135deg, #a855f7, #7e22ce); color: white; }
-        .badge.platino { background: linear-gradient(135deg, #0ea5e9, #0284c7); color: white; }
-        .badge.oro { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
-        .badge.plata { background: linear-gradient(135deg, #94a3b8, #64748b); color: white; }
-        .badge.cobre { background: linear-gradient(135deg, #d97706, #b45309); color: white; }
-        .badge.none { background: rgba(255,255,255,0.1); color: var(--text-muted); }
+        /* Hide scrollbar for clean UI but allow scroll */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        .col-new { background: rgba(59, 130, 246, 0.05); }
-        
-        /* Column Grouping Styles */
-        th.group-1, td.group-1 { border-right: 1px solid var(--border-heavy); }
-        th.group-2, td.group-2 { background: rgba(255,255,255,0.015); border-right: 1px solid var(--border-heavy); }
-        th.group-3, td.group-3 { border-right: 2px solid var(--border-heavy); }
-        
-        .btn-history-mobile { display: none; }
-        
-        /* Mobile Card View Styling */
+        /* Mobile cards logic */
         @media (max-width: 767px) {
-            /* Hide global compare button */
-            .btn-compare { display: none; }
-            
-            .table-container {
-                overflow-x: hidden; 
-                padding: 10px;
-                background: transparent;
-                border: none;
-                box-shadow: none;
-            }
-            table, thead, tbody, th, td, tr {
+            thead { display: none; }
+            .mobile-card {
                 display: block;
-            }
-            thead tr { display: none; }
-            tr {
-                margin-bottom: 20px;
-                background: var(--panel-bg);
-                border: 1px solid var(--border);
+                border: 1px solid rgba(255,255,255,0.1);
                 border-radius: 12px;
-                padding: 10px;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+                margin-bottom: 1rem;
+                padding: 1rem;
+                background: var(--tw-colors-darker);
             }
-            td {
+            .mobile-cell {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                text-align: right;
+                padding: 0.5rem 0;
                 border-bottom: 1px solid rgba(255,255,255,0.05);
-                padding: 12px 10px;
             }
-            td:last-child { border-bottom: none; }
-            td::before {
+            .mobile-cell:last-child { border-bottom: none; }
+            .mobile-cell::before {
                 content: attr(data-label);
-                font-weight: 600;
-                color: var(--text-muted);
+                font-weight: 700;
+                color: #94a3b8;
+                font-size: 0.75rem;
                 text-transform: uppercase;
-                font-size: 0.8rem;
-                letter-spacing: 0.05em;
-                margin-right: 15px;
-                text-align: left;
-                flex: 1;
             }
-            
-            td.nombre-container {
-                background: rgba(59, 130, 246, 0.1);
-                border: 1px solid rgba(59, 130, 246, 0.3);
+            .nombre-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: rgba(0, 242, 254, 0.1);
+                border: 1px solid rgba(0, 242, 254, 0.2);
                 border-radius: 8px;
-                margin-bottom: 15px;
-                padding: 12px 15px;
-                position: static; 
-                border-right: 1px solid rgba(59, 130, 246, 0.3);
+                padding: 0.75rem;
+                margin-bottom: 1rem;
             }
-            td.nombre-container::before { display: none; }
-            .nombre-content { width: 100%; }
-            
-            th.group-1, td.group-1, th.group-2, td.group-2, th.group-3, td.group-3 {
-                border-right: none;
-                background: transparent;
-            }
-            .col-new { background: transparent; }
-            
-            /* Mobile History Toggle */
+            .nombre-container::before { display: none; }
             .history-cell { display: none !important; }
-            tr.show-history .history-cell { display: flex !important; }
-            
-            .btn-history-mobile {
-                display: block;
-                width: 100%;
-                background: rgba(255,255,255,0.05);
-                border: 1px solid var(--border);
-                color: var(--text-main);
-                padding: 10px;
-                border-radius: 8px;
-                cursor: pointer;
-                font-family: 'Outfit', sans-serif;
-                font-weight: 600;
-                margin-top: 10px;
-                text-align: center;
-            }
-            .btn-history-mobile:hover { background: rgba(255,255,255,0.1); }
+            .mobile-card.show-history .history-cell { display: flex !important; }
         }
-
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .modal-overlay.show { display: flex; opacity: 1; }
-        .modal-content {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-            background: #111522;
-        }
-        .modal-overlay.show .modal-content { transform: scale(1); }
-        .modal-content img {
-            display: block;
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-        .modal-close {
-            position: absolute;
-            top: 10px; right: 15px;
-            color: white; font-size: 24px; font-weight: bold;
-            cursor: pointer; z-index: 2001;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-            background: rgba(0,0,0,0.5);
-            width: 36px; height: 36px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            transition: background 0.2s;
-        }
-        .modal-close:hover { background: rgba(239, 68, 68, 0.8); }
         
-        /* Battle Modal Styles */
-        .battle-content {
-            width: 95vw;
-            max-width: 1000px;
-            background: #0b0f19;
-            padding: 20px;
-            border: 1px solid var(--border-heavy);
-            overflow-y: auto;
+        /* Desktop specific */
+        @media (min-width: 768px) {
+            .mobile-card { display: table-row; }
+            .mobile-cell { display: table-cell; }
+            .nombre-container { 
+                position: sticky; left: 0; z-index: 10;
+                background: #121212;
+                border-right: 2px solid rgba(255,255,255,0.1);
+            }
+            .mobile-only-btn { display: none; }
         }
-        .battle-grid {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
+        
+        .glass-panel {
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .battle-player {
-            flex: 1;
-            background: rgba(255,255,255,0.03);
-            border-radius: 12px;
-            padding: 15px;
-            border: 1px solid var(--border);
-            min-width: 250px;
-        }
-        .battle-player img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 2px solid var(--border-heavy);
-        }
-        .battle-player h3 {
-            text-align: center;
-            margin-top: 0;
-            color: #f59e0b;
-        }
-        .battle-stat {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.9rem;
-        }
-        .battle-stat span:first-child { color: var(--text-muted); }
-        .battle-stat span:last-child { font-weight: 600; }
-
-        .tip-banner {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 8px;
-            padding: 12px 18px;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .tip-icon { font-size: 1.3rem; }
     </style>
 </head>
-<body>
-    <h1>Ranking del Gremio</h1>
-    <p class="subtitle">Clasificación actualizada al 15-06-2026</p>
+<body class="min-h-screen font-sans selection:bg-neonCyan selection:text-black antialiased p-4 md:p-8">
 
-    <div class="controls-container">
-        <div><span class="controls-label">Ordenar por:</span></div>
-        <div class="radio-group">
-            <input type="radio" id="sort-tier" name="sortMode" value="tier" checked onchange="handleSortChange()">
-            <label for="sort-tier">🏆 Tier</label>
-            
-            <input type="radio" id="sort-torneo" name="sortMode" value="torneo" onchange="handleSortChange()">
-            <label for="sort-torneo">⚔️ Torneo</label>
+    <header class="mb-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-mono font-black text-transparent bg-clip-text bg-gradient-to-r from-neonCyan via-white to-neonMagenta glow-title tracking-widest uppercase mb-2">LATINO</h1>
+        <p class="text-slate-400 text-lg font-mono tracking-widest">RANKING OFICIAL - TOWER</p>
+    </header>
+
+    <!-- Info Banner -->
+    <div class="max-w-6xl mx-auto mb-6 bg-slate-800/40 border border-neonCyan/30 rounded-lg p-4 flex items-center gap-4 shadow-[0_0_15px_rgba(0,242,254,0.1)]">
+        <div class="text-2xl">💡</div>
+        <div class="text-sm md:text-base text-slate-300">
+            <strong class="text-neonCyan font-mono tracking-wide">MODO BATALLA:</strong> Selecciona de 2 a 3 jugadores usando las casillas junto a sus nombres para abrir un panel de comparación directa.
         </div>
-        
-        <!-- Only visible on desktop -->
-        <button id="compareBtn" class="btn-compare" onclick="toggleComparison()">👁️ Mostrar Ranking Anterior</button>
     </div>
 
-    <div class="tip-banner">
-        <span class="tip-icon">💡</span>
-        <span class="tip-text"><strong>Modo Batalla:</strong> Selecciona de 2 a 3 jugadores usando las casillas a la izquierda de sus nombres para compararlos cara a cara.</span>
+    <!-- Controls -->
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 mb-8 glass-panel p-4 md:p-6 rounded-2xl shadow-xl">
+        <div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+            <span class="font-bold text-slate-300 font-mono tracking-wider">ORDENAR POR:</span>
+            <div class="flex bg-slate-900/80 rounded-full p-1 border border-slate-700 w-full md:w-auto">
+                <input type="radio" id="sort-tier" name="sortMode" value="tier" checked class="hidden" onchange="handleSortChange()">
+                <label for="sort-tier" class="sort-label flex-1 text-center cursor-pointer px-6 py-2 rounded-full font-bold text-slate-400 transition-all duration-300 hover:text-white">🏆 TIER</label>
+                
+                <input type="radio" id="sort-torneo" name="sortMode" value="torneo" class="hidden" onchange="handleSortChange()">
+                <label for="sort-torneo" class="sort-label flex-1 text-center cursor-pointer px-6 py-2 rounded-full font-bold text-slate-400 transition-all duration-300 hover:text-white">⚔️ TORNEO</label>
+            </div>
+        </div>
+        <button id="compareBtn" onclick="toggleComparison()" class="hidden md:block border border-slate-600 hover:border-neonMagenta hover:text-neonMagenta text-slate-300 px-6 py-2 rounded-full font-bold transition-all duration-300 font-mono">
+            👁️ MOSTRAR ANTERIOR
+        </button>
     </div>
 
-    <div class="table-container">
-        <table id="rankingTable">
-            <thead>
+    <!-- Table Container -->
+    <div class="max-w-6xl mx-auto glass-panel rounded-2xl overflow-x-auto shadow-2xl">
+        <table class="w-full text-left whitespace-nowrap border-collapse">
+            <thead class="bg-darker/95 backdrop-blur z-20 text-slate-400 font-mono text-xs md:text-sm tracking-wider uppercase border-b border-slate-700 sticky top-0">
                 <tr id="thead1"></tr>
                 <tr id="thead2"></tr>
             </thead>
-            <tbody id="tbody"></tbody>
+            <tbody id="tbody" class="font-semibold text-sm md:text-base"></tbody>
         </table>
     </div>
-    
-    <button id="battleBtn" onclick="openBattleModal()">⚔️ Comparar Jugadores</button>
+
+    <!-- Floating Battle Button -->
+    <button id="battleBtn" onclick="openBattleModal()" class="fixed bottom-8 left-1/2 -translate-x-1/2 translate-y-[150%] bg-gradient-to-r from-neonMagenta to-red-600 text-white border-2 border-red-400 px-8 py-3 rounded-full font-mono font-black tracking-widest text-lg shadow-[0_0_20px_rgba(255,8,68,0.6)] z-50 transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,8,68,0.8)]">
+        ⚔️ BATALLA
+    </button>
 
     <!-- Profile Modal -->
-    <div id="profileModal" class="modal-overlay" onclick="closeModal('profileModal', event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="modal-close" onclick="closeModal('profileModal', event)">&times;</div>
-            <img id="modalImg" src="" alt="Perfil del jugador">
+    <div id="profileModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[1000] hidden items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeModal('profileModal', event)">
+        <div class="relative max-w-sm w-full bg-darker border border-neonCyan/50 rounded-2xl p-2 shadow-[0_0_40px_rgba(0,242,254,0.3)] transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+            <button onclick="closeModal('profileModal', event)" class="absolute -top-4 -right-4 bg-red-500 text-white w-10 h-10 rounded-full font-bold text-xl flex items-center justify-center hover:bg-red-600 shadow-lg z-[1001] border-2 border-white">&times;</button>
+            <div class="rounded-xl overflow-hidden bg-black flex justify-center items-center">
+                <img id="modalImg" src="" alt="Perfil" class="w-full h-auto object-contain max-h-[85vh]">
+            </div>
         </div>
     </div>
     
     <!-- Battle Modal -->
-    <div id="battleModal" class="modal-overlay" onclick="closeModal('battleModal', event)">
-        <div class="modal-content battle-content" onclick="event.stopPropagation()">
-            <div class="modal-close" onclick="closeModal('battleModal', event)">&times;</div>
-            <h2 style="text-align: center; margin-top: 0;">Comparación de Jugadores</h2>
-            <div class="battle-grid" id="battleGrid"></div>
+    <div id="battleModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[1000] hidden items-center justify-center p-4 opacity-0 transition-opacity duration-300" onclick="closeModal('battleModal', event)">
+        <div class="relative w-full max-w-5xl max-h-[95vh] flex flex-col bg-darker border border-neonMagenta/50 rounded-3xl p-6 shadow-[0_0_50px_rgba(255,8,68,0.3)] transform scale-95 transition-transform duration-300 overflow-hidden" onclick="event.stopPropagation()">
+            <button onclick="closeModal('battleModal', event)" class="absolute -top-3 -right-3 md:top-4 md:right-4 bg-red-500 text-white w-10 h-10 md:w-12 md:h-12 rounded-full font-bold text-xl flex items-center justify-center hover:bg-red-600 shadow-lg z-[1001] border-2 border-white">&times;</button>
+            
+            <h2 class="text-3xl md:text-4xl font-mono font-black text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-neonMagenta uppercase tracking-widest drop-shadow-md">Modo Batalla</h2>
+            
+            <div class="flex-1 overflow-y-auto no-scrollbar">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8 justify-center" id="battleGrid"></div>
+            </div>
         </div>
     </div>
 
+    <!-- Import data -->
+    <script src="data.js"></script>
     <script>
-        const db = {"headers_1": ["", "19-01-2026", "", "", "04-02-2026", "", "", "", "", "16-02-2026", "", "", "", "", "01-03-2026", "", "", "", "", "17-03-2026", "", "", "", "", "29-03-2026", "", "", "", "", "26-04-2026", "", "", "", "", "15-06-2026", "", "", "", ""], "headers_2": ["Nombre", "Tier", "Oleada", "Reliquias", "Tier", "Oleada", "Reliquias", "liga torneo", "Pos. en Torneo", "Tier", "Oleada", "Reliquias", "liga torneo", "Pos. en Torneo", "Tier", "Oleada", "Reliquias", "liga torneo", "Pos. en Torneo", "Tier", "Oleada", "Reliquias", "liga torneo", "Pos. en Torneo", "Tier", "Oleada", "Reliquias", "liga torneo", "Pos. en Torneo", "Tier", "Oleada", "Reliquias", "liga torneo", "Pos. en Torneo", "Tier", "Oleada", "Reliquias", "liga torneo", "Pos. en Torneo"], "rows": [["aang", "12", "10", "37", "12", "10", "43", "Oro", "10", "12", "10", "46", "Oro", "10", "12", "10", "48", "Oro", "8", "12", "10", "51", "Oro", "8", "12", "11", "54", "Oro", "8", "12", "31", "68", "Oro", "8", "12", "31", "91", "Oro", "7"], ["andryN", "16", "104", "126", "16", "132", "131", "Campe\u00f3n", "21", "16", "132", "136", "Campe\u00f3n", "21", "16", "132", "139", "Campe\u00f3n", "21", "16", "132", "143", "Campe\u00f3n", "21", "16", "203", "146", "Campe\u00f3n", "21", "16", "204", "157", "Campe\u00f3n", "21", "17", "132", "182", "Campe\u00f3n", "13"], ["Arcangelgamer7", "3", "91", "3", "3", "91", "4", "Plata", "26", "3", "91", "6", "Plata", "26", "4", "308", "7", "Plata", "21", "4", "308", "8", "Plata", "21", "4", "308", "11", "Plata", "20", "11", "41", "17", "Oro", "26", "12", "20", "25", "Oro", "15"], ["Babel", "-", "-", "-", "-", "-", "-", "-", "-", "13", "82", "93", "Oro", "6", "13", "82", "98", "Oro", "6", "13", "82", "103", "Oro", "6", "14", "63", "108", "Oro", "6", "14", "63", "116", "Platino", "30", "14", "63", "136", "Platino", "27"], ["Baltar", "-", "-", "-", "16", "106", "134", "Campe\u00f3n", "24", "16", "106", "141", "Campe\u00f3n", "24", "16", "106", "143", "Campe\u00f3n", "23", "16", "106", "147", "Campe\u00f3n", "23", "16", "217", "151", "Campe\u00f3n", "23", "16", "264", "158", "Campe\u00f3n", "23", "16", "264", "174", "Campe\u00f3n", "11"], ["Bbmbbf", "15", "88", "117", "15", "88", "122", "Platino", "17", "15", "88", "126", "Platino", "17", "15", "88", "129", "Platino", "17", "15", "88", "133", "Platino", "17", "15", "88", "135", "Platino", "15", "15", "88", "142", "Platino", "13", "15", "88", "153", "Platino", "13"], ["conker_6", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "12", "61", "54", "Platino", "25"], ["Demian", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "3", "55", "1", "Cobre", "7", "4", "97", "7", "Cobre", "4"], ["Elbowe", "12", "92", "20", "12", "92", "25", "Oro", "11", "13", "50", "33", "Oro", "6", "13", "70", "41", "Platino", "22", "14", "81", "47", "Platino", "22", "14", "81", "47", "Platino", "22", "15", "56", "57", "Platino", "14", "15", "104", "86", "Platino", "10"], ["fer", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "13", "61", "74", "Oro", "5"], ["IGNIRUS", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "3", "76", "2", "Plata", "28", "4", "60", "4", "Plata", "25", "11", "21", "6", "Plata", "7", "11", "50", "14", "Oro", "21"], ["Infrit", "12", "40", "17", "12", "56", "22", "Oro", "14", "12", "70", "30", "Oro", "11", "13", "51", "32", "Oro", "7", "13", "70", "38", "Oro", "5", "14", "63", "44", "Oro", "5", "15", "65", "54", "Platino", "21", "15", "141", "72", "Platino", "12"], ["jonytan", "12", "31", "39", "12", "31", "43", "Oro", "10", "12", "31", "47", "Oro", "10", "12", "40", "48", "Oro", "10", "12", "40", "52", "Oro", "10", "12", "60", "57", "Oro", "10", "13", "4", "67", "Oro", "7", "13", "80", "83", "Oro", "7"], ["LaParka", "12", "51", "27", "13", "50", "37", "Oro", "4", "13", "50", "44", "Platino", "26", "13", "50", "49", "Platino", "26", "15", "80", "59", "Platino", "15", "15", "120", "66", "Platino", "12", "15", "138", "86", "Campe\u00f3n", "27", "17", "157", "130", "Campe\u00f3n", "7"], ["Leito", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "12", "11", "32", "Oro", "16"], ["Maguilera", "15", "115", "43", "15", "144", "46", "Platino", "8", "15", "144", "51", "Platino", "7", "15", "177", "54", "Platino", "7", "15", "178", "58", "Platino", "7", "15", "276", "63", "Platino", "3", "16", "105", "73", "Campe\u00f3n", "22", "16", "176", "108", "Campe\u00f3n", "12"], ["Mawgan", "13", "61", "96", "13", "61", "102", "Platino", "20", "13", "61", "106", "Platino", "20", "13", "61", "107", "Platino", "20", "13", "61", "111", "Platino", "20", "13", "61", "114", "Platino", "20", "13", "61", "121", "Platino", "20", "14", "73", "141", "Platino", "19"], ["Name2Sho", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "14", "83", "179", "Platino", "10"], ["Neizu", "-", "-", "-", "-", "-", "-", "-", "-", "11", "21", "6", "Plata", "9", "11", "41", "8", "Oro", "27", "11", "41", "13", "Oro", "22", "12", "10", "14", "Oro", "21", "12", "31", "20", "Oro", "20", "12", "40", "29", "Oro", "15"], ["NightFury", "12", "93", "22", "12", "93", "26", "Oro", "9", "12", "93", "30", "Oro", "9", "13", "61", "31", "Oro", "9", "13", "61", "34", "Oro", "8", "13", "61", "38", "Oro", "8", "13", "61", "42", "Oro", "5", "14", "36", "54", "Oro", "5"], ["RawXwaR", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "12", "41", "16", "Oro", "16"], ["Rick", "12", "30", "21", "12", "41", "25", "Oro", "8", "12", "80", "28", "Oro", "6", "12", "80", "30", "Oro", "5", "14", "27", "40", "Platino", "25", "14", "54", "44", "Platino", "25", "15", "56", "58", "Platino", "22", "15", "56", "93", "Platino", "14"], ["SOL", "13", "91", "53", "13", "91", "58", "Platino", "27", "13", "91", "60", "Platino", "27", "14", "25", "61", "Platino", "27", "14", "62", "66", "Platino", "27", "14", "62", "70", "Platino", "26", "14", "62", "79", "Platino", "26", "14", "78", "94", "Platino", "20"], ["Sting", "13", "61", "45", "13", "61", "49", "Platino", "21", "13", "61", "53", "Platino", "21", "13", "61", "55", "Platino", "21", "14", "55", "59", "Platino", "18", "14", "55", "63", "Platino", "18", "14", "81", "80", "Platino", "18", "15", "65", "117", "Platino", "18"], ["thejorgemylio", "12", "41", "22", "12", "41", "25", "Oro", "11", "12", "41", "28", "Oro", "11", "12", "41", "29", "Oro", "11", "12", "41", "33", "Oro", "11", "12", "41", "35", "Oro", "11", "12", "41", "44", "Oro", "6", "12", "50", "53", "Oro", "6"], ["Zaqmauri", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "14", "63", "134", "Platino", "25"], ["ZavRod", "-", "-", "-", "-", "-", "-", "-", "-", "12", "41", "12", "Oro", "8", "13", "85", "20", "Platino", "26", "14", "92", "27", "Platino", "23", "15", "88", "33", "Platino", "18", "15", "88", "40", "Platino", "15", "15", "90", "48", "Platino", "15"], ["zeruel", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "19", "246", "210", "Leyenda", "9"]]};
-        
+        // Use Alpine.js concepts but with Vanilla JS for simplicity
         let currentSortMode = 'tier';
         let showComparison = false;
         let selectedPlayers = new Set();
@@ -562,6 +227,18 @@
             'platino': 4, 'oro': 3, 'plata': 2, 'cobre': 1
         };
 
+        // Custom CSS injection for dynamic sort buttons
+        const styleEl = document.createElement('style');
+        document.head.appendChild(styleEl);
+        function updateSortBtnStyles() {
+            styleEl.innerHTML = `
+                input[value="${currentSortMode}"]:checked + label {
+                    background: #22d3ee; color: #000; box-shadow: 0 0 15px rgba(34,211,238,0.5);
+                }
+            `;
+        }
+        updateSortBtnStyles();
+
         function getScore(row, baseIndex) {
             let tier = parseInt(row[baseIndex]) || 0;
             let oleada = parseInt(row[baseIndex+1]) || 0;
@@ -572,7 +249,6 @@
             let valid = row[baseIndex] && row[baseIndex] !== '-';
             let ligaRaw = row[baseIndex+3] || '-';
             let posRaw = row[baseIndex+4] || '-';
-            
             return { tier, oleada, reliquias, liga, pos, valid, ligaRaw, posRaw };
         }
         
@@ -590,47 +266,38 @@
 
         function calculateRanks(dateIndex, mode) {
             let validRows = db.rows.map(row => ({
-                name: row[0],
-                score: getScore(row, dateIndex)
+                name: row[0], score: getScore(row, dateIndex)
             })).filter(x => x.score.valid);
-            
             validRows.sort((a, b) => compareScores(a.score, b.score, mode));
-            
             let ranks = new Map();
-            validRows.forEach((item, index) => {
-                ranks.set(item.name, index + 1); 
-            });
+            validRows.forEach((item, index) => ranks.set(item.name, index + 1));
             return ranks;
         }
 
         function getBadgeClass(val) {
             let v = String(val).toLowerCase();
-            if (v === 'leyenda') return 'leyenda';
-            if (v === 'oro') return 'oro';
-            if (v === 'platino') return 'platino';
-            if (v === 'campeón' || v === 'campeon') return 'campeón';
-            if (v === 'plata') return 'plata';
-            if (v === 'cobre') return 'cobre';
-            return 'none';
+            if (v === 'leyenda') return 'bg-gradient-to-r from-red-600 to-red-900 text-white shadow-[0_0_8px_rgba(220,38,38,0.6)]';
+            if (v === 'oro') return 'bg-gradient-to-r from-amber-500 to-amber-700 text-white shadow-[0_0_8px_rgba(245,158,11,0.5)]';
+            if (v === 'platino') return 'bg-gradient-to-r from-sky-400 to-sky-600 text-white shadow-[0_0_8px_rgba(56,189,248,0.5)]';
+            if (v === 'campeón' || v === 'campeon') return 'bg-gradient-to-r from-purple-500 to-purple-800 text-white shadow-[0_0_8px_rgba(168,85,247,0.5)]';
+            if (v === 'plata') return 'bg-gradient-to-r from-slate-400 to-slate-600 text-white';
+            if (v === 'cobre') return 'bg-gradient-to-r from-orange-600 to-orange-800 text-white';
+            return 'bg-slate-800 text-slate-400 border border-slate-700';
         }
 
-        function getGroupClass(headerName) {
-            let h = headerName.toLowerCase();
-            if (h === 'oleada') return 'group-1';
-            if (h === 'reliquias') return 'group-2';
-            if (h === 'pos. en torneo') return 'group-3';
-            return '';
+        function formatNumber(num) {
+            return new Intl.NumberFormat('en-US').format(num);
         }
 
         function toggleComparison() {
             showComparison = !showComparison;
             let btn = document.getElementById('compareBtn');
             if (showComparison) {
-                btn.classList.add('active');
-                btn.innerHTML = '👁️ Ocultar Ranking Anterior';
+                btn.classList.add('border-neonCyan', 'text-neonCyan', 'shadow-[0_0_10px_rgba(0,242,254,0.3)]');
+                btn.innerHTML = '👁️ OCULTAR ANTERIOR';
             } else {
-                btn.classList.remove('active');
-                btn.innerHTML = '👁️ Mostrar Ranking Anterior';
+                btn.classList.remove('border-neonCyan', 'text-neonCyan', 'shadow-[0_0_10px_rgba(0,242,254,0.3)]');
+                btn.innerHTML = '👁️ MOSTRAR ANTERIOR';
             }
             renderTable();
         }
@@ -639,33 +306,42 @@
             let tr = btn.closest('tr');
             if (tr.classList.contains('show-history')) {
                 tr.classList.remove('show-history');
-                btn.innerHTML = '👁️ Ver Historial Anterior';
+                btn.innerHTML = '👁️ VER HISTORIAL ANTERIOR';
+                btn.classList.remove('bg-neonCyan/20', 'text-neonCyan', 'border-neonCyan');
             } else {
                 tr.classList.add('show-history');
-                btn.innerHTML = '👁️ Ocultar Historial';
+                btn.innerHTML = '👁️ OCULTAR HISTORIAL';
+                btn.classList.add('bg-neonCyan/20', 'text-neonCyan', 'border-neonCyan');
             }
+        }
+
+        function showModalEl(modal) {
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            modal.querySelector('.transform').classList.remove('scale-95');
+        }
+        function hideModalEl(modal) {
+            modal.classList.add('opacity-0');
+            modal.querySelector('.transform').classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
         function openModal(playerName) {
             const modal = document.getElementById('profileModal');
             const img = document.getElementById('modalImg');
             img.src = `Captura-perfiles/${playerName}.png`;
-            modal.style.display = 'flex';
-            void modal.offsetWidth;
-            modal.classList.add('show');
+            showModalEl(modal);
         }
 
         function closeModal(modalId, event) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('show');
-            setTimeout(() => { modal.style.display = 'none'; }, 300);
+            hideModalEl(document.getElementById(modalId));
         }
         
         function handleCheckbox(cb, playerName) {
             if (cb.checked) {
                 if (selectedPlayers.size >= 3) {
                     cb.checked = false;
-                    alert("Solo puedes comparar hasta 3 jugadores a la vez.");
+                    alert("⚔️ Solo puedes comparar hasta 3 jugadores a la vez.");
                     return;
                 }
                 selectedPlayers.add(playerName);
@@ -675,9 +351,11 @@
             
             const battleBtn = document.getElementById('battleBtn');
             if (selectedPlayers.size >= 2) {
-                battleBtn.classList.add('visible');
+                battleBtn.classList.remove('translate-y-[150%]');
+                battleBtn.classList.add('translate-y-0');
             } else {
-                battleBtn.classList.remove('visible');
+                battleBtn.classList.add('translate-y-[150%]');
+                battleBtn.classList.remove('translate-y-0');
             }
         }
         
@@ -689,31 +367,48 @@
             let playersArray = Array.from(selectedPlayers);
             let rowsToCompare = db.rows.filter(r => playersArray.includes(r[0]));
             
-            rowsToCompare.forEach(row => {
+            // Define colors for each player card (Cyan vs Magenta vs Lime)
+            const colors = ['border-neonCyan shadow-[0_0_20px_rgba(0,242,254,0.2)]', 'border-neonMagenta shadow-[0_0_20px_rgba(255,8,68,0.2)]', 'border-neonLime shadow-[0_0_20px_rgba(163,230,53,0.2)]'];
+            const textColors = ['text-neonCyan', 'text-neonMagenta', 'text-neonLime'];
+            
+            rowsToCompare.forEach((row, idx) => {
                 let pName = row[0];
                 let score = getScore(row, currDateIdx);
+                let theme = colors[idx % colors.length];
+                let tc = textColors[idx % textColors.length];
                 
                 let div = document.createElement('div');
-                div.className = 'battle-player';
+                div.className = `flex-1 bg-black border-2 ${theme} rounded-2xl p-4 md:p-6 min-w-[280px]`;
                 
-                let badgeHtml = score.ligaRaw !== '-' ? `<span class="badge ${getBadgeClass(score.ligaRaw)}">${score.ligaRaw}</span>` : '-';
+                let badgeHtml = score.ligaRaw !== '-' ? `<span class="px-3 py-1 rounded-full text-xs font-bold ${getBadgeClass(score.ligaRaw)}">${score.ligaRaw}</span>` : '-';
                 
                 div.innerHTML = `
-                    <h3>${pName}</h3>
-                    <img src="Captura-perfiles/${pName}.png" onerror="this.src=''" alt="${pName}">
-                    <div class="battle-stat"><span>Tier</span> <span>${score.tier || '-'}</span></div>
-                    <div class="battle-stat"><span>Oleada</span> <span>${score.oleada || '-'}</span></div>
-                    <div class="battle-stat"><span>Reliquias</span> <span>${score.reliquias || '-'}</span></div>
-                    <div class="battle-stat"><span>Liga</span> <span>${badgeHtml}</span></div>
-                    <div class="battle-stat"><span>Posición</span> <span>${score.posRaw}</span></div>
+                    <h3 class="text-2xl font-mono font-bold text-center mb-4 ${tc} uppercase tracking-wider">${pName}</h3>
+                    <div class="rounded-xl overflow-hidden border border-slate-800 mb-6 bg-slate-900 aspect-square flex items-center justify-center">
+                        <img src="Captura-perfiles/${pName}.png" onerror="this.src=''" alt="${pName}" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="space-y-3 font-mono text-sm md:text-base">
+                        <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                            <span class="text-slate-400">🏆 TIER</span> <span class="font-bold text-white">${score.tier || '-'}</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                            <span class="text-slate-400">🌊 OLEADA</span> <span class="font-bold text-white">${score.oleada || '-'}</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                            <span class="text-slate-400">💎 RELIQUIAS</span> <span class="font-bold text-white">${score.reliquias ? formatNumber(score.reliquias) : '-'}</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                            <span class="text-slate-400">🛡️ LIGA</span> <span>${badgeHtml}</span>
+                        </div>
+                        <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                            <span class="text-slate-400">📍 POSICIÓN</span> <span class="font-bold text-white">${score.posRaw}</span>
+                        </div>
+                    </div>
                 `;
                 grid.appendChild(div);
             });
             
-            const modal = document.getElementById('battleModal');
-            modal.style.display = 'flex';
-            void modal.offsetWidth;
-            modal.classList.add('show');
+            showModalEl(document.getElementById('battleModal'));
         }
 
         function renderTable() {
@@ -744,123 +439,128 @@
             
             let colsToShow = [0]; 
             colsToShow.push(...currDateCols);
-            // On desktop, we respect global showComparison. 
-            // On mobile, we MUST render the prevDateCols in DOM so the toggle works, 
-            // but they will be hidden by CSS until the card is expanded.
-            colsToShow.push(...prevDateCols);
+            colsToShow.push(...prevDateCols); // Hidden on mobile via CSS until button is clicked
             
             const thead1 = document.getElementById('thead1');
             const thead2 = document.getElementById('thead2');
             thead1.innerHTML = '';
             thead2.innerHTML = '';
             
+            // Header 1
             let th1 = document.createElement('th');
-            th1.colSpan = 1;
-            th1.className = 'nombre-header';
+            th1.className = 'nombre-header py-3 px-4';
             thead1.appendChild(th1);
             
             let currTh = document.createElement('th');
             currTh.colSpan = currDateCols.length;
-            currTh.textContent = "Actual (15-06-2026)";
-            currTh.style.color = 'var(--accent)';
-            currTh.className = 'col-new';
-            currTh.style.fontSize = '1.05rem';
+            currTh.textContent = "ACTUAL (15-06-2026)";
+            currTh.className = 'py-3 px-4 text-neonCyan font-bold tracking-widest bg-cyan-900/10 border-r border-slate-700 text-center';
             thead1.appendChild(currTh);
             
             let prevTh = document.createElement('th');
             prevTh.colSpan = prevDateCols.length;
-            prevTh.textContent = "Anterior (26-04-2026)";
-            prevTh.style.color = 'var(--text-main)';
-            prevTh.style.fontSize = '1.05rem';
-            // Hide header if comparison is off (on Desktop)
-            if (!showComparison) { prevTh.style.display = 'none'; }
-            prevTh.className = 'history-header'; // tag it to hide on mobile entirely if we want
+            prevTh.textContent = "ANTERIOR (26-04-2026)";
+            prevTh.className = `py-3 px-4 text-slate-400 font-bold tracking-widest bg-slate-900/30 text-center ${showComparison ? '' : 'hidden md:hidden'}`;
             thead1.appendChild(prevTh);
             
+            // Header 2
             for (let i of colsToShow) {
                 if (i === 0) {
                     let th = document.createElement('th');
-                    th.textContent = "Jugador";
-                    th.className = 'nombre-header';
+                    th.textContent = "JUGADOR";
+                    th.className = 'nombre-header py-3 px-4';
                     thead2.appendChild(th);
                 } else {
                     let th = document.createElement('th');
                     th.textContent = db.headers_2[i];
                     
                     let isPrevCol = colToDate[i] === '26-04-2026';
-                    if (isPrevCol && !showComparison) {
-                        th.style.display = 'none';
-                    }
+                    let isNewCol = colToDate[i] === '15-06-2026';
                     
-                    if (colToDate[i] === '15-06-2026') th.classList.add('col-new');
+                    let cls = 'py-3 px-4 text-center ';
+                    if (isPrevCol && !showComparison) cls += 'hidden md:hidden ';
+                    if (isNewCol) cls += 'bg-cyan-900/10 border-r border-slate-700/50 text-cyan-100 ';
+                    else cls += 'text-slate-400 ';
                     
-                    let groupClass = getGroupClass(db.headers_2[i]);
-                    if (groupClass) th.classList.add(groupClass);
+                    th.className = cls;
                     thead2.appendChild(th);
                 }
             }
 
-            displayRows.forEach((row, rowIndex) => {
+            // Body
+            displayRows.forEach((row) => {
                 let tr = document.createElement('tr');
+                tr.className = 'mobile-card even:bg-slate-800/30 hover:bg-slate-800/60 transition-colors border-b border-slate-800/50';
+                
                 let playerName = row[0];
                 let isChecked = selectedPlayers.has(playerName) ? 'checked' : '';
                 
+                let cRank = currRanks.get(playerName) || '-';
+                let pRank = prevRanks.get(playerName);
+                
+                // Top 3 Ranking Highlights
+                if (cRank === 1) tr.classList.add('rank-1');
+                else if (cRank === 2) tr.classList.add('rank-2');
+                else if (cRank === 3) tr.classList.add('rank-3');
+                
                 for (let i of colsToShow) {
                     let td = document.createElement('td');
+                    td.className = 'mobile-cell py-3 px-4 text-center ';
+                    
                     let isNewCol = colToDate[i] === '15-06-2026';
                     let isPrevCol = colToDate[i] === '26-04-2026';
                     
-                    if (isNewCol) td.classList.add('col-new');
-                    
-                    // On desktop, hide prev columns if not showing comparison.
-                    // On mobile, they are hidden by default via .history-cell.
+                    if (isNewCol) td.classList.add('bg-cyan-900/5', 'md:border-r', 'md:border-slate-800/50');
                     if (isPrevCol) {
-                        td.classList.add('history-cell');
-                        if (!showComparison) {
-                            td.style.display = window.innerWidth > 767 ? 'none' : ''; // let css handle mobile
-                        }
+                        td.classList.add('history-cell', 'text-slate-400');
+                        if (!showComparison) td.classList.add('md:hidden');
                     }
                     
                     let dateSuffix = isNewCol ? ' (Actual)' : ' (Ant.)';
+                    td.setAttribute('data-label', db.headers_2[i] + dateSuffix);
                     
                     if (i === 0) {
                         td.className = 'nombre-container';
                         
-                        let cRank = currRanks.get(playerName) || '-';
-                        let pRank = prevRanks.get(playerName);
-                        
                         let trendHtml = '';
                         if (!pRank && cRank !== '-') {
-                            trendHtml = `<span class="trend-badge trend-new">NEW</span>`;
+                            trendHtml = `<span class="bg-amber-500/20 text-amber-500 border border-amber-500/30 px-2 py-0.5 rounded font-bold text-xs uppercase tracking-wider">NEW</span>`;
                         } else if (pRank && cRank !== '-') {
                             if (cRank < pRank) {
-                                trendHtml = `<span class="trend-badge trend-up">▲ ${pRank - cRank}</span>`;
+                                trendHtml = `<span class="bg-green-500/20 text-green-400 border border-green-500/30 px-2 py-0.5 rounded font-bold text-xs">▲ ${pRank - cRank}</span>`;
                             } else if (cRank > pRank) {
-                                trendHtml = `<span class="trend-badge trend-down">▼ ${cRank - pRank}</span>`;
+                                trendHtml = `<span class="bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-0.5 rounded font-bold text-xs">▼ ${cRank - pRank}</span>`;
                             } else {
-                                trendHtml = `<span class="trend-badge trend-same">-</span>`;
+                                trendHtml = `<span class="text-slate-500 px-2 py-0.5 font-bold text-xs">-</span>`;
                             }
                         }
                         
+                        let rankStr = cRank !== '-' ? `#${cRank}` : '-';
+                        let rankColor = 'text-white';
+                        if(cRank === 1) rankColor = 'text-yellow-400';
+                        if(cRank === 2) rankColor = 'text-slate-300';
+                        if(cRank === 3) rankColor = 'text-amber-600';
+                        
                         td.innerHTML = `
-                            <div class="nombre-content">
-                                <input type="checkbox" class="compare-checkbox" value="${playerName}" onchange="handleCheckbox(this, '${playerName}')" ${isChecked}>
-                                <span class="rank-number">#${cRank}</span>
+                            <div class="flex items-center gap-3">
+                                <input type="checkbox" class="cyber-checkbox" value="${playerName}" onchange="handleCheckbox(this, '${playerName}')" ${isChecked}>
+                                <span class="font-mono font-black text-lg ${rankColor} w-8 text-center">${rankStr}</span>
                                 ${trendHtml}
-                                <span class="player-name">${playerName}</span>
-                                <button class="btn-perfil" onclick="openModal('${playerName}')">👤 Perfil</button>
+                                <span class="font-bold text-base tracking-wide">${playerName}</span>
                             </div>
+                            <button class="bg-neonCyan/10 border border-neonCyan/30 text-neonCyan hover:bg-neonCyan hover:text-black px-3 py-1 rounded transition-colors text-xs font-bold uppercase tracking-wider ml-auto flex items-center gap-1" onclick="openModal('${playerName}')">
+                                👤 <span class="hidden md:inline">Perfil</span>
+                            </button>
                         `;
                     } 
                     else {
                         let headerType = db.headers_2[i].toLowerCase();
-                        let groupClass = getGroupClass(db.headers_2[i]);
-                        if (groupClass) td.classList.add(groupClass);
-                        
-                        td.setAttribute('data-label', db.headers_2[i] + dateSuffix);
-                        
                         if (headerType.includes('liga') && row[i] !== '-') {
-                            td.innerHTML = `<span class="badge ${getBadgeClass(row[i])}">${row[i]}</span>`;
+                            td.innerHTML = `<span class="px-3 py-1 rounded-full text-xs font-bold tracking-wider ${getBadgeClass(row[i])}">${row[i]}</span>`;
+                        } else if (headerType.includes('reliquias') && row[i] !== '-') {
+                            td.innerHTML = `<span class="font-mono text-neonCyan">${formatNumber(row[i])}</span>`;
+                        } else if (headerType.includes('tier') || headerType.includes('oleada')) {
+                            td.innerHTML = `<span class="font-mono font-bold">${row[i]}</span>`;
                         } else {
                             td.textContent = row[i];
                         }
@@ -868,14 +568,9 @@
                     tr.appendChild(td);
                 }
                 
-                // Add mobile history button at the end of the card
                 let btnTd = document.createElement('td');
-                btnTd.innerHTML = `<button class="btn-history-mobile" onclick="toggleMobileHistory(this)">👁️ Ver Historial Anterior</button>`;
-                btnTd.style.borderBottom = 'none';
-                btnTd.style.padding = '0 10px 10px 10px';
-                btnTd.className = 'mobile-only-btn-cell';
-                // Add quick style to hide on desktop
-                if(window.innerWidth > 767) btnTd.style.display = 'none';
+                btnTd.className = 'mobile-only-btn px-4 pb-4 pt-2 border-t border-slate-800/50 mt-2';
+                btnTd.innerHTML = `<button class="w-full bg-slate-800 border border-slate-600 text-slate-300 hover:text-white py-2 rounded-lg font-bold font-mono tracking-wider transition-all" onclick="toggleMobileHistory(this)">👁️ VER HISTORIAL ANTERIOR</button>`;
                 tr.appendChild(btnTd);
                 
                 tbody.appendChild(tr);
@@ -890,12 +585,12 @@
                     break;
                 }
             }
+            updateSortBtnStyles();
             renderTable();
         }
         
-        // Ensure re-rendering on window resize to fix desktop vs mobile display logic
         window.addEventListener('resize', () => {
-            // Simple debounce or just re-render
+            // Re-render purely to ensure hidden columns logic applies perfectly on resize breakpoint
             renderTable();
         });
         
