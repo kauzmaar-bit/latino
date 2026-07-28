@@ -206,3 +206,81 @@ const casterNotes = {
         text: "El recluta y consentido más fresco de nuestra casa. No importa empezar en el escalón 3: ¡todos los gigantes y emperadores de esta tabla nacieron picando piedra desde la arena! ¡Tienes al gremio entero alentándote a subir como espuma, Fidesin!"
     }
 };
+
+const abbreviationsData = [
+    // ARMAS SUPREMAS (UW)
+    { cat: 'uw', sigla: 'UW', en: 'Ultimate Weapon', es: 'Arma Suprema', desc: 'Las armas especiales del juego que se compran y mejoran con Piedras Verdes ganadas en los torneos.' },
+    { cat: 'uw', sigla: 'BH', en: 'Black Hole', es: 'Agujero Negro', desc: 'Atrae enemigos a su centro de gravedad y multiplica masivamente las monedas ganadas con su investigación de laboratorio. ¡Esencial para economía!' },
+    { cat: 'uw', sigla: 'GT', en: 'Golden Tower', es: 'Torre Dorada', desc: 'El rey indiscutibly de la economía en el juego. Multiplica de forma colosal tus ingresos de monedas y dinero en efectivo en cada activación.' },
+    { cat: 'uw', sigla: 'DW', en: 'Death Wave', es: 'Ola de la Muerte', desc: 'Anillo de energía letal. Vital para la estrategia "Devo" y para multiplicar tu salud máxima (HP) hasta por x7 veces en batalla.' },
+    { cat: 'uw', sigla: 'SL / SLM', en: 'Spotlight / Spotlight Missiles', es: 'Foco (Reflector) & Misiles de Foco', desc: 'Ilumina conos del mapa aumentando exponencialmente el daño infligido, monedas ganadas y disparando misiles autoguiados de apoyo.' },
+    { cat: 'uw', sigla: 'CF / CFR', en: 'Chrono Field / CF Reduction', es: 'Campo Crono & Reducción de Daño', desc: 'Campo de tiempo que ralentiza el movimiento del enemigo y otorga reducción de daño pasiva indispensable para sobrevivir al late-game.' },
+    { cat: 'uw', sigla: 'CL', en: 'Chain Lightning', es: 'Rayo en Cadena', desc: 'Relámpagos que saltan de enemigo en enemigo; causa estragos inmensos en sinergia con el módulo Dimension Core (DC).' },
+    { cat: 'uw', sigla: 'SM', en: 'Smart Missiles', es: 'Misiles Inteligentes', desc: 'Ráfaga de proyectiles guiados y devastadores. Es el motor principal para causar billones de daño en builds ofensivas.' },
+    { cat: 'uw', sigla: 'ILM', en: 'Inner Land Mines', es: 'Minas Terrestres Internas', desc: 'Anillos de minas alrededor del muro que explotan y aturden jefes, dándote segundos vitales en oleadas avanzadas.' },
+    { cat: 'uw', sigla: 'PS', en: 'Poison Swamp', es: 'Pantano Venenoso', desc: 'Genera nubes tóxicas en el suelo que dañan y aturden constantemente en masa (Control de Multitudes).' },
+
+    // CARTAS (CARDS)
+    { cat: 'cards', sigla: 'AS / ASPD', en: 'Attack Speed', es: 'Velocidad de Ataque', desc: 'La carta más importante de todo el juego. Permite a tus cañones disparar ráfagas ultrasónicas y empujar a los enemigos lejos del muro.' },
+    { cat: 'cards', sigla: 'EB', en: 'Enemy Balance', es: 'Equilibrio de Enemigos', desc: 'Incrementa la densidad de enemigos en pantalla y el dinero en efectivo (cash) que sueltan al morir. ¡Imprescindible para farmear!' },
+    { cat: 'cards', sigla: 'WS (Carta)', en: 'Wave Skip', es: 'Salto de Oleada', desc: 'Otorga probabilidad de saltar instantáneamente una oleada entera reclamando las recompensas de monedas y dinero de inmediato.' },
+    { cat: 'cards', sigla: 'WA', en: 'Wave Accelerator', es: 'Acelerador de Oleadas', desc: 'Reduce drásticamente el tiempo de descanso entre una oleada y otra, comprimiendo horas largas de farmeo en pocos minutos.' },
+    { cat: 'cards', sigla: 'IS', en: 'Intro Sprint', es: 'Sprint Inicial (Turbo)', desc: 'Acelera a velocidad relámpago tus primeras oleadas al iniciar la partida. Ideal para farmear misiones de reintentos rápidos.' },
+    { cat: 'cards', sigla: 'CC / CritC', en: 'Critical Coin', es: 'Moneda Crítica', desc: 'Los ataques con daño crítico al destruir enemigos básicos o especiales tienen probabilidad de soltar monedas extras al bolsillo.' },
+    { cat: 'cards', sigla: 'PC (Carta)', en: 'Plasma Cannon', es: 'Cañón de Plasma', desc: 'Dispara un cañonazo láser masivo a cada Jefe apenas aparece en pantalla, quitándole hasta el 54% de su vida máxima al instante.' },
+    { cat: 'cards', sigla: 'EN', en: 'Energy Net', es: 'Red de Energía', desc: 'Inmoviliza al Jefe entrante en la línea de tus orbes por varios segundos, exponiéndolo al daño de tus torres antes de tocarte.' },
+    { cat: 'cards', sigla: 'ES', en: 'Energy Shield', es: 'Escudo de Energía', desc: 'Campo de fuerza con hasta 3 cargas que bloquea al 100% cualquier golpe enemigo que sea mortal o de altísimo impacto.' },
+    { cat: 'cards', sigla: 'SW (Carta)', en: 'Second Wind', es: 'Segundo Aliento', desc: 'Una vida extra por partida; al recibir un golpe mortal revives restaurando tu torre con invulnerable temporal para seguir pelando.' },
+    { cat: 'cards', sigla: 'DM', en: 'Demon Mode', es: 'Modo Demonio', desc: 'Botón de activación manual que transforma tu torre en una entidad de llamas invencible por varios segundos.' },
+    { cat: 'cards', sigla: 'DR / DDR', en: 'Death Ray / Double Death Ray', es: 'Rayo de la Muerte (y Doble Rayo)', desc: 'Láser giratorio violento que desintegra automáticamente al contacto a los enemigos normales (no afecta jefes). Su laboratorio te permite tener 2 activos.' },
+    { cat: 'cards', sigla: 'SA', en: 'Slow Aura', es: 'Aura de Lentitud', desc: 'Ralentiza pasivamente la velocidad de avance de todo enemigo que se acerque al perímetro de tu torre.' },
+    { cat: 'cards', sigla: 'ST', en: 'Super Tower', es: 'Súper Torre', desc: 'Se activa periódicamente multiplicando tus estadísticas de ataque corporal por una cantidad descomunal.' },
+    { cat: 'cards', sigla: 'RPC', en: 'Recovery Package Chance', es: 'Prob. Paquetes de Recuperación', desc: 'Probabilidad al terminar una oleada de recibir un paquete dorado que sobrecura tu torre por encima de tu salud máxima.' },
+    { cat: 'cards', sigla: 'EO', en: 'Extra Orbs', es: 'Orbes Extra', desc: 'Agrega hasta 3 orbes orbitales con distancia ajustable para triturar enemigos a medida de tu rango táctico.' },
+    { cat: 'cards', sigla: 'ZERK', en: 'Berserker', es: 'Berserker (Furia)', desc: 'Absorbe el daño que te hacen los enemigos y lo convierte al instante en un multiplicador bestial para tu propio ataque (hasta x8).' },
+    { cat: 'cards', sigla: 'LMS', en: 'Land Mine Stun', es: 'Aturdidor de Minas', desc: 'Otorga a las minas que plantas en el taller la capacidad de paralizar en seco a todo enemigo o jefe que las pise.' },
+
+    // LABORATORIOS & TALLER (LABS & WS)
+    { cat: 'labs', sigla: 'WS / WS+', en: 'Workshop / Enhancements', es: 'Taller / Mejoras Avanzadas (+)', desc: 'El menú principal donde subes tus estadísticas de Ataque, Defensa y Utilidad con monedas. WS+ son las mejoras evolutivas para jugadores veteranos.' },
+    { cat: 'labs', sigla: 'CPK / C/K', en: 'Coins per Kill', es: 'Monedas por Muerte', desc: 'El laboratorio de economía más importante a largo plazo. Subirlo multiplica de forma geométrica tu botín al destruir enemigos.' },
+    { cat: 'labs', sigla: 'EALS / EHLS', en: 'Enemy Attack / Health Level Skip', es: 'Salto de Nivel (Ataque / Vida)', desc: 'Probabilidad de que en cada nueva oleada el enemigo NO aumente su vida ni su ataque. ¡La clave definitiva para llegar a más de 5000 oleadas!' },
+    { cat: 'labs', sigla: 'DD', en: 'Death Defy', es: 'Desafío a la Muerte', desc: 'Estadística de utilidad que te da hasta un 30% de probabilidad de esquivar un golpe letal, salvándote en el último segundo.' },
+    { cat: 'labs', sigla: 'Def% / DABS', en: 'Defense % / Defense Absolute', es: 'Porcentaje / Defensa Absoluta', desc: 'Def% reduce el daño entrante de forma porcentual (¡imprescindible!). DABS resta un número fijo al daño, útil solo en Tier 1.' },
+    { cat: 'labs', sigla: 'KB', en: 'Knockback', es: 'Retroceso (Empuje)', desc: 'Fuerza con la que tus proyectiles empujan hacia atrás a los cubos enemigos en dirección a los orbes y agujeros negros.' },
+    { cat: 'labs', sigla: 'SCC / SCM', en: 'Super Critical Chance / Mult', es: 'Súper Crítico (Prob. e Impacto)', desc: 'Probabilidad de que un golpe crítico ordinario evolucione a Súper Crítico dorado reventando al enemigo con daño extremo.' },
+    { cat: 'labs', sigla: 'MSC / RFC', en: 'Multishot / Rapid Fire Chance', es: 'Disparo Múltiple / Ráfaga Rápida', desc: 'Probabilidad del taller de disparar múltiples balas en distintos ángulos o descargar ametralladoras veloces continuas.' },
+    { cat: 'labs', sigla: 'BSC / BST', en: 'Bounce Shot (Chance / Targets)', es: 'Disparo de Rebote', desc: 'Permite que tus balas reboten de cubo en cubo cual bola de pinball empujando y dañando multitudes a la vez.' },
+
+    // MÓDULOS (MODS)
+    { cat: 'mods', sigla: 'DC / Dimcore', en: 'Dimension Core', es: 'Núcleo de Dimensión', desc: 'Módulo de Core legendario. Hace que tu Rayo en Cadena (CL) golpee al mismo objetivo varias veces con daño multiplicador aplastante.' },
+    { cat: 'mods', sigla: 'GComp / GC', en: 'Galaxy Compressor', es: 'Compresor Galáctico', desc: 'Módulo de Generador. Al recoger un Paquete de Recuperación, ¡reduce de inmediato el enfriamiento de TODAS tus Armas Supremas en segundos!' },
+    { cat: 'mods', sigla: 'BHD', en: 'Black Hole Digestor', es: 'Digestor de Agujero Negro', desc: 'Módulo de Generador. Aumenta tu bonus de monedas por cada paquete recogido y congela inteligentemente tu rango de torre.' },
+    { cat: 'mods', sigla: 'MVN / Nexus', en: 'Multiverse Nexus', es: 'Nexo Multiverso', desc: 'Módulo de Core. ¡Sincroniza automáticamente los tiempos de activación de tu Agujero Negro, Torre Dorada y Ola de Muerte (promediándolos)!' },
+    { cat: 'mods', sigla: 'WHR / WR', en: 'Wormhole Redirector', es: 'Redireccionador de Agujero de Gusano', desc: 'Módulo de Armadura. Permite que tu Regeneración de Vida llene tu escudo por encima del 100% de salud (hasta un 100% extra si es Ancestral).' },
+    { cat: 'mods', sigla: 'ACP', en: 'Anti-Cube Portal', es: 'Portal Anti-Cubo', desc: 'Módulo de Armadura. Los enemigos alcanzados por tu onda de choque quedan sentenciados con una marca, recibiendo daño masivamente superior.' },
+    { cat: 'mods', sigla: 'DP', en: 'Death Penalty', es: 'Pena de Muerte', desc: 'Módulo de Cañón. Otorga probabilidad de que un enemigo (¡incluso un Jefe poderoso de oleada alta!) aparezca marcado para morir a tu primer hit.' },
+    { cat: 'mods', sigla: 'AS (Módulo)', en: 'Amplifying Strike', es: 'Golpe Amplificador', desc: 'Módulo de Cañón. Si no recibes ningún golpe o daño en los últimos segundos, tu daño corporal de disparo se multiplica frenéticamente.' },
+    { cat: 'mods', sigla: 'BA', en: 'Being Annihilator', es: 'Aniquilador de Seres', desc: 'Módulo de Cañón. Ocasionalmente transforma tu disparo en un proyectil devastador aumentando tu daño de Súper Crítico mil veces.' },
+    { cat: 'mods', sigla: 'MH / Om / NMP', en: 'Magnetic / Om Chip / Negative Mass', es: 'Módulos Tácticos de Core y Armadura', desc: 'MH retiene cubos fuera del alcance; Om Chip hace que el Foco apunte directo a los Jefes; NMP encoge y frena enemigos que entran al rango.' },
+    { cat: 'mods', sigla: 'PH / SD / SH', en: 'Pulsar Harvester / Space Disp / Singularity', es: 'Módulos de Control y Bot', desc: 'PH reduce el nivel del enemigo que te golpea; SD genera minas en todo el borde exterior; SH expande el radio de farmeo de tu Bot Dorado.' },
+
+    // JERGA & ESTRATEGIA (SLANG & TACTICS)
+    { cat: 'slang', sigla: 'eHP', en: 'Effective Health Points', es: 'Puntos de Salud Efectivos (eHP)', desc: 'La capacidad de supervivencia REAL de tu torre. Es el resultado de tu Salud Máxima (HP) + Porcentaje de Defensa + Escudos y reducción pasiva. ¡El concepto más importante del juego!' },
+    { cat: 'slang', sigla: 'Devo', en: 'Devolution Strategy', es: 'Estrategia Devo / Involución', desc: 'Táctica de nivel medio donde "involucionas" (quitas) mejoras del taller para acumular cientos de enemigos en pantalla y matarlos a todos en un solo disparo con tu Ola de la Muerte (DW), amasando billones de monedas y vida x7.' },
+    { cat: 'slang', sigla: 'GC (Build)', en: 'Glass Cannon', es: 'Cañón de Cristal', desc: 'Estrategia del late-game. Como en los Tiers más altos los enemigos pegan billones de daño en un segundo y la salud (eHP) es inútil, ignoras la vida y te concentras en daño 100% puro y sobrevivir con escudos ES y campo CF.' },
+    { cat: 'slang', sigla: 'WAWSIS', en: 'Wave Accel + Wave Skip + Intro Sprint', es: 'Estrategia de Sprint Final en Torneos', desc: 'Táctica donde te equipas Sprint Inicial + Salto de Oleada + Acelerador y entras a un torneo cuando faltan pocos minutos para el cierre. Dependiendo de la suerte (RNG) saltas oleadas rápido para ganar buenos premios sin pelear horas. (En Discord bromean llamándola "Runs Gonzales" o corridas a lo Speedy Gonzales 🐭💨).' },
+    { cat: 'slang', sigla: 'CPM / CPH', en: 'Coins per Minute / Hour', es: 'Monedas por Minuto / Hora', desc: 'El termómetro de farmeo económico. Siempre debes comparar tus CPH reales para saber qué Tier te conviene repetir para ganar más rápido.' },
+    { cat: 'slang', sigla: 'LTx (LTC / LTS)', en: 'Lifetime Coins / Stones / X', es: 'Total Histórico de Monedas / Piedras', desc: 'La suma total de toda la riqueza, piedras o gemas que has juntado desde tu primer día en The Tower.' },
+    { cat: 'slang', sigla: 'PB', en: 'Personal Best', es: 'Récord Personal', desc: 'La oleada más alta o cosecha histórica más grande que has alcanzado jamás en un Tier de La Cantina.' },
+    { cat: 'slang', sigla: 'PWR', en: 'Perk Wave Requirement', es: 'Reducción de Oleadas para Perks', desc: 'El Perk más importante y sagrado del juego. Al reclamarlo reduce cuántas oleadas requieres para desbloquear todos tus siguientes beneficios.' },
+    { cat: 'slang', sigla: 'CTO', en: 'Coin Trade Off Perk (+1.80x Coin / -70% HP)', es: 'Perk de Sacrificio de Monedas', desc: 'El beneficio favorito para farmear agresivamente; multiplica tus ingresos de monedas un 80% extra a cambio de sacrificar el 70% de la vida de tu torre.' },
+    { cat: 'slang', sigla: '50/50 TO', en: 'Damage Trade Off (-50% Enemy Dmg)', es: 'Perk de Daño 50/50', desc: 'Reduce el daño enemigo a la MITAD, pero tu torre también hace -50% de daño corporal. Excelente protección si juegas con build eHP.' },
+    { cat: 'slang', sigla: 'BC / EAS / GB', en: 'Battle Conditions / Golden Bot', es: 'Condiciones de Batalla & Bot Dorado', desc: 'Mutadores difíciles que complican los torneos (como EAS = Enemigos súper veloces) y el Bot Dorado que compras con medallas para multiplicar monedas en el suelo.' },
+
+    // ÓRDENES DE MAGNITUD (MATH)
+    { cat: 'math', sigla: 'K / M / B / T', en: 'Thousand / Million / Billion / Trillion', es: 'Miles / Millones / Billones / Trillones', desc: 'Escala clásica mundial: K (Miles), M (Millones - 10⁶), B (Billones o Mil Millones - 10⁹), T (Trillón o Millón de Millones - 10¹²).' },
+    { cat: 'math', sigla: 'q / Q', en: 'Quadrillion / Quintillion', es: 'Cuadrillones (q) / Quintillones (Q)', desc: 'Escala media de veterano: la "q" minúscula significa Cuadrillones (10¹⁵). La "Q" MAYÚSCULA significa Quintillones (10¹⁸).' },
+    { cat: 'math', sigla: 's / S', en: 'Sextillion / Septillion', es: 'Sextillones (s) / Septillones (S)', desc: 'Escala de titán: la "s" minúscula representa Sextillones (10²¹). La "S" MAYÚSCULA representa Septillones (10²⁴).' },
+    { cat: 'math', sigla: 'O / N / D', en: 'Octillion / Nonillion / Decillion', es: 'Octillones (O) / Nonillones (N) / Decillones (D)', desc: 'Los altos mandos del Olimpo de costos del Taller: Octillones (10²⁷), Nonillones (10³⁰) y Decillones (10³³).' },
+    { cat: 'math', sigla: 'aa, ab, ac...', en: 'Undecillion / Duodecillion / Tredecillion', es: 'Notación Alfabética Científica', desc: 'Cuando se acaban las letras simples, el juego salta a dos letras: aa (Undecillones 10³⁶), ab (Duodecillones 10³⁹), ac (Tredecillones 10⁴²)... ¡Cifras cósmicas!' }
+];
