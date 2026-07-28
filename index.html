@@ -196,30 +196,55 @@
         <p class="text-slate-400 text-[11px] sm:text-base md:text-xl font-mono tracking-wider md:tracking-widest">RANKING, SALÓN DE LA FAMA & CASTER IA - THE TOWER</p>
     </header>
 
-    <!-- BANNER MODO CASTEO IA: LA VOZ DE LA CANTINA -->
+    <!-- DOBLE PANEL HEROICO: MODO CASTEO & CODEX DE ABREVIATURAS -->
     <section class="max-w-7xl mx-auto mb-7 px-1 sm:px-0">
-        <div onclick="openCasterStudio()" class="cursor-pointer bg-gradient-to-r from-purple-950/90 via-slate-900 to-indigo-950/90 border-2 border-neonPurple/80 hover:border-neonCyan rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-[0_0_35px_rgba(168,85,247,0.35)] hover:shadow-[0_0_50px_rgba(0,242,254,0.5)] transition-all duration-500 transform hover:-translate-y-1 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3.5 relative overflow-hidden group">
-            <div class="absolute -right-10 -top-10 w-48 h-48 bg-purple-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all"></div>
-            
-            <div class="flex items-center gap-3.5 text-left w-full md:w-auto min-w-0">
-                <div class="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-purple-600/30 border border-purple-400 flex items-center justify-center text-3xl sm:text-4xl flex-shrink-0 animate-bounce shadow-inner p-2">
-                    🎙️
-                </div>
-                <div class="min-w-0 flex-1">
-                    <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neonPurple/20 text-purple-300 text-[9px] sm:text-xs font-mono font-bold tracking-widest uppercase border border-purple-500/40 mb-1 shadow-sm">
-                        <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span> ESTUDIO AL AIRE - JULIO
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4.5 sm:gap-6">
+            <!-- BANNER 1: CASTEO IA -->
+            <div onclick="openCasterStudio()" class="cursor-pointer bg-gradient-to-br from-purple-950/95 via-slate-900 to-indigo-950/95 border-2 border-neonPurple/80 hover:border-neonCyan rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-[0_0_35px_rgba(168,85,247,0.35)] hover:shadow-[0_0_50px_rgba(0,242,254,0.5)] transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-cyan-500/20 transition-all"></div>
+                <div class="flex items-start sm:items-center gap-3.5 text-left mb-4 min-w-0">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-purple-600/30 border border-purple-400 flex items-center justify-center text-3xl sm:text-4xl flex-shrink-0 animate-bounce shadow-inner p-2">
+                        🎙️
                     </div>
-                    <h2 class="text-base sm:text-2xl md:text-3xl font-mono font-black text-white tracking-wide uppercase group-hover:text-neonCyan transition-colors truncate">
-                        MODO CASTEO: LA VOZ
-                    </h2>
-                    <p class="text-slate-300 text-[11px] sm:text-sm font-sans font-medium line-clamp-2 sm:line-clamp-1 leading-snug">
-                        ¡Narración en audio con Inteligencia Artificial y todo el chisme del mes! Haz clic aquí.
-                    </p>
+                    <div class="min-w-0 flex-1">
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-neonPurple/20 text-purple-300 text-[9px] sm:text-xs font-mono font-bold tracking-widest uppercase border border-purple-500/40 mb-1 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span> ESTUDIO DE VOZ IA
+                        </div>
+                        <h2 class="text-base sm:text-xl lg:text-2xl font-mono font-black text-white tracking-wide uppercase group-hover:text-neonCyan transition-colors truncate">
+                            MODO CASTEO: LA VOZ
+                        </h2>
+                        <p class="text-slate-300 text-[11px] sm:text-xs font-sans font-medium line-clamp-2 leading-snug">
+                            ¡Narración radial con la locutora Dalia, chistes y desempeño mensual del gremio!
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-500 group-hover:from-neonCyan group-hover:to-blue-500 text-white group-hover:text-black font-mono font-black text-xs sm:text-sm py-2.5 sm:py-3 px-4 rounded-xl tracking-wider uppercase transition-all duration-300 shadow-lg flex items-center justify-center gap-2 w-full text-center mt-auto">
+                    <span>🎧 ENTRAR AL RESUMEN</span> <span>&rightarrow;</span>
                 </div>
             </div>
-            
-            <div class="bg-gradient-to-r from-purple-500 to-indigo-600 group-hover:from-neonCyan group-hover:to-blue-500 text-white group-hover:text-black font-mono font-black text-xs sm:text-sm py-3 px-5 rounded-xl tracking-wider uppercase transition-all duration-300 shadow-lg flex items-center justify-center gap-2 flex-shrink-0 w-full md:w-auto text-center mt-1 md:mt-0">
-                <span>🎧 ENTRAR AL RESUMEN</span> <span>&rightarrow;</span>
+
+            <!-- BANNER 2: CODEX / INFOGRAFÍA DE ABREVIATURAS -->
+            <div onclick="openInfografiasModal()" class="cursor-pointer bg-gradient-to-br from-emerald-950/95 via-slate-900 to-teal-950/95 border-2 border-emerald-500/80 hover:border-yellow-400 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-[0_0_35px_rgba(16,185,129,0.35)] hover:shadow-[0_0_50px_rgba(250,204,21,0.5)] transition-all duration-500 transform hover:-translate-y-1.5 flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-yellow-500/20 transition-all"></div>
+                <div class="flex items-start sm:items-center gap-3.5 text-left mb-4 min-w-0">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-emerald-600/30 border border-emerald-400 flex items-center justify-center text-3xl sm:text-4xl flex-shrink-0 animate-pulse shadow-inner p-2">
+                        📜
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[9px] sm:text-xs font-mono font-bold tracking-widest uppercase border border-emerald-500/40 mb-1 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span> GUÍA OFICIAL THE TOWER
+                        </div>
+                        <h2 class="text-base sm:text-xl lg:text-2xl font-mono font-black text-white tracking-wide uppercase group-hover:text-yellow-300 transition-colors truncate">
+                            CÓDICE DE ABREVIATURAS
+                        </h2>
+                        <p class="text-slate-300 text-[11px] sm:text-xs font-sans font-medium line-clamp-2 leading-snug">
+                            Consulta el diccionario visual de siglas y mecánicas clave para dominar La Cantina.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 group-hover:from-yellow-400 group-hover:to-amber-500 text-white group-hover:text-black font-mono font-black text-xs sm:text-sm py-2.5 sm:py-3 px-4 rounded-xl tracking-wider uppercase transition-all duration-300 shadow-lg flex items-center justify-center gap-2 w-full text-center mt-auto">
+                    <span>👁️ VER INFOGRAFÍA OFICIAL</span> <span>&rightarrow;</span>
+                </div>
             </div>
         </div>
     </section>
@@ -426,6 +451,39 @@
             <div class="mt-3 sm:mt-4 pt-2.5 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-1 sm:gap-2 text-[10px] sm:text-[11px] font-mono text-slate-500 flex-shrink-0">
                 <span class="truncate w-full sm:w-auto">📻 Transmitiendo en vivo para toda América Latina 🌎</span>
                 <span class="text-purple-400 font-bold truncate w-full sm:w-auto">⚡ Powered by Inteligencia & WhatsApp La Cantina</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Codex Táctico: Infometría & Abreviaturas -->
+    <div id="infografiasModal" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[1000] hidden items-center justify-center p-1 sm:p-6 opacity-0 transition-opacity duration-300" onclick="closeModal('infografiasModal', event)">
+        <div class="bg-gradient-to-b from-slate-900 via-slate-950 to-emerald-950/90 border-2 border-emerald-500/80 rounded-2xl sm:rounded-3xl w-full max-w-6xl max-h-[96vh] p-3 sm:p-7 shadow-[0_0_65px_rgba(16,185,129,0.35)] text-center relative transform transition-all duration-300 scale-95 flex flex-col" onclick="event.stopPropagation()">
+            <button onclick="closeModal('infografiasModal', event)" class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-red-600 text-white w-8 h-8 sm:w-11 sm:h-11 rounded-full font-mono font-black text-lg sm:text-xl flex items-center justify-center hover:bg-red-700 shadow-xl z-[1001] border-2 border-white/80">&times;</button>
+            
+            <div class="mb-3 sm:mb-4 pr-9 text-left sm:text-center flex-shrink-0">
+                <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] sm:text-xs font-mono font-extrabold tracking-widest uppercase border border-emerald-500/40 mb-1.5 shadow">
+                    <span>⚡ DICCIONARIO & GUÍA VISUAL ⚡</span>
+                </div>
+                <h3 class="text-base sm:text-3xl font-mono font-black uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-yellow-200 to-teal-300">CÓDICE DE ABREVIATURAS: THE TOWER</h3>
+                <p class="text-[11px] sm:text-sm text-slate-300 font-mono italic mt-0.5 hidden sm:block">«Todas las siglas, mecánicas y secretos del juego en un solo lugar para todo el gremio LATINO»</p>
+            </div>
+
+            <!-- Controles Tácticos del Visor -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-3 bg-slate-950/90 border border-emerald-500/30 p-2 sm:p-2.5 rounded-xl text-xs font-mono flex-shrink-0">
+                <button onclick="changeZoom(0.25)" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-lg transition shadow flex items-center gap-1">🔍+ ACERCAR</button>
+                <button onclick="changeZoom(-0.25)" class="px-3 py-1.5 bg-teal-700 hover:bg-teal-600 text-white font-bold rounded-lg transition shadow flex items-center gap-1">🔍- ALEJAR</button>
+                <button onclick="resetZoom()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold rounded-lg transition shadow">🔄 ZOOM ORIGINAL</button>
+                <a href="Infografia_Abreviaturas_The_Tower.png" target="_blank" download="Infografia_Abreviaturas_The_Tower.png" class="px-3.5 py-1.5 bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-black font-black rounded-lg transition shadow-md flex items-center gap-1 ml-auto sm:ml-0">⬇️ DESCARGAR EN HD</a>
+            </div>
+
+            <!-- Contenedor del Visor -->
+            <div id="infografiaContainer" class="flex-1 overflow-auto bg-black/90 rounded-2xl border border-emerald-500/40 p-2 sm:p-4 flex items-center justify-center relative no-scrollbar shadow-inner min-h-[40vh]">
+                <img id="infografiaImg" src="Infografia_Abreviaturas_The_Tower.png" alt="Infografía de Abreviaturas The Tower" class="transition-transform duration-200 ease-out object-contain rounded-lg shadow-[0_0_30px_rgba(0,0,0,0.9)] max-w-full origin-top sm:origin-center" style="transform: scale(1);">
+            </div>
+
+            <div class="mt-2.5 pt-2 border-t border-emerald-900/60 flex items-center justify-between text-[10px] sm:text-xs font-mono text-emerald-400 flex-shrink-0">
+                <span>💡 Tip: Puedes acercar el zoom o descargarla al celular.</span>
+                <span class="font-bold hidden sm:inline">LATINO GUILD 2026 🏰</span>
             </div>
         </div>
     </div>
@@ -847,6 +905,29 @@
         function openCasterStudio() {
             renderCasterGrid(currentCasterCategory);
             showModalEl(document.getElementById('casterModal'));
+        }
+
+        // --- CÓDICE TÁCTICO: INFOGRAFÍA Y ABREVIATURAS OFICIALES ---
+        let currentInfografiaZoom = 1;
+        function openInfografiasModal() {
+            resetZoom();
+            showModalEl(document.getElementById('infografiasModal'));
+        }
+        function changeZoom(delta) {
+            currentInfografiaZoom = Math.max(0.4, Math.min(3.5, currentInfografiaZoom + delta));
+            const img = document.getElementById('infografiaImg');
+            if (img) {
+                img.style.transform = `scale(${currentInfografiaZoom})`;
+                img.style.maxWidth = currentInfografiaZoom > 1 ? 'none' : '100%';
+            }
+        }
+        function resetZoom() {
+            currentInfografiaZoom = 1;
+            const img = document.getElementById('infografiaImg');
+            if (img) {
+                img.style.transform = 'scale(1)';
+                img.style.maxWidth = '100%';
+            }
         }
 
         function switchCasterTab(cat, btn) {
