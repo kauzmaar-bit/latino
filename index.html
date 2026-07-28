@@ -887,6 +887,14 @@
 
         function generatePlayerAchievements(row, sC, sP) {
             let badges = [];
+            if (sC.ligaRaw && sC.ligaRaw.toLowerCase() === 'leyenda') {
+                badges.push({ 
+                    icon: '🌟', 
+                    label: 'TITÁN DE LEYENDA', 
+                    title: '¡Estatus Deidad: Único en la cima de Liga Leyenda!', 
+                    color: 'border border-yellow-300 text-yellow-200 bg-gradient-to-r from-amber-500/35 via-yellow-500/25 to-purple-600/35 shadow-[0_0_12px_rgba(250,204,21,0.7)] font-black animate-pulse' 
+                });
+            }
             if (sC.reliquias >= 200) {
                 badges.push({ icon: '👑', label: '200+ Reliquias', title: 'Rey de las Reliquias (200+)', color: 'border-yellow-500 text-yellow-300 bg-yellow-500/15' });
             } else if (sC.reliquias >= 150) {
@@ -898,7 +906,7 @@
             if (sP.valid && sC.tier > sP.tier) {
                 badges.push({ icon: '🔥', label: `+${sC.tier - sP.tier} Tier!`, title: '¡Ascenso de Tier en el mes!', color: 'border-green-400 text-green-300 bg-green-500/20 animate-pulse' });
             }
-            if (['leyenda', 'campeón', 'campeon'].includes(sC.ligaRaw.toLowerCase())) {
+            if (['campeón', 'campeon'].includes((sC.ligaRaw || '').toLowerCase())) {
                 badges.push({ icon: '⚔️', label: 'Élite', title: `Liga máxima: ${sC.ligaRaw}`, color: 'border-purple-400 text-purple-300 bg-purple-500/20' });
             }
             if (row[1] && row[1] !== '-') {
@@ -1117,7 +1125,18 @@
         function openModal(playerName) {
             activeModalPlayer = playerName;
             const modal = document.getElementById('profileModal');
-            document.getElementById('modalPlayerName').innerText = playerName;
+            const nameEl = document.getElementById('modalPlayerName');
+            let rObj = typeof db !== 'undefined' ? db.rows.find(r => r[0] === playerName) : null;
+            let sObj = (rObj && typeof getScore === 'function' && typeof currDateIdx !== 'undefined') ? getScore(rObj, currDateIdx) : {};
+            
+            if (sObj && sObj.ligaRaw && sObj.ligaRaw.toLowerCase() === 'leyenda') {
+                nameEl.className = "text-xl sm:text-3xl md:text-4xl font-mono font-black uppercase tracking-wider truncate text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 drop-shadow-[0_0_10px_rgba(250,204,21,0.5)]";
+                nameEl.innerHTML = `🌟 ${playerName} <span class="text-xs sm:text-sm text-yellow-300 font-mono tracking-widest block sm:inline">[TITÁN DE LEYENDA]</span>`;
+            } else {
+                nameEl.className = "text-xl sm:text-3xl md:text-4xl font-mono font-black uppercase text-white tracking-wider truncate";
+                nameEl.innerText = playerName;
+            }
+
             const img = document.getElementById('modalImg');
             img.src = `Captura-perfiles/${playerName}.png`;
             
@@ -1505,6 +1524,10 @@
                 if (cRank === 1) card.classList.add('rank-1');
                 else if (cRank === 2) card.classList.add('rank-2');
                 else if (cRank === 3) card.classList.add('rank-3');
+
+                if (scoreC.ligaRaw && scoreC.ligaRaw.toLowerCase() === 'leyenda') {
+                    card.classList.add('border-2', 'border-yellow-300/90', 'shadow-[0_0_25px_rgba(250,204,21,0.35)]', 'hover:border-yellow-300', 'hover:shadow-[0_0_40px_rgba(250,204,21,0.6)]', 'bg-gradient-to-br', 'from-black', 'via-amber-950/30', 'to-black');
+                }
                 
                 let trendHtml = '';
                 if (!pRank && cRank !== '-') {
