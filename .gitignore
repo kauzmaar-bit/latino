@@ -1,0 +1,7 @@
+# Archivos privados y conversaciones de WhatsApp (NUNCA SUBIR A GITHUB)
+*WhatsApp*
+*.zip
+*.txt
+wsp/
+cantina/
+chat/
