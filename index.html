@@ -403,6 +403,24 @@
             <div id="tabContentCard" class="flex-1 rounded-xl overflow-y-auto no-scrollbar bg-black flex flex-col justify-between items-center p-2 sm:p-3 border border-slate-800/80 min-h-[260px]">
                 <img id="modalImg" src="" alt="Perfil" class="w-auto h-auto object-contain max-h-[42vh] rounded-lg mb-3 shadow-xl border border-slate-800/80">
                 
+                <!-- Reproductor de Himno Personal del Jugador (Anthem / Tema Musical) -->
+                <div id="modalAnthemBox" class="w-full bg-gradient-to-r from-amber-950/90 via-slate-950 to-red-950/90 border-2 border-amber-500/80 rounded-xl p-3 sm:p-3.5 shadow-[0_0_20px_rgba(245,158,11,0.3)] text-left w-full mb-3 hidden transition-all duration-300 hover:border-yellow-400">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-2.5 min-w-0 flex-1">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-lg sm:text-xl shadow flex-shrink-0 animate-bounce">
+                                🎵
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <span class="text-[9px] sm:text-[10px] font-mono font-black text-amber-400 uppercase tracking-widest block mb-0.5">🎸 HITS DE LA CANTINA • TEMA OFICIAL</span>
+                                <span id="modalAnthemTitle" class="text-xs sm:text-sm font-mono text-white font-black truncate block"></span>
+                            </div>
+                        </div>
+                        <button id="anthemPlayBtn" onclick="togglePlayerAnthem(activeModalPlayer, event)" class="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-black font-mono font-black text-xs sm:text-sm px-3.5 py-2.5 rounded-xl shadow-[0_0_15px_rgba(245,158,11,0.5)] flex items-center gap-1.5 flex-shrink-0 transition-transform hover:scale-105 active:scale-95 border border-white/40">
+                            <span id="anthemPlayIcon">▶️</span> <span id="anthemPlayText">PLAY</span>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Caja de Comentario Caster con Voz IA -->
                 <div id="modalCasterBox" class="w-full bg-gradient-to-r from-purple-950/90 via-slate-950 to-indigo-950/90 border border-neonPurple/60 rounded-xl p-3 sm:p-4 shadow-lg text-left w-full mt-auto">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-2 border-b border-purple-500/20 pb-2">
@@ -790,7 +808,72 @@
             setTimeout(() => modal.classList.remove('opacity-0'), 10);
             modal.querySelector('.transform').classList.remove('scale-95');
         }
+        let currentAnthemAudio = null;
+        let playingAnthemPlayer = null;
+
+        function stopAnthemAudio() {
+            if (currentAnthemAudio) {
+                currentAnthemAudio.pause();
+                currentAnthemAudio = null;
+                playingAnthemPlayer = null;
+                const btnText = document.getElementById('anthemPlayText');
+                const btnIcon = document.getElementById('anthemPlayIcon');
+                if (btnText) btnText.innerText = "PLAY";
+                if (btnIcon) btnIcon.innerText = "▶️";
+                const box = document.getElementById('modalAnthemBox');
+                if (box) box.classList.remove("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
+            }
+        }
+
+        function togglePlayerAnthem(playerName, event) {
+            if (event) event.stopPropagation();
+            let note = typeof casterNotes !== 'undefined' ? casterNotes[playerName] : null;
+            if (!note || !note.anthem || !note.anthem.file) return;
+
+            const btnText = document.getElementById('anthemPlayText');
+            const btnIcon = document.getElementById('anthemPlayIcon');
+            const box = document.getElementById('modalAnthemBox');
+
+            // Si ya está reproduciendo, alternar pausa
+            if (currentAnthemAudio && playingAnthemPlayer === playerName) {
+                if (currentAnthemAudio.paused) {
+                    currentAnthemAudio.play();
+                    if (btnText) btnText.innerText = "PAUSA";
+                    if (btnIcon) btnIcon.innerText = "⏸️";
+                    if (box) box.classList.add("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
+                } else {
+                    currentAnthemAudio.pause();
+                    if (btnText) btnText.innerText = "PLAY";
+                    if (btnIcon) btnIcon.innerText = "▶️";
+                    if (box) box.classList.remove("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
+                }
+                return;
+            }
+
+            // Si hay otra reproducción o es nueva, iniciar de cero
+            stopAnthemAudio();
+            if (currentAudio) { currentAudio.pause(); currentAudio = null; resetCasterUI(); }
+            if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); }
+
+            currentAnthemAudio = new Audio(note.anthem.file);
+            playingAnthemPlayer = playerName;
+
+            currentAnthemAudio.play().then(() => {
+                if (btnText) btnText.innerText = "PAUSA";
+                if (btnIcon) btnIcon.innerText = "⏸️";
+                if (box) box.classList.add("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
+            }).catch(err => {
+                console.error("Error reproduciendo himno:", err);
+                alert("No se pudo reproducir el archivo de música: " + note.anthem.file);
+            });
+
+            currentAnthemAudio.onended = () => {
+                stopAnthemAudio();
+            };
+        }
+
         function hideModalEl(modal) {
+            stopAnthemAudio();
             if (currentAudio) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
@@ -1039,6 +1122,13 @@
             img.src = `Captura-perfiles/${playerName}.png`;
             
             let note = typeof casterNotes !== 'undefined' ? casterNotes[playerName] : null;
+            if (note && note.anthem) {
+                document.getElementById('modalAnthemBox').style.display = 'block';
+                document.getElementById('modalAnthemTitle').innerText = note.anthem.title;
+            } else {
+                document.getElementById('modalAnthemBox').style.display = 'none';
+            }
+
             if (note) {
                 document.getElementById('modalCasterBox').style.display = 'block';
                 document.getElementById('modalCasterTitle').innerText = note.title;
@@ -1193,6 +1283,11 @@
                     <div class="flex flex-wrap items-center justify-between gap-2 pt-2.5 border-t border-slate-800 font-mono text-[10px] sm:text-xs text-slate-400 mt-auto">
                         <span class="truncate">🏆 T<strong class="text-white">${score.tier}</strong> | 🌊 Olas <strong class="text-white">${score.oleada}</strong> | 💎 <strong class="text-neonCyan">${score.reliquias ? formatNumber(score.reliquias) : '-'}</strong></span>
                         <div class="flex items-center gap-1.5 ml-auto sm:ml-0">
+                            ${note.anthem ? `
+                            <button onclick="togglePlayerAnthem('${pName}', event)" title="Escuchar tema musical oficial: ${note.anthem.title}" class="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-yellow-300 hover:to-amber-300 text-black px-2.5 py-1 rounded-lg font-mono font-black transition-all text-[11px] sm:text-xs flex items-center gap-1 shadow-sm border border-yellow-300">
+                                <span>🎵</span> <span>TEMA</span>
+                            </button>
+                            ` : ''}
                             <button onclick="speakCasterNote('${pName}', event)" title="Escuchar narración del caster con voz" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-neonCyan hover:to-cyan-400 text-white hover:text-black px-2.5 py-1 rounded-lg font-mono font-black transition-all text-[11px] sm:text-xs flex items-center gap-1 shadow-sm border border-purple-400/70">
                                 <span>🔊</span> <span>VOZ</span>
                             </button>
@@ -1460,6 +1555,13 @@
                     }
                 }
                 
+                let note = typeof casterNotes !== 'undefined' ? casterNotes[playerName] : null;
+                let anthemCardBtn = (note && note.anthem) ? `
+                    <button class="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-yellow-400 hover:to-amber-300 text-black border border-yellow-300/80 w-9 h-9 sm:w-10 sm:h-10 rounded-xl transition-all font-black flex items-center justify-center shadow-[0_0_12px_rgba(245,158,11,0.5)] flex-shrink-0 text-sm sm:text-base hover:scale-105 active:scale-95 animate-pulse" title="¡Escuchar Tema Oficial de ${playerName}: ${note.anthem.title}!" onclick="togglePlayerAnthem('${playerName}', event)">
+                        🎵
+                    </button>
+                ` : '';
+
                 card.innerHTML = `
                     <div class="card-header">
                         <input type="checkbox" class="cyber-checkbox" value="${playerName}" onchange="handleCheckbox(this, '${playerName}')" ${isChecked} title="Seleccionar para Modo Batalla">
@@ -1471,6 +1573,7 @@
                             <div class="mt-0.5 flex items-center gap-1">${trendHtml}</div>
                         </div>
 
+                        ${anthemCardBtn}
                         <button class="bg-slate-800/90 border border-slate-700 hover:border-neonCyan text-slate-300 hover:text-white w-9 h-9 sm:w-10 sm:h-10 rounded-xl transition-all font-bold flex items-center justify-center shadow-[0_0_8px_rgba(0,242,254,0.15)] flex-shrink-0 text-sm sm:text-base" title="Ver Perfil, Gráfico & Caster IA" onclick="openModal('${playerName}')">
                             👤
                         </button>

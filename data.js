@@ -38,7 +38,11 @@ const casterNotes = {
         category: "vip",
         title: "💀 El Jinete del Apocalipsis",
         quote: "El que tenga miedo al resumen 💀 hubiera subido sus tiers antes 💀🥵",
-        text: "Como profetizó el buen Jason en La Cantina: 'El que tenga miedo al resumen, hubiera subido sus tiers antes'. Y LaParka no es puro chisme en el teclado: respaldó sus 3,580 mensajes pateando la puerta del temible Tier 18 y robándose +33 reliquias. ¡El Jinete del Apocalipsis sigue cobrando peaje en la cima!"
+        text: "Como profetizó el buen Jason en La Cantina: 'El que tenga miedo al resumen, hubiera subido sus tiers antes'. Y LaParka no es puro chisme en el teclado: respaldó sus 3,580 mensajes pateando la puerta del temible Tier 18 y robándose +33 reliquias. ¡El Jinete del Apocalipsis sigue cobrando peaje en la cima!",
+        anthem: {
+            title: "Réquiem por un DC — Kauz Maar",
+            file: "Réquiem por un DC - Kauz Maar.mp3"
+        }
     },
     "Maguilera": {
         category: "vip",
