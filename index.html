@@ -477,8 +477,10 @@
             </div>
 
             <!-- Contenedor del Visor -->
-            <div id="infografiaContainer" class="flex-1 overflow-auto bg-black/90 rounded-2xl border border-emerald-500/40 p-2 sm:p-4 flex items-center justify-center relative no-scrollbar shadow-inner min-h-[40vh]">
-                <img id="infografiaImg" src="Infografia_Abreviaturas_The_Tower.png" alt="Infografía de Abreviaturas The Tower" class="transition-transform duration-200 ease-out object-contain rounded-lg shadow-[0_0_30px_rgba(0,0,0,0.9)] max-w-full origin-top sm:origin-center" style="transform: scale(1);">
+            <div id="infografiaContainer" class="flex-1 overflow-auto bg-black/95 rounded-2xl border border-emerald-500/40 p-2 sm:p-4 block text-center relative no-scrollbar shadow-inner min-h-[40vh]">
+                <div class="inline-block min-w-full text-center pb-10 pt-1">
+                    <img id="infografiaImg" src="Infografia_Abreviaturas_The_Tower.png" alt="Infografía de Abreviaturas The Tower" class="transition-transform duration-200 ease-out object-contain rounded-lg shadow-[0_0_30px_rgba(0,0,0,0.9)] max-w-full origin-top inline-block" style="transform: scale(1);">
+                </div>
             </div>
 
             <div class="mt-2.5 pt-2 border-t border-emerald-900/60 flex items-center justify-between text-[10px] sm:text-xs font-mono text-emerald-400 flex-shrink-0">
@@ -912,9 +914,13 @@
         function openInfografiasModal() {
             resetZoom();
             showModalEl(document.getElementById('infografiasModal'));
+            setTimeout(() => {
+                const container = document.getElementById('infografiaContainer');
+                if (container) { container.scrollTop = 0; container.scrollLeft = 0; }
+            }, 50);
         }
         function changeZoom(delta) {
-            currentInfografiaZoom = Math.max(0.4, Math.min(3.5, currentInfografiaZoom + delta));
+            currentInfografiaZoom = Math.max(0.5, Math.min(3.5, currentInfografiaZoom + delta));
             const img = document.getElementById('infografiaImg');
             if (img) {
                 img.style.transform = `scale(${currentInfografiaZoom})`;
@@ -924,9 +930,14 @@
         function resetZoom() {
             currentInfografiaZoom = 1;
             const img = document.getElementById('infografiaImg');
+            const container = document.getElementById('infografiaContainer');
             if (img) {
                 img.style.transform = 'scale(1)';
                 img.style.maxWidth = '100%';
+            }
+            if (container) {
+                container.scrollTop = 0;
+                container.scrollLeft = 0;
             }
         }
 
