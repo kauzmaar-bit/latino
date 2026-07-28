@@ -84,7 +84,11 @@ const casterNotes = {
         category: "vip",
         title: "👑 El Emperador de la Estratosfera",
         quote: "Observando a los mortales desde el Olimpo del Tier 19 🏔️",
-        text: "El Emperador que nos observa a todos desde la estratosfera en el Tier 19. En La Cantina habla poco pero asesta golpes de experiencia, y en el mapa se mantiene en su trono inamovible, cosechando tesoros pasivos (222 reliquias) sin que nadie le haga sombra. ¡Larga vida al monarca Zeruel!"
+        text: "El Emperador que nos observa a todos desde la estratosfera en el Tier 19. En La Cantina habla poco pero asesta golpes de experiencia, y en el mapa se mantiene en su trono inamovible, cosechando tesoros pasivos (222 reliquias) sin que nadie le haga sombra. ¡Larga vida al monarca Zeruel!",
+        anthem: {
+            title: "El Dios Silencioso",
+            file: "El Dios Silencioso.mp3"
+        }
     },
     "jonytan": {
         category: "vip",
