@@ -256,13 +256,13 @@
                     </div>
                     <div class="min-w-0 flex-1">
                         <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase border border-cyan-400/40 mb-1 shadow-sm">
-                            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span> GUÍAS & TIER LISTS
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span> GUÍAS, EXCEL & SIMULADOR
                         </div>
                         <h2 class="text-base sm:text-lg xl:text-xl font-mono font-black text-white tracking-wide uppercase group-hover:text-amber-300 transition-colors truncate">
                             ACADEMIA LATINO
                         </h2>
                         <p class="text-slate-300 text-[11px] sm:text-xs font-sans font-medium line-clamp-2 leading-snug">
-                            Guía Kairo para reclutas en Español y Tier List de Laboratorios del gremio.
+                            Guía Kairo al español, Tier List de Laboratorios y Simulador Táctico (MyTower).
                         </p>
                     </div>
                 </div>
@@ -523,9 +523,9 @@
         </div>
     </div>
 
-    <!-- Modal Academia Táctica de La Cantina: Guía Kairo & Tier List de Laboratorios -->
+    <!-- Modal Academia Táctica de La Cantina: Guía Kairo, Tier List & Simulador -->
     <div id="academiaModal" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[1000] hidden items-center justify-center p-2 sm:p-6 opacity-0 transition-opacity duration-300" onclick="closeModal('academiaModal', event)">
-        <div class="bg-gradient-to-b from-slate-900 via-slate-950 to-blue-950/90 border-2 border-neonCyan/80 rounded-2xl sm:rounded-3xl w-full max-w-5xl max-h-[94vh] p-4 sm:p-7 shadow-[0_0_70px_rgba(0,242,254,0.35)] text-left relative transform transition-all duration-300 scale-95 flex flex-col overflow-y-auto no-scrollbar" onclick="event.stopPropagation()">
+        <div class="bg-gradient-to-b from-slate-900 via-slate-950 to-blue-950/90 border-2 border-neonCyan/80 rounded-2xl sm:rounded-3xl w-full max-w-6xl max-h-[94vh] p-4 sm:p-7 shadow-[0_0_70px_rgba(0,242,254,0.35)] text-left relative transform transition-all duration-300 scale-95 flex flex-col overflow-y-auto no-scrollbar" onclick="event.stopPropagation()">
             <button onclick="closeModal('academiaModal', event)" class="absolute top-3 right-3 sm:top-5 sm:right-5 bg-red-600 text-white w-9 h-9 sm:w-11 sm:h-11 rounded-full font-mono font-black text-lg sm:text-xl flex items-center justify-center hover:bg-red-700 shadow-xl z-[1001] border-2 border-white/80">&times;</button>
             
             <!-- Cabecera de Academia -->
@@ -534,17 +534,19 @@
                     <span>⚡ HANGAR DE FORMACIÓN OFICIAL ⚡</span>
                 </div>
                 <h3 class="text-xl sm:text-4xl font-mono font-black uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-neonCyan via-white to-amber-300">ACADEMIA TÁCTICA: THE TOWER</h3>
-                <p class="text-xs sm:text-sm text-slate-300 font-mono italic mt-1">«El conocimiento separa al Cobre del Tier 15. Recursos imprescindibles seleccionados para todo soldado de LATINO»</p>
+                <p class="text-xs sm:text-sm text-slate-300 font-mono italic mt-1">«El conocimiento separa al Cobre del Tier 15. Recursos y simuladores seleccionados para todo soldado de LATINO»</p>
             </div>
 
-            <!-- Grilla de Tarjetas de Aprendizaje -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 flex-1 mb-4">
+            <!-- Grilla de Tarjetas de Aprendizaje (3 columnas en monitor grande) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 flex-1 mb-4">
                 <!-- Tarjeta 1: Tier List de Laboratorios -->
                 <div class="bg-gradient-to-br from-amber-950/70 via-slate-900 to-slate-950 border-2 border-amber-500/80 hover:border-yellow-300 rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-[0_0_30px_rgba(245,158,11,0.25)] flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-1 relative group">
-                    <div class="absolute right-4 top-4 text-4xl sm:text-5xl opacity-80 group-hover:scale-110 transition-transform">🔬</div>
                     <div>
-                        <div class="inline-block px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold uppercase tracking-widest border border-amber-500/50 mb-3">
-                            📊 HOJA DE CÁLCULO / EXCEL
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="inline-block px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold uppercase tracking-widest border border-amber-500/50 shadow-inner">
+                                📊 HOJA DE CÁLCULO / EXCEL
+                            </div>
+                            <div class="text-3xl sm:text-4xl opacity-90 group-hover:scale-110 transition-transform flex-shrink-0">🔬</div>
                         </div>
                         <h4 class="text-lg sm:text-2xl font-mono font-black text-white tracking-wide uppercase mb-2 group-hover:text-yellow-300 transition-colors">
                             TIER LIST DE LABORATORIOS
@@ -562,16 +564,18 @@
 
                 <!-- Tarjeta 2: Guía Definitiva de Kairo (Español / Inglés) -->
                 <div class="bg-gradient-to-br from-emerald-950/70 via-slate-900 to-slate-950 border-2 border-emerald-500/80 hover:border-neonCyan rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-[0_0_30px_rgba(16,185,129,0.25)] flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-1 relative group">
-                    <div class="absolute right-4 top-4 text-4xl sm:text-5xl opacity-80 group-hover:scale-110 transition-transform">📘</div>
                     <div>
-                        <div class="inline-block px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold uppercase tracking-widest border border-emerald-500/50 mb-3">
-                            🎓 BIBLIA DE RECLUTAS & ESTRATEGIA
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="inline-block px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold uppercase tracking-widest border border-emerald-500/50 shadow-inner">
+                                🎓 BIBLIA DE RECLUTAS & ESTRATEGIA
+                            </div>
+                            <div class="text-3xl sm:text-4xl opacity-90 group-hover:scale-110 transition-transform flex-shrink-0">📘</div>
                         </div>
                         <h4 class="text-lg sm:text-2xl font-mono font-black text-white tracking-wide uppercase mb-2 group-hover:text-neonCyan transition-colors">
                             GUÍA DEFINITIVA (POR KAIRO)
                         </h4>
                         <p class="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed mb-5">
-                            La guía más famosa y completa de <em>The Tower</em> en todo el mundo. Te enseñará las mecánicas fundamentales, gestión de gemas, cartas, talleres y construcciones de defensa. <strong>¡Conectada en vivo al traductor IA en Español para La Cantina!</strong>
+                            La guía más famosa y completa de <em>The Tower</em> en todo el mundo. Te enseñará las mecánicas fundamentales, gestión de gemas, cartas, talleres y construcciones de defensa. <strong>¡Conectada al traductor IA en Español para La Cantina!</strong>
                         </p>
                     </div>
                     <div class="flex flex-col gap-2.5 mt-auto">
@@ -580,6 +584,29 @@
                         </a>
                         <a href="https://docs.google.com/document/u/0/d/1MPIpa4MK14SzwZQ9ZL7dOEg3HsrIxVIkM6HrX2cDFk0/mobilebasic" target="_blank" rel="noopener noreferrer" class="w-full bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700/80 font-mono font-bold text-[11px] sm:text-xs py-2 px-4 rounded-xl tracking-wide uppercase transition-all duration-200 flex items-center justify-center gap-1.5 text-center block">
                             <span>🇺🇸 Ver Versión Original (Inglés)</span> <span>&nearr;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: Simulador & Calculadora Táctica (mytower.app) -->
+                <div class="bg-gradient-to-br from-purple-950/70 via-slate-900 to-slate-950 border-2 border-purple-500/80 hover:border-neonCyan rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-[0_0_30px_rgba(168,85,247,0.25)] flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-1 relative group md:col-span-2 lg:col-span-1">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="inline-block px-2.5 py-1 rounded-md bg-purple-500/20 text-purple-300 text-[10px] font-mono font-bold uppercase tracking-widest border border-purple-500/50 shadow-inner">
+                                🚀 OPTIMIZACIÓN & SIMULADOR
+                            </div>
+                            <div class="text-3xl sm:text-4xl opacity-90 group-hover:scale-110 transition-transform flex-shrink-0">🧪</div>
+                        </div>
+                        <h4 class="text-lg sm:text-2xl font-mono font-black text-white tracking-wide uppercase mb-2 group-hover:text-neonCyan transition-colors">
+                            SIMULADOR TÁCTICO (MYTOWER)
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed mb-6">
+                            <strong>¡La herramienta estrella de ingeniería gamer!</strong> Sube o conecta el archivo de tu partida para crear tu perfil público, usar calculadoras de piedras para sincronizar tus armas (GT/BH), simular costos de taller y optimizar el farmeo de células sin adivinar.
+                        </p>
+                    </div>
+                    <div class="mt-auto">
+                        <a href="https://mytower.app/" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-neonCyan hover:to-blue-500 text-white hover:text-black font-mono font-black text-xs sm:text-sm py-3.5 px-4 rounded-xl tracking-wider uppercase transition-all duration-300 shadow-[0_0_20px_rgba(168,85,247,0.5)] flex items-center justify-center gap-2 text-center block">
+                            <span>💻 ENTRAR A MYTOWER.APP</span> <span>&nearr;</span>
                         </a>
                     </div>
                 </div>
