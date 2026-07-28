@@ -213,7 +213,7 @@
                         MODO CASTEO: LA VOZ
                     </h2>
                     <p class="text-slate-300 text-[11px] sm:text-sm font-sans font-medium line-clamp-2 sm:line-clamp-1 leading-snug">
-                        ¡El chisme del mes, ovaciones al farmeo y tirones de oreja para el club de la siesta! Haz clic aquí.
+                        ¡Narración en audio con Inteligencia Artificial y todo el chisme del mes! Haz clic aquí.
                     </p>
                 </div>
             </div>
@@ -269,7 +269,7 @@
                 </div>
             </div>
 
-            <!-- Fila inferior: Pestañas de Filtro Rápido (Envuelto flex-wrap con simetria móvil) -->
+            <!-- Fila inferior: Pestañas de Filtro Rápido (Envuelto flex-wrap con simetría móvil) -->
             <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 pt-1 pb-0.5 w-full">
                 <span class="text-[10px] sm:text-xs font-mono font-black text-slate-400 uppercase w-full sm:w-auto text-center sm:text-left mb-0.5 sm:mb-0">Filtros Rápidos:</span>
                 <button onclick="setFilter('all', this)" class="filter-btn active px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-mono transition-all bg-slate-900 text-slate-200 border border-slate-700 hover:border-slate-500 flex-grow sm:flex-grow-0 text-center shadow-sm font-black">⭐ Todos (28)</button>
@@ -298,9 +298,19 @@
         <!-- Inyectado via JS -->
     </div>
 
-    <!-- Botón Flotante Modo Batalla -->
-    <button id="battleBtn" onclick="openBattleModal()" class="fixed bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 translate-y-[200%] bg-gradient-to-r from-red-600 via-neonMagenta to-purple-600 text-white border-2 border-white/90 px-6 py-3.5 sm:px-10 sm:py-4 rounded-full font-mono font-black tracking-wider sm:tracking-widest text-xs sm:text-xl shadow-[0_0_35px_rgba(255,8,68,0.95)] z-50 transition-all duration-500 hover:scale-105 active:scale-95 flex items-center gap-2 w-[92vw] sm:w-auto justify-center">
-        <span class="truncate">⚔️ ENTRAR A LA ARENA DE BATALLA (<span id="battleCount">0</span>)</span>
+    <!-- Barra Flotante Modo Batalla & Limpiar Selección (Fácil deselección en 1 clic) -->
+    <div id="battleBar" class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 translate-y-[250%] flex items-center gap-2 sm:gap-3 z-50 transition-all duration-500 w-[92vw] sm:w-auto justify-center">
+        <button onclick="openBattleModal()" class="flex-1 sm:flex-initial bg-gradient-to-r from-red-600 via-neonMagenta to-purple-600 text-white border-2 border-white/90 px-5 py-3.5 sm:px-8 sm:py-4 rounded-full font-mono font-black tracking-wider text-xs sm:text-lg shadow-[0_0_30px_rgba(255,8,68,0.95)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5 truncate">
+            <span>⚔️ ARENA DE BATALLA (<span id="battleCount">0</span>)</span>
+        </button>
+        <button onclick="clearBattleSelection()" class="bg-slate-900/95 hover:bg-red-600 text-red-400 hover:text-white border-2 border-red-500/80 px-4 py-3 sm:px-5 sm:py-4 rounded-full font-mono font-bold text-xs sm:text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-1 flex-shrink-0" title="Deseleccionar y limpiar selección en un clic">
+            <span>🗑️ <span class="hidden sm:inline">LIMPIAR</span></span>
+        </button>
+    </div>
+
+    <!-- Botón Flotante Volver Arriba (Top Scroll para Celular) -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-20 right-3 sm:bottom-7 sm:right-7 bg-slate-900/95 hover:bg-neonCyan text-neonCyan hover:text-black border-2 border-neonCyan/80 w-11 h-11 sm:w-13 sm:h-13 rounded-full font-mono font-black text-base sm:text-2xl shadow-[0_0_25px_rgba(0,242,254,0.6)] z-40 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 active:scale-95" title="Volver al inicio de la página">
+        ⬆️
     </button>
 
     <!-- Modal de Perfil & Gráficos -->
@@ -323,17 +333,24 @@
 
             <!-- Contenido Pestaña Foto & Caster -->
             <div id="tabContentCard" class="flex-1 rounded-xl overflow-y-auto no-scrollbar bg-black flex flex-col justify-between items-center p-2 sm:p-3 border border-slate-800/80 min-h-[260px]">
-                <img id="modalImg" src="" alt="Perfil" class="w-auto h-auto object-contain max-h-[44vh] rounded-lg mb-3 shadow-xl border border-slate-800/80">
+                <img id="modalImg" src="" alt="Perfil" class="w-auto h-auto object-contain max-h-[42vh] rounded-lg mb-3 shadow-xl border border-slate-800/80">
                 
-                <!-- Caja de Comentario Caster -->
+                <!-- Caja de Comentario Caster con Voz IA -->
                 <div id="modalCasterBox" class="w-full bg-gradient-to-r from-purple-950/90 via-slate-950 to-indigo-950/90 border border-neonPurple/60 rounded-xl p-3 sm:p-4 shadow-lg text-left w-full mt-auto">
-                    <div class="flex flex-wrap items-center justify-between gap-1 mb-2 border-b border-purple-500/20 pb-1.5">
-                        <span class="text-[10px] sm:text-xs font-mono font-bold text-neonPurple uppercase tracking-wider flex items-center gap-1">
-                            <span>🎙️ ANÁLISIS CASTER IA</span>
-                        </span>
-                        <span id="modalCasterTitle" class="text-[10px] sm:text-xs font-mono text-yellow-300 font-black uppercase tracking-wide truncate"></span>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2 border-b border-purple-500/20 pb-2">
+                        <div class="flex items-center gap-1.5 min-w-0">
+                            <span class="text-[10px] sm:text-xs font-mono font-bold text-neonPurple uppercase tracking-wider flex items-center gap-1">
+                                <span>🎙️ ANÁLISIS CASTER IA</span>
+                            </span>
+                            <span id="modalCasterTitle" class="text-[10px] sm:text-xs font-mono text-yellow-300 font-black uppercase tracking-wide truncate"></span>
+                        </div>
+                        
+                        <!-- Botón de Narración por Audio TTS -->
+                        <button onclick="speakCasterNote(activeModalPlayer, event)" title="Escuchar narración del caster con voz IA en español" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-neonCyan hover:to-cyan-400 text-white hover:text-black border border-purple-400 px-2.5 py-1 rounded-lg font-mono text-[10px] sm:text-xs font-extrabold transition-all flex items-center gap-1 shadow-md ml-auto">
+                            <span>🔊</span> <span>ESCUCHAR VOZ</span>
+                        </button>
                     </div>
-                    <p id="modalCasterQuote" class="text-[11px] sm:text-xs font-mono italic text-slate-300 mb-2 bg-black/70 px-2.5 py-1 rounded border-l-2 border-purple-500 leading-snug"></p>
+                    <p id="modalCasterQuote" class="text-[11px] sm:text-xs font-mono italic text-slate-300 mb-2 bg-black/70 px-2.5 py-1.5 rounded border-l-2 border-purple-500 leading-snug"></p>
                     <p id="modalCasterText" class="text-xs sm:text-sm text-slate-200 font-sans font-medium leading-relaxed"></p>
                 </div>
             </div>
@@ -363,16 +380,21 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 justify-center" id="battleGrid"></div>
             </div>
 
-            <div id="tacticalAnalysis" class="bg-gradient-to-r from-slate-950 via-purple-950/60 to-slate-950 border border-slate-800 rounded-xl p-3 sm:p-4 shadow-inner flex-shrink-0">
-                <h4 class="text-[10px] sm:text-xs font-mono font-bold text-neonLime uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                    <span>🧠 ANÁLISIS TÁCTICO DE COMPETITION</span>
-                </h4>
-                <p id="tacticalText" class="text-xs sm:text-sm text-slate-200 leading-snug font-medium"></p>
+            <div id="tacticalAnalysis" class="bg-gradient-to-r from-slate-950 via-purple-950/60 to-slate-950 border border-slate-800 rounded-xl p-3 sm:p-4 shadow-inner flex-shrink-0 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div class="min-w-0 flex-1 text-left">
+                    <h4 class="text-[10px] sm:text-xs font-mono font-bold text-neonLime uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                        <span>🧠 ANÁLISIS TÁCTICO DE COMPETICIÓN</span>
+                    </h4>
+                    <p id="tacticalText" class="text-xs sm:text-sm text-slate-200 leading-snug font-medium"></p>
+                </div>
+                <button onclick="closeModal('battleModal', event); clearBattleSelection();" class="w-full sm:w-auto bg-red-600/30 hover:bg-red-600 text-red-300 hover:text-white border border-red-500/70 px-4 py-2 rounded-xl font-mono font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow flex-shrink-0">
+                    <span>🗑️ CERRAR Y DESELECCIONAR TODOS</span>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Estudio de Transmisión (Caster IA) 100% Optimizado para Móvil -->
+    <!-- Modal Estudio de Transmisión (Caster IA) 100% Optimizado para Móvil y Audio TTS -->
     <div id="casterModal" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[1000] hidden items-center justify-center p-1 sm:p-6 opacity-0 transition-opacity duration-300" onclick="closeModal('casterModal', event)">
         <div class="relative w-full max-w-6xl max-h-[97vh] flex flex-col bg-darker border-2 border-neonPurple/80 rounded-2xl sm:rounded-3xl p-3 sm:p-7 shadow-[0_0_70px_rgba(168,85,247,0.5)] transform scale-95 transition-transform duration-300 overflow-hidden" onclick="event.stopPropagation()">
             <button onclick="closeModal('casterModal', event)" class="absolute top-2 right-2 sm:top-4 sm:right-4 bg-red-600 text-white w-8 h-8 sm:w-11 sm:h-11 rounded-full font-mono font-black text-lg sm:text-xl flex items-center justify-center hover:bg-red-700 shadow-xl z-[1001] border-2 border-white/80">&times;</button>
@@ -385,7 +407,7 @@
                 <p class="text-slate-400 text-[10px] sm:text-sm font-mono mt-0.5 italic truncate sm:whitespace-normal">«El que tenga miedo al resumen 💀 hubiera subido sus tiers antes 💀🥵» — Jason</p>
             </div>
             
-            <!-- Pestañas de Categoría Caster en FLEX-WRAP MÓVIL (Nunca se recortan ni ocultan) -->
+            <!-- Pestañas de Categoría Caster en FLEX-WRAP MÓVIL -->
             <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mb-3.5 sm:mb-5 w-full flex-shrink-0 bg-slate-950/80 border-y border-slate-800/80 py-2 px-1 rounded-xl">
                 <button onclick="switchCasterTab('vip', this)" class="caster-btn active px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono font-black transition-all bg-neonPurple text-white shadow-[0_0_15px_rgba(168,85,247,0.7)] flex-grow sm:flex-grow-0 text-center">🍺 Reyes WSP (13)</button>
                 <button onclick="switchCasterTab('sleep', this)" class="caster-btn px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono transition-all bg-slate-900 text-slate-300 border border-slate-700 hover:text-white flex-grow sm:flex-grow-0 text-center font-bold">😴 "Piloto Automático" (7)</button>
@@ -417,6 +439,7 @@
         let selectedPlayers = new Set();
         let chartInstance = null;
         let activeModalPlayer = '';
+        let currentSpeakingPlayer = null;
         
         const prevDateIdx = 34; // 15-06-2026 (Junio)
         const currDateIdx = 39; // 27-07-2026 (Julio / Actual)
@@ -436,6 +459,66 @@
             `;
         }
         updateSortBtnStyles();
+
+        // --- SISTEMA DE VOZ DE CASTEO CON INTELIGENCIA (WEB SPEECH API) ---
+        function speakCasterNote(playerName, event) {
+            if (event) event.stopPropagation();
+            if (!('speechSynthesis' in window)) {
+                alert('⚠️ Tu navegador de este dispositivo no soporta síntesis de voz nativa. ¡Pruebas recomendadas en Chrome, Safari o Edge!');
+                return;
+            }
+            
+            // Si ya se está reproduciendo audio, cancelarlo o pausar
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                if (currentSpeakingPlayer === playerName) {
+                    currentSpeakingPlayer = null;
+                    return;
+                }
+            }
+            
+            let note = typeof casterNotes !== 'undefined' ? casterNotes[playerName] : null;
+            if (!note) return;
+            
+            let fullText = `Resumen oficial para ${playerName}: ${note.title}. Cita célebre en La Cantina: ${note.quote}. ${note.text}`;
+            let utterance = new SpeechSynthesisUtterance(fullText);
+            
+            // Buscar voz en español
+            let voices = window.speechSynthesis.getVoices();
+            let esVoices = voices.filter(v => v.lang.startsWith('es') || v.lang.includes('ES') || v.lang.includes('MX') || v.lang.includes('US') || v.name.toLowerCase().includes('spanish') || v.name.toLowerCase().includes('español'));
+            
+            if (esVoices.length > 0) {
+                // Priorizar voces naturales de Microsoft o Google si existen
+                let bestVoice = esVoices.find(v => v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Sabina') || v.name.includes('Jorge') || v.name.includes('Pablo') || v.name.includes('Mia'));
+                utterance.voice = bestVoice || esVoices[0];
+            }
+            
+            utterance.rate = 1.05; // Ritmo ligeramente ágil como narrador de esports
+            utterance.pitch = 0.95; // Tono más grave de comentarista
+            
+            currentSpeakingPlayer = playerName;
+            window.speechSynthesis.speak(utterance);
+            
+            utterance.onend = () => {
+                if (currentSpeakingPlayer === playerName) currentSpeakingPlayer = null;
+            };
+            utterance.onerror = () => {
+                currentSpeakingPlayer = null;
+            };
+        }
+
+        // --- SCROLL TO TOP PARA CELULARES ---
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTopBtn');
+            if (!btn) return;
+            if (window.scrollY > 350) {
+                btn.classList.remove('opacity-0', 'pointer-events-none');
+                btn.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                btn.classList.add('opacity-0', 'pointer-events-none');
+                btn.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        });
 
         function getScore(row, baseIndex) {
             let tier = parseInt(row[baseIndex]) || 0;
@@ -508,6 +591,10 @@
             modal.querySelector('.transform').classList.remove('scale-95');
         }
         function hideModalEl(modal) {
+            if (window.speechSynthesis && window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                currentSpeakingPlayer = null;
+            }
             modal.classList.add('opacity-0');
             modal.querySelector('.transform').classList.add('scale-95');
             setTimeout(() => modal.classList.add('hidden'), 250);
@@ -816,9 +903,14 @@
                     
                     <div class="flex flex-wrap items-center justify-between gap-2 pt-2.5 border-t border-slate-800 font-mono text-[10px] sm:text-xs text-slate-400 mt-auto">
                         <span class="truncate">🏆 T<strong class="text-white">${score.tier}</strong> | 🌊 Olas <strong class="text-white">${score.oleada}</strong> | 💎 <strong class="text-neonCyan">${score.reliquias ? formatNumber(score.reliquias) : '-'}</strong></span>
-                        <button onclick="closeModal('casterModal', event); setTimeout(()=>openModal('${pName}'), 300);" class="bg-slate-800 hover:bg-neonCyan text-slate-100 hover:text-black px-3 py-1 rounded-lg font-black transition-all text-[11px] sm:text-xs flex items-center gap-1 shadow-sm ml-auto sm:ml-0">
-                            👤 VER <span class="hidden sm:inline">PERFIL</span>
-                        </button>
+                        <div class="flex items-center gap-1.5 ml-auto sm:ml-0">
+                            <button onclick="speakCasterNote('${pName}', event)" title="Escuchar narración del caster con voz" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-neonCyan hover:to-cyan-400 text-white hover:text-black px-2.5 py-1 rounded-lg font-mono font-black transition-all text-[11px] sm:text-xs flex items-center gap-1 shadow-sm border border-purple-400/70">
+                                <span>🔊</span> <span>VOZ</span>
+                            </button>
+                            <button onclick="closeModal('casterModal', event); setTimeout(()=>openModal('${pName}'), 300);" class="bg-slate-800 hover:bg-neonCyan text-slate-100 hover:text-black px-2.5 py-1 rounded-lg font-black transition-all text-[11px] sm:text-xs flex items-center gap-1 shadow-sm">
+                                👤 VER <span class="hidden sm:inline">PERFIL</span>
+                            </button>
+                        </div>
                     </div>
                 `;
                 grid.appendChild(div);
@@ -852,31 +944,44 @@
             renderCards();
         }
         
+        // --- LIMPIEZA DE SELECCIÓN RÁPIDA (MODO BATALLA) ---
+        function clearBattleSelection() {
+            selectedPlayers.clear();
+            document.querySelectorAll('.cyber-checkbox').forEach(cb => cb.checked = false);
+            updateBattleBar();
+        }
+
+        function updateBattleBar() {
+            const battleBar = document.getElementById('battleBar');
+            document.getElementById('battleCount').innerText = selectedPlayers.size;
+            if (selectedPlayers.size >= 1) {
+                battleBar.classList.remove('translate-y-[250%]');
+                battleBar.classList.add('translate-y-0');
+            } else {
+                battleBar.classList.add('translate-y-[250%]');
+                battleBar.classList.remove('translate-y-0');
+            }
+        }
+
         function handleCheckbox(cb, playerName) {
             if (cb.checked) {
                 if (selectedPlayers.size >= 3) {
                     cb.checked = false;
-                    alert("⚔️ Solo puedes comparar hasta 3 jugadores en el Modo Batalla.");
+                    alert("⚔️ Solo puedes comparar hasta 3 guerreros de forma simultánea en la Arena.");
                     return;
                 }
                 selectedPlayers.add(playerName);
             } else {
                 selectedPlayers.delete(playerName);
             }
-            
-            const battleBtn = document.getElementById('battleBtn');
-            document.getElementById('battleCount').innerText = selectedPlayers.size;
-            if (selectedPlayers.size >= 2) {
-                battleBtn.classList.remove('translate-y-[200%]');
-                battleBtn.classList.add('translate-y-0');
-            } else {
-                battleBtn.classList.add('translate-y-[200%]');
-                battleBtn.classList.remove('translate-y-0');
-            }
+            updateBattleBar();
         }
         
         function openBattleModal() {
-            if (selectedPlayers.size < 2) return;
+            if (selectedPlayers.size < 2) {
+                alert("⚔️ ¡Selecciona al menos 2 guerreros con la casilla de verificación (✔) en su tarjeta para iniciar la batalla!");
+                return;
+            }
             const grid = document.getElementById('battleGrid');
             grid.innerHTML = '';
             
