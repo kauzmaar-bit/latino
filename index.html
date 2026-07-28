@@ -439,7 +439,8 @@
         let selectedPlayers = new Set();
         let chartInstance = null;
         let activeModalPlayer = '';
-        let currentSpeakingPlayer = null;
+        let currentAudio = null;
+        let activeSpeakingPlayer = null;
         
         const prevDateIdx = 34; // 15-06-2026 (Junio)
         const currDateIdx = 39; // 27-07-2026 (Julio / Actual)
@@ -460,50 +461,40 @@
         }
         updateSortBtnStyles();
 
-        // --- SISTEMA DE VOZ DE CASTEO CON INTELIGENCIA (WEB SPEECH API) ---
+        // --- SISTEMA DE VOZ DE CASTEO CON AUDIO MP3 NEURONAL (DALIA - NARRADORA IA) ---
         function speakCasterNote(playerName, event) {
             if (event) event.stopPropagation();
-            if (!('speechSynthesis' in window)) {
-                alert('⚠️ Tu navegador de este dispositivo no soporta síntesis de voz nativa. ¡Pruebas recomendadas en Chrome, Safari o Edge!');
-                return;
+            
+            // Si ya hay un audio sonando, lo pausamos y reiniciamos su tiempo
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                let oldPlayer = activeSpeakingPlayer;
+                currentAudio = null;
+                activeSpeakingPlayer = null;
+                // Si el usuario presiona el mismo botón del jugador para pausar, nos detenemos aquí
+                if (oldPlayer === playerName) return;
             }
             
-            // Si ya se está reproduciendo audio, cancelarlo o pausar
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-                if (currentSpeakingPlayer === playerName) {
-                    currentSpeakingPlayer = null;
-                    return;
-                }
-            }
+            // Cargar archivo MP3 en alta fidelidad generado gratis por Azure IA
+            let audioPath = `audios-caster/${playerName}.mp3`;
+            currentAudio = new Audio(audioPath);
+            activeSpeakingPlayer = playerName;
             
-            let note = typeof casterNotes !== 'undefined' ? casterNotes[playerName] : null;
-            if (!note) return;
+            currentAudio.play().catch(err => {
+                console.error('Error reproduciendo el audio MP3:', err);
+                alert('⚠️ El audio del guerrero está en proceso de carga desde GitHub o no fue encontrado. ¡Intenta de nuevo en unos segundos!');
+                currentAudio = null;
+                activeSpeakingPlayer = null;
+            });
             
-            let fullText = `Resumen oficial para ${playerName}: ${note.title}. Cita célebre en La Cantina: ${note.quote}. ${note.text}`;
-            let utterance = new SpeechSynthesisUtterance(fullText);
-            
-            // Buscar voz en español
-            let voices = window.speechSynthesis.getVoices();
-            let esVoices = voices.filter(v => v.lang.startsWith('es') || v.lang.includes('ES') || v.lang.includes('MX') || v.lang.includes('US') || v.name.toLowerCase().includes('spanish') || v.name.toLowerCase().includes('español'));
-            
-            if (esVoices.length > 0) {
-                // Priorizar voces naturales de Microsoft o Google si existen
-                let bestVoice = esVoices.find(v => v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Sabina') || v.name.includes('Jorge') || v.name.includes('Pablo') || v.name.includes('Mia'));
-                utterance.voice = bestVoice || esVoices[0];
-            }
-            
-            utterance.rate = 1.05; // Ritmo ligeramente ágil como narrador de esports
-            utterance.pitch = 0.95; // Tono más grave de comentarista
-            
-            currentSpeakingPlayer = playerName;
-            window.speechSynthesis.speak(utterance);
-            
-            utterance.onend = () => {
-                if (currentSpeakingPlayer === playerName) currentSpeakingPlayer = null;
+            currentAudio.onended = () => {
+                currentAudio = null;
+                activeSpeakingPlayer = null;
             };
-            utterance.onerror = () => {
-                currentSpeakingPlayer = null;
+            currentAudio.onerror = () => {
+                currentAudio = null;
+                activeSpeakingPlayer = null;
             };
         }
 
@@ -591,9 +582,11 @@
             modal.querySelector('.transform').classList.remove('scale-95');
         }
         function hideModalEl(modal) {
-            if (window.speechSynthesis && window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-                currentSpeakingPlayer = null;
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                currentAudio = null;
+                activeSpeakingPlayer = null;
             }
             modal.classList.add('opacity-0');
             modal.querySelector('.transform').classList.add('scale-95');
