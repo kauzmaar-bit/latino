@@ -54,7 +54,11 @@ const casterNotes = {
         category: "vip",
         title: "🙏 El Hombre de Dios y de la Pólvora",
         quote: "Ahora soy un hombre de Dios pero antes fui pecador 😔",
-        text: "El hombre que juró por WhatsApp que 'antes fue pecador pero ahora es un hombre de Dios' 🤣. En la arena de batalla no tiene compasión ni piedad y sigue pecando de goloso: metió +42 oleadas bestiales en el brutal Tier 17 y cosechó tesoros de élite. ¡Un pilar inquebrantable de La Cantina!"
+        text: "El hombre que juró por WhatsApp que 'antes fue pecador pero ahora es un hombre de Dios' 🤣. En la arena de batalla no tiene compasión ni piedad y sigue pecando de goloso: metió +42 oleadas bestiales en el brutal Tier 17 y cosechó tesoros de élite. ¡Un pilar inquebrantable de La Cantina!",
+        anthem: {
+            title: "El Inspector de Cariñosas",
+            file: "El Inspector de Cariñosas.mp3"
+        }
     },
     "Baltar": {
         category: "vip",
