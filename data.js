@@ -48,7 +48,11 @@ const casterNotes = {
         category: "vip",
         title: "👑 El Patrón y Líder Soberano",
         quote: "Soy del 85... no sé qué es la ansiedad 😎",
-        text: "Nuestro querido Miguel, jefe de la casa, líder del gremio y diplomático oficial de La Cantina. Finalmente rompió las cadenas del Tier 16 y clavó su bandera soberana en el Tier 17 con 132 oleadas, mandando torretas con precisión suiza entre reunión y reunión de la oficina para dar el ejemplo al escuadrón. ¡Un ascenso de jerarquía pura!"
+        text: "Nuestro querido Miguel, jefe de la casa, líder del gremio y diplomático oficial de La Cantina. Finalmente rompió las cadenas del Tier 16 y clavó su bandera soberana en el Tier 17 con 132 oleadas, mandando torretas con precisión suiza entre reunión y reunión de la oficina para dar el ejemplo al escuadrón. ¡Un ascenso de jerarquía pura!",
+        anthem: {
+            title: "Frena",
+            file: "Frena.mp3"
+        }
     },
     "andryN": {
         category: "vip",
