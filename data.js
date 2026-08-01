@@ -278,8 +278,12 @@ const abbreviationsData = [
     { cat: 'mods', sigla: 'DP', en: 'Death Penalty', es: 'Pena de Muerte', desc: 'Módulo de Cañón. Otorga probabilidad de que un enemigo (¡incluso un Jefe poderoso de oleada alta!) aparezca marcado para morir a tu primer hit.' },
     { cat: 'mods', sigla: 'AS (Módulo)', en: 'Amplifying Strike', es: 'Golpe Amplificador', desc: 'Módulo de Cañón. Si no recibes ningún golpe o daño en los últimos segundos, tu daño corporal de disparo se multiplica frenéticamente.' },
     { cat: 'mods', sigla: 'BA', en: 'Being Annihilator', es: 'Aniquilador de Seres', desc: 'Módulo de Cañón. Ocasionalmente transforma tu disparo en un proyectil devastador aumentando tu daño de Súper Crítico mil veces.' },
-    { cat: 'mods', sigla: 'MH / Om / NMP', en: 'Magnetic / Om Chip / Negative Mass', es: 'Módulos Tácticos de Core y Armadura', desc: 'MH retiene cubos fuera del alcance; Om Chip hace que el Foco apunte directo a los Jefes; NMP encoge y frena enemigos que entran al rango.' },
-    { cat: 'mods', sigla: 'PH / SD / SH', en: 'Pulsar Harvester / Space Disp / Singularity', es: 'Módulos de Control y Bot', desc: 'PH reduce el nivel del enemigo que te golpea; SD genera minas en todo el borde exterior; SH expande el radio de farmeo de tu Bot Dorado.' },
+    { cat: 'mods', sigla: 'MH', en: 'Magnetic Hook', es: 'Gancho Magnético', desc: 'Módulo de Core. Su efecto principal es atrapar y retener a los enemigos fuera del alcance de la torre, controlando multitudes.' },
+    { cat: 'mods', sigla: 'Om', en: 'Om Chip', es: 'Chip Om', desc: 'Módulo de Core. Hace que tu Foco (Spotlight) rote automáticamente para apuntar de forma directa y prioritaria a los Jefes.' },
+    { cat: 'mods', sigla: 'NMP', en: 'Negative Mass Projector', es: 'Proyector de Masa Negativa', desc: 'Módulo de Armadura. Aplica una desventaja que reduce la velocidad y el daño de los enemigos que sobreviven al impacto de tus orbes.' },
+    { cat: 'mods', sigla: 'PH', en: 'Pulsar Harvester', es: 'Cosechador de Púlsares', desc: 'Módulo de Generador. Al golpear a un enemigo con proyectiles, hay probabilidad de reducir permanentemente su nivel de Vida y Ataque.' },
+    { cat: 'mods', sigla: 'SD', en: 'Space Displacer', es: 'Desplazador Espacial', desc: 'Módulo de Armadura. Genera minas terrestres automáticas (Inner Land Mines) en el borde exterior del rango para aturdir y dañar.' },
+    { cat: 'mods', sigla: 'SH', en: 'Singularity Harness', es: 'Arnés de Singularidad', desc: 'Módulo de Generador. Aumenta drásticamente el alcance de tus Bots (como el Bot Dorado) y duplica el daño de tu Bot de Fuego.' },
 
     // JERGA & ESTRATEGIA (SLANG & TACTICS)
     { cat: 'slang', sigla: 'eHP', en: 'Effective Health Points', es: 'Puntos de Salud Efectivos (eHP)', desc: 'La capacidad de supervivencia REAL de tu torre. Es el resultado de tu Salud Máxima (HP) + Porcentaje de Defensa + Escudos y reducción pasiva. ¡El concepto más importante del juego!' },
