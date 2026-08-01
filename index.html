@@ -826,10 +826,21 @@
                 this.audio.addEventListener('ended', () => this.next());
                 this.audio.addEventListener('play', () => this.updateUI(true));
                 this.audio.addEventListener('pause', () => this.updateUI(false));
+                this.audio.addEventListener('timeupdate', () => {
+                    const bar = document.getElementById('radioProgressBar');
+                    if (bar && this.audio.duration) {
+                        bar.value = (this.audio.currentTime / this.audio.duration) * 100;
+                    }
+                });
                 
                 const volControl = document.getElementById('radioVolume');
                 if(volControl) {
                     volControl.addEventListener('input', (e) => { this.audio.volume = e.target.value; });
+                }
+            },
+            seek: function(percentage) {
+                if (this.audio.duration) {
+                    this.audio.currentTime = (percentage / 100) * this.audio.duration;
                 }
             },
             playTrack: function(index) {
@@ -1758,6 +1769,7 @@
     </script>
     <!-- Radio Global Player -->
     <div id="radioGlobalPlayer" class="fixed bottom-0 left-0 w-full z-50 transform translate-y-full transition-transform duration-500 ease-in-out">
+        <input type="range" id="radioProgressBar" value="0" min="0" max="100" step="0.1" class="absolute top-0 left-0 w-full h-1 -mt-1 bg-slate-800 appearance-none cursor-pointer accent-yellow-400 hover:h-2 transition-all z-10" oninput="RadioManager.seek(this.value)">
         <div class="bg-black/60 backdrop-blur-md border-t border-yellow-500/30 shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
             <div class="max-w-7xl mx-auto px-4 py-2 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
                 
