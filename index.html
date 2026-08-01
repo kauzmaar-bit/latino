@@ -828,8 +828,16 @@
                 this.audio.addEventListener('pause', () => this.updateUI(false));
                 this.audio.addEventListener('timeupdate', () => {
                     const bar = document.getElementById('radioProgressBar');
-                    if (bar && this.audio.duration) {
-                        bar.value = (this.audio.currentTime / this.audio.duration) * 100;
+                    const cTimeEl = document.getElementById('radioCurrentTime');
+                    const tTimeEl = document.getElementById('radioTotalTime');
+                    if (this.audio.duration) {
+                        let percent = (this.audio.currentTime / this.audio.duration) * 100;
+                        if (bar) {
+                            bar.value = percent;
+                            bar.style.background = `linear-gradient(to right, #facc15 ${percent}%, #1e293b ${percent}%)`;
+                        }
+                        if (cTimeEl) cTimeEl.innerText = this.formatTime(this.audio.currentTime);
+                        if (tTimeEl) tTimeEl.innerText = this.formatTime(this.audio.duration);
                     }
                 });
                 
@@ -837,6 +845,12 @@
                 if(volControl) {
                     volControl.addEventListener('input', (e) => { this.audio.volume = e.target.value; });
                 }
+            },
+            formatTime: function(secs) {
+                if (isNaN(secs)) return "0:00";
+                let min = Math.floor(secs / 60);
+                let s = Math.floor(secs % 60);
+                return min + ":" + (s < 10 ? "0" + s : s);
             },
             seek: function(percentage) {
                 if (this.audio.duration) {
@@ -1788,6 +1802,12 @@
                         </div>
                         <span id="radioPlayerName" class="text-[10px] sm:text-xs text-slate-400 font-mono truncate">---</span>
                     </div>
+                </div>
+
+                <!-- Tiempos -->
+                <div class="hidden sm:flex flex-col items-end text-[10px] text-slate-400 font-mono justify-center w-10 shrink-0">
+                    <span id="radioCurrentTime">0:00</span>
+                    <span id="radioTotalTime">0:00</span>
                 </div>
 
                 <!-- Controles -->
