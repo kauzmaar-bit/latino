@@ -292,7 +292,9 @@ const abbreviationsData = [
     { cat: 'slang', sigla: 'PWR', en: 'Perk Wave Requirement', es: 'Reducción de Oleadas para Perks', desc: 'El Perk más importante y sagrado del juego. Al reclamarlo reduce cuántas oleadas requieres para desbloquear todos tus siguientes beneficios.' },
     { cat: 'slang', sigla: 'CTO', en: 'Coin Trade Off Perk (+1.80x a 1.98x Coin)', es: 'Perk de Sacrificio de Monedas', desc: 'El beneficio favorito para farmear agresivamente; multiplica tus ingresos de monedas un +80% extra (o hasta +98% con el laboratorio al máximo) a cambio de sacrificar el 70% de la vida de tu torre.' },
     { cat: 'slang', sigla: '50/50 TO', en: 'Damage Trade Off (-50% Enemy Dmg)', es: 'Perk de Daño 50/50', desc: 'Reduce el daño enemigo a la MITAD, pero tu torre también hace -50% de daño corporal. Excelente protección si juegas con build eHP.' },
-    { cat: 'slang', sigla: 'BC / EAS / GB', en: 'Battle Conditions / Golden Bot', es: 'Condiciones de Batalla & Bot Dorado', desc: 'Mutadores difíciles que complican los torneos (como EAS = Enemigos súper veloces) y el Bot Dorado que compras con medallas para multiplicar monedas en el suelo.' },
+    { cat: 'slang', sigla: 'BC', en: 'Battle Conditions', es: 'Condiciones de Batalla', desc: 'Mutadores que complican enormemente los torneos, agregando desventajas o potenciando a los enemigos.' },
+    { cat: 'slang', sigla: 'EAS', en: 'Enemy Attack Speed', es: 'Velocidad de Ataque Enemiga', desc: 'Una de las Condiciones de Batalla (BC) más temidas en torneos, hace que los enemigos ataquen a velocidades absurdas.' },
+    { cat: 'slang', sigla: 'GB', en: 'Golden Bot', es: 'Bot Dorado', desc: 'Robot de evento que se compra con medallas. Genera un campo en el suelo que multiplica masivamente las monedas de los enemigos que mueren dentro.' },
 
     // ÓRDENES DE MAGNITUD (MATH)
     { cat: 'math', sigla: 'K / M / B / T', en: 'Thousand / Million / Billion / Trillion', es: 'Miles / Millones / Billones / Trillones', desc: 'Escala clásica mundial: K (Miles), M (Millones - 10⁶), B (Billones o Mil Millones - 10⁹), T (Trillón o Millón de Millones - 10¹²).' },
