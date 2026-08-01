@@ -658,7 +658,7 @@
     </div>
 
     <!-- Import data -->
-    <script src="data.js?v=2.2"></script>
+    <script src="data.js?v=2.3"></script>
     <script>
         let currentSortMode = 'tier';
         let currentFilter = 'all';
@@ -808,72 +808,147 @@
             setTimeout(() => modal.classList.remove('opacity-0'), 10);
             modal.querySelector('.transform').classList.remove('scale-95');
         }
-        let currentAnthemAudio = null;
-        let playingAnthemPlayer = null;
+        const RadioManager = {
+            playlist: [],
+            currentIndex: -1,
+            audio: new Audio(),
+            isPlaying: false,
+            init: function() {
+                // Construir playlist automaticamente
+                if (typeof casterNotes !== 'undefined') {
+                    for (let pName in casterNotes) {
+                        let note = casterNotes[pName];
+                        if (note.anthem && note.anthem.file) {
+                            this.playlist.push({ player: pName, title: note.anthem.title, file: note.anthem.file });
+                        }
+                    }
+                }
+                this.audio.addEventListener('ended', () => this.next());
+                this.audio.addEventListener('play', () => this.updateUI(true));
+                this.audio.addEventListener('pause', () => this.updateUI(false));
+                
+                const volControl = document.getElementById('radioVolume');
+                if(volControl) {
+                    volControl.addEventListener('input', (e) => { this.audio.volume = e.target.value; });
+                }
+            },
+            playTrack: function(index) {
+                if(index < 0 || index >= this.playlist.length) return;
+                this.currentIndex = index;
+                let track = this.playlist[index];
+                
+                // Detener locutor si esta sonando
+                if (typeof currentAudio !== 'undefined' && currentAudio) { currentAudio.pause(); currentAudio = null; if(typeof resetCasterUI === 'function') resetCasterUI(); }
+                if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); }
 
-        function stopAnthemAudio() {
-            if (currentAnthemAudio) {
-                currentAnthemAudio.pause();
-                currentAnthemAudio = null;
-                playingAnthemPlayer = null;
+                this.audio.src = track.file;
+                this.audio.play().catch(e => console.error("Error al reproducir", e));
+                this.showPlayer();
+            },
+            togglePlayerAnthem: function(playerName, event) {
+                if (event) event.stopPropagation();
+                let idx = this.playlist.findIndex(t => t.player === playerName);
+                if (idx === -1) return;
+
+                if (this.currentIndex === idx) {
+                    this.togglePlay();
+                } else {
+                    this.playTrack(idx);
+                }
+            },
+            togglePlay: function() {
+                if (this.currentIndex === -1 && this.playlist.length > 0) {
+                    this.playTrack(0);
+                    return;
+                }
+                if (this.isPlaying) this.audio.pause();
+                else this.audio.play().catch(e => console.error(e));
+            },
+            next: function() {
+                if(this.playlist.length === 0) return;
+                let nextIdx = (this.currentIndex + 1) % this.playlist.length;
+                this.playTrack(nextIdx);
+            },
+            prev: function() {
+                if(this.playlist.length === 0) return;
+                let prevIdx = (this.currentIndex - 1 + this.playlist.length) % this.playlist.length;
+                this.playTrack(prevIdx);
+            },
+            updateUI: function(playing) {
+                this.isPlaying = playing;
+                // UI Global
+                const iconPlay = document.getElementById('radioIconPlay');
+                const iconPause = document.getElementById('radioIconPause');
+                const visualizer = document.getElementById('radioVisualizer');
+                
+                if (iconPlay && iconPause) {
+                    if (playing) { iconPlay.classList.add('hidden'); iconPause.classList.remove('hidden'); }
+                    else { iconPlay.classList.remove('hidden'); iconPause.classList.add('hidden'); }
+                }
+                
+                if(visualizer) {
+                    if(playing) visualizer.classList.remove('hidden');
+                    else visualizer.classList.add('hidden');
+                }
+
+                if (this.currentIndex !== -1) {
+                    let track = this.playlist[this.currentIndex];
+                    const trackName = document.getElementById('radioTrackName');
+                    const playerName = document.getElementById('radioPlayerName');
+                    if(trackName) trackName.innerText = track.title;
+                    if(playerName) playerName.innerText = track.player;
+                }
+
+                // Sincronizar UI del Modal de perfil
                 const btnText = document.getElementById('anthemPlayText');
                 const btnIcon = document.getElementById('anthemPlayIcon');
-                if (btnText) btnText.innerText = "PLAY";
-                if (btnIcon) btnIcon.innerText = "▶️";
                 const box = document.getElementById('modalAnthemBox');
-                if (box) box.classList.remove("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
-            }
-        }
+                const isCurrentPlayerModal = (typeof activeModalPlayer !== 'undefined' && this.currentIndex !== -1 && this.playlist[this.currentIndex].player === activeModalPlayer);
 
-        function togglePlayerAnthem(playerName, event) {
-            if (event) event.stopPropagation();
-            let note = typeof casterNotes !== 'undefined' ? casterNotes[playerName] : null;
-            if (!note || !note.anthem || !note.anthem.file) return;
-
-            const btnText = document.getElementById('anthemPlayText');
-            const btnIcon = document.getElementById('anthemPlayIcon');
-            const box = document.getElementById('modalAnthemBox');
-
-            // Si ya está reproduciendo, alternar pausa
-            if (currentAnthemAudio && playingAnthemPlayer === playerName) {
-                if (currentAnthemAudio.paused) {
-                    currentAnthemAudio.play();
-                    if (btnText) btnText.innerText = "PAUSA";
-                    if (btnIcon) btnIcon.innerText = "⏸️";
-                    if (box) box.classList.add("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
-                } else {
-                    currentAnthemAudio.pause();
-                    if (btnText) btnText.innerText = "PLAY";
-                    if (btnIcon) btnIcon.innerText = "▶️";
-                    if (box) box.classList.remove("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
+                if (btnText && btnIcon) {
+                    if (playing && isCurrentPlayerModal) {
+                        btnText.innerText = "PAUSA";
+                        btnIcon.innerText = "⏸️";
+                        if(box) box.classList.add("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
+                    } else {
+                        btnText.innerText = "PLAY";
+                        btnIcon.innerText = "▶️";
+                        if(box) box.classList.remove("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
+                    }
                 }
-                return;
+            },
+            showPlayer: function() {
+                const player = document.getElementById('radioGlobalPlayer');
+                if(player) {
+                    player.classList.remove('translate-y-full');
+                    document.body.style.paddingBottom = '80px'; 
+                }
+            },
+            hide: function() {
+                const player = document.getElementById('radioGlobalPlayer');
+                if(player) player.classList.add('translate-y-full');
+                document.body.style.paddingBottom = '0';
+            },
+            stop: function() {
+                this.audio.pause();
+                this.updateUI(false);
             }
+        };
 
-            // Si hay otra reproducción o es nueva, iniciar de cero
-            stopAnthemAudio();
-            if (currentAudio) { currentAudio.pause(); currentAudio = null; resetCasterUI(); }
-            if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); }
+        window.addEventListener('DOMContentLoaded', () => {
+            RadioManager.init();
+        });
 
-            currentAnthemAudio = new Audio(note.anthem.file);
-            playingAnthemPlayer = playerName;
-
-            currentAnthemAudio.play().then(() => {
-                if (btnText) btnText.innerText = "PAUSA";
-                if (btnIcon) btnIcon.innerText = "⏸️";
-                if (box) box.classList.add("border-yellow-300", "shadow-[0_0_30px_rgba(250,204,21,0.8)]");
-            }).catch(err => {
-                console.error("Error reproduciendo himno:", err);
-                alert("No se pudo reproducir el archivo de música: " + note.anthem.file);
-            });
-
-            currentAnthemAudio.onended = () => {
-                stopAnthemAudio();
-            };
+        // Wrapper functions para no romper los HTML inline actuales
+        function togglePlayerAnthem(playerName, event) {
+            RadioManager.togglePlayerAnthem(playerName, event);
+        }
+        function stopAnthemAudio() {
+            RadioManager.stop();
         }
 
         function hideModalEl(modal) {
-            stopAnthemAudio();
+            // Ya no detenemos la radio global al cerrar un modal!
             if (currentAudio) {
                 currentAudio.pause();
                 currentAudio.currentTime = 0;
@@ -1158,6 +1233,7 @@
             }
 
             switchModalTab('card');
+            if (typeof RadioManager !== 'undefined') RadioManager.updateUI(RadioManager.isPlaying);
             showModalEl(modal);
         }
 
@@ -1680,5 +1756,60 @@
 
         renderCards();
     </script>
+    <!-- Radio Global Player -->
+    <div id="radioGlobalPlayer" class="fixed bottom-0 left-0 w-full z-50 transform translate-y-full transition-transform duration-500 ease-in-out">
+        <div class="bg-black/60 backdrop-blur-md border-t border-yellow-500/30 shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
+            <div class="max-w-7xl mx-auto px-4 py-2 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
+                
+                <!-- Info de la canción y Animación -->
+                <div class="flex items-center gap-3 overflow-hidden flex-1">
+                    <div id="radioVisualizer" class="hidden flex items-end gap-0.5 h-6 shrink-0">
+                        <div class="w-1 bg-yellow-400 h-2 animate-[bounce_0.8s_infinite] rounded-t"></div>
+                        <div class="w-1 bg-amber-500 h-5 animate-[bounce_1.2s_infinite] rounded-t"></div>
+                        <div class="w-1 bg-yellow-300 h-3 animate-[bounce_0.6s_infinite] rounded-t"></div>
+                        <div class="w-1 bg-purple-500 h-6 animate-[bounce_1s_infinite] rounded-t"></div>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="text-[9px] sm:text-[10px] text-yellow-500 font-bold uppercase tracking-widest block sm:block">📻 Radio La Cantina</span>
+                        <div class="whitespace-nowrap overflow-hidden text-ellipsis">
+                            <span id="radioTrackName" class="text-xs sm:text-sm font-bold text-white">Ninguna pista</span>
+                        </div>
+                        <span id="radioPlayerName" class="text-[10px] sm:text-xs text-slate-400 font-mono truncate">---</span>
+                    </div>
+                </div>
+
+                <!-- Controles -->
+                <div class="flex items-center gap-1 sm:gap-4 shrink-0">
+                    <button onclick="RadioManager.prev()" class="p-2 text-slate-300 hover:text-white transition-colors" title="Pista Anterior">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                    </button>
+                    
+                    <button id="radioPlayBtn" onclick="RadioManager.togglePlay()" class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 text-black hover:scale-105 hover:shadow-[0_0_15px_rgba(250,204,21,0.6)] transition-all">
+                        <svg id="radioIconPlay" class="w-5 h-5 sm:w-6 sm:h-6 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <svg id="radioIconPause" class="w-5 h-5 sm:w-6 sm:h-6 fill-current hidden" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+                    
+                    <button onclick="RadioManager.next()" class="p-2 text-slate-300 hover:text-white transition-colors" title="Pista Siguiente">
+                        <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                    </button>
+                </div>
+                
+                <!-- Volumen / Cerrar (PC) -->
+                <div class="hidden md:flex items-center gap-4 w-32 justify-end shrink-0">
+                    <input type="range" id="radioVolume" min="0" max="1" step="0.05" value="1" class="w-20 accent-yellow-400 bg-slate-700 rounded-lg appearance-none h-1.5 cursor-pointer">
+                    <button onclick="RadioManager.hide()" class="text-slate-400 hover:text-red-400 transition-colors" title="Ocultar Radio">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                
+                <!-- Cerrar en Movil -->
+                <div class="md:hidden flex items-center shrink-0">
+                    <button onclick="RadioManager.hide()" class="p-1 text-slate-400 hover:text-white" title="Ocultar">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
