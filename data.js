@@ -224,8 +224,15 @@ const casterNotes = {
 };
 
 const abbreviationsData = [
+    {
+        sigla: "OA",
+        en: "Orbital Augment",
+        es: "Aumento Orbital",
+        desc: "Módulo de armadura (Defensa) que añade 'Electrones' que orbitan tu torre. Cada electrón inflige un daño equivalente al 15% de la salud restante del enemigo (25% de efectividad contra Jefes). Muy útil en builds de Vida (eHP) para limpiar la acumulación de enemigos y dañar Protectores. Da entre 2 y 8 electrones dependiendo de la rareza.",
+        cat: "mods"
+    },
     // ARMAS SUPREMAS (UW)
-    { cat: 'uw', sigla: 'UW', en: 'Ultimate Weapon', es: 'Arma Suprema', desc: 'Las armas especiales del juego que se compran y mejoran con Piedras Verdes ganadas en los torneos.' },
+    { cat: 'uw', sigla: 'UW', en: 'Ultimate Weapon', es: 'Arma Definitiva', desc: 'Las armas especiales del juego que se compran y mejoran con Piedras Verdes ganadas en los torneos.' },
     { cat: 'uw', sigla: 'BH', en: 'Black Hole', es: 'Agujero Negro', desc: 'Atrae enemigos a su centro de gravedad y multiplica masivamente las monedas ganadas con su investigación de laboratorio. ¡Esencial para economía!' },
     { cat: 'uw', sigla: 'GT', en: 'Golden Tower', es: 'Torre Dorada', desc: 'El rey indiscutibly de la economía en el juego. Multiplica de forma colosal tus ingresos de monedas y dinero en efectivo en cada activación.' },
     { cat: 'uw', sigla: 'DW', en: 'Death Wave', es: 'Ola de la Muerte', desc: 'Anillo de energía letal. Vital para la estrategia "Devo", aportar daño amplificado y multiplicar tu salud máxima (HP) hasta por x12.5 veces en batalla (con las últimas mejoras del laboratorio e investigación).' },

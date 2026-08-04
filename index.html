@@ -601,7 +601,7 @@ body {
             
             <!-- Pestañas de Categoría Caster en FLEX-WRAP MÓVIL -->
             <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mb-3.5 sm:mb-5 w-full flex-shrink-0 bg-slate-950/80 border-y border-slate-800/80 py-2 px-1 rounded-xl">
-                <button onclick="switchCasterTab('vip', this)" class="caster-btn active px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono font-black transition-all bg-neonPurple text-white shadow-[0_0_15px_rgba(168,85,247,0.7)] flex-grow sm:flex-grow-0 text-center">🍺 Reyes WSP (13)</button>
+                <button onclick="switchCasterTab('vip', this)" class="caster-btn active px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono font-black transition-all bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.7)] flex-grow sm:flex-grow-0 text-center">🍺 Reyes WSP (13)</button>
                 <button onclick="switchCasterTab('sleep', this)" class="caster-btn px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono transition-all bg-slate-900 text-slate-300 border border-slate-700 hover:text-white flex-grow sm:flex-grow-0 text-center font-bold">😴 "Piloto Automático" (7)</button>
                 <button onclick="switchCasterTab('ninja', this)" class="caster-btn px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono transition-all bg-slate-900 text-slate-300 border border-slate-700 hover:text-white flex-grow sm:flex-grow-0 text-center font-bold">🥷 Silenciosos (4)</button>
                 <button onclick="switchCasterTab('recruit', this)" class="caster-btn px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono transition-all bg-slate-900 text-slate-300 border border-slate-700 hover:text-white flex-grow sm:flex-grow-0 text-center font-bold">✨ Reclutas (4)</button>
@@ -1402,7 +1402,7 @@ body {
             if (!container || typeof abbreviationsData === 'undefined') return;
             
             const catNames = {
-                'uw': { icon: '💥', label: 'ARMA SUPREMA', color: 'from-purple-900/60 to-slate-900 border-purple-500 text-purple-300' },
+                'uw': { icon: '💥', label: 'ARMA DEFINITIVA', color: 'from-purple-900/60 to-slate-900 border-purple-500 text-purple-300' },
                 'cards': { icon: '🃏', label: 'CARTA', color: 'from-blue-900/60 to-slate-900 border-blue-500 text-blue-300' },
                 'labs': { icon: '🔬', label: 'LAB / TALLER', color: 'from-teal-900/60 to-slate-900 border-teal-500 text-teal-300' },
                 'mods': { icon: '🛡️', label: 'MÓDULO', color: 'from-emerald-900/60 to-slate-900 border-emerald-500 text-emerald-300' },
@@ -1467,7 +1467,7 @@ body {
             btns.forEach(b => {
                 b.className = "caster-btn px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono transition-all bg-slate-900 text-slate-300 border border-slate-700 hover:text-white flex-grow sm:flex-grow-0 text-center font-bold";
             });
-            btn.className = "caster-btn active px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono font-black transition-all bg-neonPurple text-white shadow-[0_0_15px_rgba(168,85,247,0.7)] flex-grow sm:flex-grow-0 text-center";
+            btn.className = "caster-btn active px-3 py-1.5 rounded-full text-[11px] sm:text-sm font-mono font-black transition-all bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.7)] flex-grow sm:flex-grow-0 text-center";
             renderCasterGrid(cat);
         }
 
