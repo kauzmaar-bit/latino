@@ -33,6 +33,37 @@ const db = {
     ]
 };
 
+const playerIDs = {
+    "aang": "EB7C6541E327DE26",
+    "Arcangelgamer7": "DE054DF26895024F",
+    "Babel": "D34EFF3601D41882",
+    "Baltar": "2A511BC40D2F4A0",
+    "Demian": "AF254A3862689918",
+    "Dv99": "A4A05CBFFAF7F9B2",
+    "Elbowe": "C59599B59FBE3079",
+    "Fidesin": "6568081FD1B8767F",
+    "Infrit": "D7A240BA5A38594",
+    "LaParka": "3CCCBF13CE36669C",
+    "Maguilera": "1F3F7E12100AD9C",
+    "Mawgan": "5783495278A30A72",
+    "NaVaJa": "6070756ED35C86A8",
+    "Name2Sho": "A373A5C920110B3",
+    "Neizu": "846518F23EEAD89D",
+    "NightFury": "36624CDF356B50F6",
+    "RawXwaR": "BF2F41C46B6E9F2C",
+    "Rick": "E256348F0777AB76",
+    "SOL": "1D0BF53F991696F",
+    "Sting": "E0966E63E1CED1F9",
+    "Zaqmauri": "4137BDE3C2171F9",
+    "andryN": "407A6C88811722B7",
+    "conker_6": "4A4AC7F4F9B4104",
+    "fer": "1D080808EEADCCD0",
+    "jonytan": "96FA733E224689BE",
+    "jugox2": "F7F007792733922F",
+    "thejorgemylio": "4D275B6EF8B96A0B",
+    "zeruel": "9004C1FE20B99C97",
+};
+
 const casterNotes = {
     "LaParka": {
         category: "vip",

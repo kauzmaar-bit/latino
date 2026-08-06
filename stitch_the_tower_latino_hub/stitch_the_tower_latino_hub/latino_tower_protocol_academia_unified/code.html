@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academia Táctica | LATINO TOWER PROTOCOL</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary-container": "#725e00",
+                "surface-bright": "#38393c",
+                "on-tertiary": "#3b2f00",
+                "secondary-fixed-dim": "#f9bd22",
+                "outline": "#849495",
+                "on-secondary-fixed": "#261a00",
+                "secondary": "#ffc640",
+                "outline-variant": "#3a494b",
+                "surface-container-lowest": "#0d0e10",
+                "surface-dim": "#121316",
+                "background": "#121316",
+                "on-surface-variant": "#b9cacb",
+                "on-primary-container": "#006a70",
+                "on-tertiary-fixed": "#221b00",
+                "surface-variant": "#343537",
+                "surface": "#121316",
+                "inverse-surface": "#e3e2e5",
+                "on-secondary-fixed-variant": "#5c4300",
+                "secondary-container": "#e3aa00",
+                "streak-red": "#FF0844",
+                "on-primary": "#00373a",
+                "glass-border": "rgba(226, 232, 240, 0.1)",
+                "surface-container-highest": "#343537",
+                "on-background": "#e3e2e5",
+                "on-primary-fixed": "#002022",
+                "on-error-container": "#ffdad6",
+                "surface-container": "#1f2022",
+                "on-secondary-container": "#5a4100",
+                "error-container": "#93000a",
+                "on-surface": "#e3e2e5",
+                "bronze-rank": "#CD7F32",
+                "primary-container": "#00f2fe",
+                "tertiary-container": "#fed83a",
+                "text-silver": "#E2E8F0",
+                "on-tertiary-fixed-variant": "#554500",
+                "on-primary-fixed-variant": "#004f53",
+                "on-error": "#690005",
+                "inverse-on-surface": "#2f3033",
+                "surface-container-high": "#292a2c",
+                "tertiary-fixed-dim": "#e8c423",
+                "tertiary": "#fff6e4",
+                "surface-container-low": "#1b1c1e",
+                "surface-gray": "#1A1C20",
+                "primary-fixed-dim": "#00dce6",
+                "on-secondary": "#402d00",
+                "tertiary-fixed": "#ffe173",
+                "secondary-fixed": "#ffdf9f",
+                "surface-tint": "#00dce6",
+                "neon-glow": "rgba(0, 242, 254, 0.3)",
+                "primary-fixed": "#6ff6ff",
+                "error": "#ffb4ab",
+                "inverse-primary": "#00696f",
+                "primary": "#e0fdff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "gutter": "16px",
+                "unit": "4px",
+                "container-max": "1280px",
+                "margin-mobile": "16px",
+                "margin-desktop": "64px"
+        },
+        "fontFamily": {
+                "headline-xl": [
+                        "Sora"
+                ],
+                "headline-lg-mobile": [
+                        "Sora"
+                ],
+                "label-mono": [
+                        "JetBrains Mono"
+                ],
+                "body-lg": [
+                        "Hanken Grotesk"
+                ],
+                "body-md": [
+                        "Hanken Grotesk"
+                ],
+                "headline-lg": [
+                        "Sora"
+                ],
+                "title-md": [
+                        "Sora"
+                ],
+                "stat-value": [
+                        "Sora"
+                ]
+        },
+        "fontSize": {
+                "headline-xl": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-mono": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "title-md": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "stat-value": [
+                        "24px",
+                        {
+                                "lineHeight": "24px",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "800"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Sora:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Cyberpunk Circuit Grid Texture */
+        .circuit-bg {
+            background-image: 
+                linear-gradient(to right, rgba(132, 148, 149, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(132, 148, 149, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased circuit-bg min-h-screen flex flex-col lg:flex-row">
+<!-- JSON Component: SideNavBar (Hidden on Mobile, Visible on LG Desktop) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-screen z-40 bg-surface-container/80 backdrop-blur-lg w-64 border-r border-glass-border shadow-2xl transition-colors duration-300">
+<div class="p-6 border-b border-glass-border flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-variant rounded-lg flex items-center justify-center border border-primary-fixed/20">
+<img class="w-8 h-8 object-cover rounded-md" data-alt="A highly detailed, neon-lit cyberpunk guild emblem featuring a stylized geometric tower crest in electric blue and chrome, set against a dark obsidian background, sharp focus, 8k resolution, cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlXbmyge1fz_f7bffSiCFVtW43ZXhDGMjA4VE4cDsb0TtvhKHDgLkBA-DQn57N5jeiRPKCfilNe95rkiTK-VDE4alhjbS2y2OpcXLsNKyQjCpr1uvFeqqsc4d4__g3xA0Zs5B0HgtkBDMUU3g-eRYnmaw0-7N8-4Ixzgk5MDxRlT4VBKrCbNBZfi3JfIuJqlM18LZjt_O3ImKfu2BvV5ZvBJrdpXFafvrgvZTJI52YS5GgXq7C_w3m"/>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary font-bold text-[20px] leading-tight tracking-tight">LATINO</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant text-[10px]">Protocol v2.4</p>
+</div>
+</div>
+<div class="flex-1 py-6 px-4 space-y-2">
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="terminal">terminal</span>
+<span class="font-label-mono text-[14px]">Operaciones</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-mono text-[14px]">Ranking</span>
+</a>
+<!-- Active -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 text-primary border-l-4 border-primary font-bold cursor-pointer transition-colors duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-label-mono text-[14px]">Academia</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="menu_book">menu_book</span>
+<span class="font-label-mono text-[14px]">Códice</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="radio">radio</span>
+<span class="font-label-mono text-[14px]">Radio</span>
+</a>
+</div>
+<div class="p-6 border-t border-glass-border">
+<button class="w-full bg-streak-red/10 text-streak-red border border-streak-red/30 py-2 rounded-md font-label-mono text-label-mono uppercase hover:bg-streak-red/20 transition-colors">BATTLE MODE</button>
+<div class="mt-6 flex justify-around">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#"><span class="material-symbols-outlined" data-icon="settings">settings</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300" href="#"><span class="material-symbols-outlined" data-icon="logout">logout</span></a>
+</div>
+</div>
+</nav>
+<!-- Main Wrapper (Offset for SideNav on Desktop) -->
+<div class="flex-1 lg:ml-64 flex flex-col min-h-screen relative pb-20 lg:pb-0">
+<!-- JSON Component: TopNavBar (Visible on Mobile/Tablet, Hidden on Desktop to favor SideNav, or keep it per instructions. I will keep it but hide on lg) -->
+<nav class="lg:hidden fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 max-w-container-max mx-auto bg-surface/60 backdrop-blur-xl docked full-width top-0 border-b border-glass-border shadow-[0_0_15px_rgba(0,242,254,0.1)] transition-all duration-200">
+<div class="font-headline-lg text-headline-lg font-extrabold text-primary tracking-tighter">LATINO TOWER PROTOCOL</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all duration-200 active:scale-95" data-icon="settings">settings</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all duration-200 active:scale-95" data-icon="notifications">notifications</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-container-max mx-auto px-gutter md:px-margin-desktop py-8 pt-24 lg:pt-8 relative z-10">
+<!-- Page Header -->
+<header class="mb-12">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="hub">hub</span>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Academia <span class="text-primary glow-text">Táctica</span></h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Centro de recursos operacionales. Accede a las bases de datos de inteligencia, simuladores de combate y manuales de campo.</p>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+<!-- Main Modules Area -->
+<div class="xl:col-span-8 flex flex-col gap-6">
+<!-- Module 1: Tier List de Laboratorios -->
+<div class="group bg-surface-gray/60 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-6 relative overflow-hidden transition-all duration-300 hover:border-primary/40 hover:shadow-[0px_0px_15px_rgba(0,242,254,0.15)] hover:bg-surface-gray/80">
+<div class="absolute top-4 left-4 font-label-mono text-[10px] text-outline/50 uppercase">MOD-01 // DATABASE</div>
+<div class="mt-6 flex flex-col md:flex-row gap-6 items-start">
+<div class="w-16 h-16 rounded-lg bg-surface-container border border-outline-variant/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-4xl text-trophy-gold" data-icon="table_chart">table_chart</span>
+</div>
+<div class="flex-1">
+<h2 class="font-title-md text-title-md text-on-surface mb-2 group-hover:text-primary transition-colors">Tier List de Laboratorios</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Accede a la matriz de datos actualizada en tiempo real (Excel). Clasificación táctica de todos los nodos de investigación disponibles.</p>
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<button class="bg-primary text-on-primary font-label-mono text-label-mono px-6 py-2.5 rounded hover:bg-primary/90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+                                        ACCEDER ARCHIVO
+                                    </button>
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-[12px] text-primary">SYNC:</span>
+<div class="flex gap-1">
+<!-- Retro Power Meter Style -->
+<div class="w-3 h-4 bg-primary rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+<div class="w-3 h-4 bg-primary rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+<div class="w-3 h-4 bg-primary rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+<div class="w-3 h-4 bg-primary rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+<div class="w-3 h-4 bg-primary rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+</div>
+<span class="font-label-mono text-[12px] text-primary">100%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Module 2: Guía Definitiva -->
+<div class="group bg-surface-gray/60 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-6 relative overflow-hidden transition-all duration-300 hover:border-secondary-container/40 hover:shadow-[0px_0px_15px_rgba(227,170,0,0.15)] hover:bg-surface-gray/80">
+<div class="absolute top-4 left-4 font-label-mono text-[10px] text-outline/50 uppercase">MOD-02 // TACTICS</div>
+<div class="mt-6 flex flex-col md:flex-row gap-6 items-start">
+<div class="w-16 h-16 rounded-lg bg-surface-container border border-outline-variant/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-4xl text-secondary-fixed" data-icon="menu_book">menu_book</span>
+</div>
+<div class="flex-1">
+<h2 class="font-title-md text-title-md text-on-surface mb-2 group-hover:text-secondary-fixed transition-colors">Guía Definitiva de Kairo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">El compendio oficial de estrategias, formaciones y análisis de armamento. Lectura obligatoria para ascensos de rango.</p>
+<button class="border border-secondary-fixed/50 text-secondary-fixed font-label-mono text-label-mono px-6 py-2.5 rounded hover:bg-secondary-fixed/10 hover:border-secondary-fixed transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_stories">auto_stories</span>
+                                    LEER CÓDICE
+                                </button>
+</div>
+</div>
+</div>
+<!-- Module 3: Simulador MyTower -->
+<div class="group bg-surface-gray/60 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-6 relative overflow-hidden transition-all duration-300 hover:border-streak-red/40 hover:shadow-[0px_0px_15px_rgba(255,8,68,0.15)] hover:bg-surface-gray/80">
+<div class="absolute top-4 left-4 font-label-mono text-[10px] text-outline/50 uppercase">MOD-03 // VIRTUAL ENV</div>
+<!-- Subtle background glow for simulator -->
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-streak-red/10 blur-[50px] rounded-full pointer-events-none"></div>
+<div class="mt-6 flex flex-col md:flex-row gap-6 items-start relative z-10">
+<div class="w-16 h-16 rounded-lg bg-surface-container border border-outline-variant/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-4xl text-streak-red" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<div class="flex-1">
+<h2 class="font-title-md text-title-md text-on-surface mb-2 group-hover:text-streak-red transition-colors">Simulador MyTower</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Entorno de pruebas holográfico. Calcula sinergias, optimiza construcciones y simula escenarios de asedio antes de desplegar recursos reales.</p>
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<button class="bg-surface-bright border border-outline-variant text-on-surface font-label-mono text-label-mono px-6 py-2.5 rounded hover:bg-surface-container-high hover:border-streak-red/50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_arrow">play_arrow</span>
+                                        INICIAR SIMULACIÓN
+                                    </button>
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded border border-outline-variant/30">
+<span class="material-symbols-outlined text-[14px] text-green-400" data-icon="check_circle">check_circle</span>
+<span class="font-label-mono text-[12px] text-on-surface-variant">Servidor en línea</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Area -->
+<div class="xl:col-span-4">
+<aside class="bg-surface-container-lowest/80 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-6 sticky top-24">
+<div class="flex items-center gap-3 mb-6 border-b border-outline-variant/20 pb-4">
+<span class="material-symbols-outlined text-primary" data-icon="radar">radar</span>
+<h3 class="font-title-md text-title-md text-on-surface">Tips para Reclutas</h3>
+</div>
+<div class="space-y-4">
+<!-- Tip 1 -->
+<div class="flex gap-3 group">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Consulta la <strong>Tier List</strong> antes de invertir materiales raros en un laboratorio nuevo.</p>
+</div>
+<!-- Tip 2 -->
+<div class="flex gap-3 group">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">La <strong>Guía de Kairo</strong> se actualiza con cada parche del juego. Revisa las notas de versión al final del documento.</p>
+</div>
+<!-- Tip 3 -->
+<div class="flex gap-3 group">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Usa el <strong>Simulador</strong> para probar configuraciones de defensa contra el meta actual de asedios.</p>
+</div>
+<!-- Tip 4 -->
+<div class="flex gap-3 group">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">¿Problemas técnicos? Contacta al canal de <span class="text-primary font-label-mono text-[12px]">#soporte-tech</span> en Discord.</p>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- JSON Component: Footer -->
+<footer class="w-full max-w-container-max mx-auto py-8 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-surface-container-lowest border-t border-outline-variant/30 z-10 relative">
+<div class="font-label-mono text-label-mono text-on-surface font-black">
+                © 2024 LATINO TOWER PROTOCOL // ENCRYPTED ACCESS
+            </div>
+<div class="flex gap-6">
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Terminals</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Support</a>
+</div>
+</footer>
+<!-- JSON Component: BottomNavBar (Visible on Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 pb-safe bg-surface-dim/90 backdrop-blur-2xl border-t border-glass-border shadow-[0_-5px_20px_rgba(0,0,0,0.5)] rounded-t-full transition-all duration-300">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary/5 scale-110 transition-transform duration-300 px-4 py-2 rounded-full" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-mono text-[10px] mt-1">Ranking</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary drop-shadow-[0_0_5px_rgba(0,242,254,0.8)] active:bg-primary/5 scale-110 transition-transform duration-300 px-4 py-2 rounded-full" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-label-mono text-[10px] mt-1">Academia</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary/5 scale-110 transition-transform duration-300 px-4 py-2 rounded-full" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="menu_book">menu_book</span>
+<span class="font-label-mono text-[10px] mt-1">Códice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-primary/5 scale-110 transition-transform duration-300 px-4 py-2 rounded-full" href="#">
+<span class="material-symbols-outlined text-[24px]" data-icon="radio">radio</span>
+<span class="font-label-mono text-[10px] mt-1">Radio</span>
+</a>
+</nav>
+</div>
+</body></html>

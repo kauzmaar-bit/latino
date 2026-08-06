@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Radio La Cantina - LATINO TOWER PROTOCOL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&amp;family=JetBrains+Mono:wght@500&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-tertiary-container": "#725e00",
+                "surface-bright": "#38393c",
+                "on-tertiary": "#3b2f00",
+                "secondary-fixed-dim": "#f9bd22",
+                "outline": "#849495",
+                "on-secondary-fixed": "#261a00",
+                "secondary": "#ffc640",
+                "outline-variant": "#3a494b",
+                "surface-container-lowest": "#0d0e10",
+                "surface-dim": "#121316",
+                "background": "#121316",
+                "on-surface-variant": "#b9cacb",
+                "on-primary-container": "#006a70",
+                "on-tertiary-fixed": "#221b00",
+                "surface-variant": "#343537",
+                "surface": "#121316",
+                "inverse-surface": "#e3e2e5",
+                "on-secondary-fixed-variant": "#5c4300",
+                "secondary-container": "#e3aa00",
+                "streak-red": "#FF0844",
+                "on-primary": "#00373a",
+                "glass-border": "rgba(226, 232, 240, 0.1)",
+                "surface-container-highest": "#343537",
+                "on-background": "#e3e2e5",
+                "on-primary-fixed": "#002022",
+                "on-error-container": "#ffdad6",
+                "surface-container": "#1f2022",
+                "on-secondary-container": "#5a4100",
+                "error-container": "#93000a",
+                "on-surface": "#e3e2e5",
+                "bronze-rank": "#CD7F32",
+                "primary-container": "#00f2fe",
+                "tertiary-container": "#fed83a",
+                "text-silver": "#E2E8F0",
+                "on-tertiary-fixed-variant": "#554500",
+                "on-primary-fixed-variant": "#004f53",
+                "on-error": "#690005",
+                "inverse-on-surface": "#2f3033",
+                "surface-container-high": "#292a2c",
+                "tertiary-fixed-dim": "#e8c423",
+                "tertiary": "#fff6e4",
+                "surface-container-low": "#1b1c1e",
+                "surface-gray": "#1A1C20",
+                "primary-fixed-dim": "#00dce6",
+                "on-secondary": "#402d00",
+                "tertiary-fixed": "#ffe173",
+                "secondary-fixed": "#ffdf9f",
+                "surface-tint": "#00dce6",
+                "neon-glow": "rgba(0, 242, 254, 0.3)",
+                "primary-fixed": "#6ff6ff",
+                "error": "#ffb4ab",
+                "inverse-primary": "#00696f",
+                "primary": "#e0fdff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "gutter": "16px",
+                "unit": "4px",
+                "container-max": "1280px",
+                "margin-mobile": "16px",
+                "margin-desktop": "64px"
+        },
+        "fontFamily": {
+                "headline-xl": [
+                        "Sora"
+                ],
+                "headline-lg-mobile": [
+                        "Sora"
+                ],
+                "label-mono": [
+                        "JetBrains Mono"
+                ],
+                "body-lg": [
+                        "Hanken Grotesk"
+                ],
+                "body-md": [
+                        "Hanken Grotesk"
+                ],
+                "headline-lg": [
+                        "Sora"
+                ],
+                "title-md": [
+                        "Sora"
+                ],
+                "stat-value": [
+                        "Sora"
+                ]
+        },
+        "fontSize": {
+                "headline-xl": [
+                        "48px",
+                        {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "label-mono": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "title-md": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "stat-value": [
+                        "24px",
+                        {
+                                "lineHeight": "24px",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "800"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body {
+            background-color: #121316;
+            background-image: linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #e3e2e5;
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+        .module-card {
+            background: rgba(31, 32, 34, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.1);
+        }
+        .module-card:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-background flex flex-col min-h-screen relative overflow-x-hidden pt-20">
+<!-- TopNavBar (Web) -->
+<header class="hidden md:flex bg-surface/60 backdrop-blur-xl fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 border-b border-glass-border shadow-[0_0_15px_rgba(0,242,254,0.1)]">
+<div class="flex items-center gap-8">
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-primary tracking-tighter uppercase">LATINO TOWER PROTOCOL</h1>
+<nav class="flex gap-6">
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all duration-200 active:scale-95" href="#">Ranking</a>
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all duration-200 active:scale-95" href="#">Academia</a>
+<a class="font-title-md text-title-md text-on-surface-variant hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all duration-200 active:scale-95" href="#">Códice</a>
+<a class="font-title-md text-title-md text-primary border-b-2 border-primary pb-1 duration-200 active:scale-95" href="#">Radio</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary font-bold hover:text-primary hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all duration-200 active:scale-95">LOGIN</button>
+<button class="text-primary hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all duration-200 active:scale-95"><span class="material-symbols-outlined">settings</span></button>
+<button class="text-primary hover:drop-shadow-[0_0_8px_rgba(0,242,254,0.5)] transition-all duration-200 active:scale-95"><span class="material-symbols-outlined">notifications</span></button>
+</div>
+</header>
+<div class="flex flex-1 relative">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col bg-surface-container/80 backdrop-blur-lg fixed left-0 top-0 h-full w-64 border-r border-glass-border shadow-2xl py-8 pt-28 z-40">
+<div class="mb-8 px-4">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full mb-4 flex items-center justify-center overflow-hidden border border-glass-border">
+<img class="object-cover w-full h-full" data-alt="User Profile Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Z35MZ4is8dTFEkmNDWc_9nKF1RM9Fc51xPxcQ-T1Ufwt4xzX8OuCN0twidksiQpafgi79DiRLUobi5cB5qYvvO2c9GnzLzhwO_Wx6WtWLNZGRycHPWKGkP9DsjNt7sq9sJVocLHmhkPBqAtBhHwiwhkIRDm4k_7YuEvQiATrR-GtYDbWB0P74TfSDoegkQx9i9dEbGCLDbh2g0f6VlvUhwjvkAEaE8WbSHZteBZGihDmLAz7Oomr"/>
+</div>
+<h2 class="font-label-mono text-label-mono text-primary font-bold">OPERATOR_01</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-1">Elite Rank</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="px-4 py-3 flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-mono text-label-mono">Dashboard</span>
+</a>
+<a class="px-4 py-3 flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">military_tech</span>
+<span class="font-label-mono text-label-mono">Operaciones</span>
+</a>
+<a class="px-4 py-3 flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-mono text-label-mono">Arsenal</span>
+</a>
+<a class="bg-primary/10 text-primary border-l-4 border-primary px-4 py-3 flex items-center gap-3 transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="font-label-mono text-label-mono">Comunicaciones</span>
+</a>
+<a class="px-4 py-3 flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label-mono text-label-mono">Seguridad</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-2 px-4 mb-4">
+<a class="px-4 py-3 flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-mono text-label-mono">Ajustes</span>
+</a>
+<a class="px-4 py-3 flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant/50 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-mono text-label-mono">Salir</span>
+</a>
+</div>
+<div class="px-4">
+<button class="w-full py-3 border border-streak-red text-streak-red font-label-mono text-label-mono hover:bg-streak-red hover:text-white rounded transition-colors uppercase tracking-widest text-center shadow-[0_0_10px_rgba(255,8,68,0.2)]">
+                BATTLE MODE
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop md:ml-64 grid grid-cols-1 md:grid-cols-12 gap-gutter md:gap-6 relative z-10 w-full max-w-container-max mx-auto">
+<!-- Hero / Transmitting Live -->
+<section class="col-span-1 md:col-span-12 module-card rounded-xl p-6 relative overflow-hidden group bg-surface-container/80 backdrop-blur-2xl border-glass-border">
+<div class="absolute top-0 right-0 p-2 opacity-30 group-hover:opacity-100 transition-opacity">
+<span class="font-label-mono text-label-mono text-primary text-xs">MOD_ID: TX-01</span>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start relative z-10">
+<div class="w-full md:w-1/3 aspect-square bg-surface-container-highest rounded-lg overflow-hidden border border-glass-border relative">
+<img class="object-cover w-full h-full opacity-80 mix-blend-screen" data-alt="A highly detailed, cinematic shot of a female cyberpunk DJ or communications operative, named Dalia, in a dark, high-tech broadcasting booth. She is wearing illuminated headphones and adjusting complex mixing equipment. The lighting is low-key, dominated by cyan and neon-blue screens casting a cool glow on her face. The style is hyper-realistic futuristic digital art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJV_3dUPiKvy54br61lBozLQy3mjMQME0iel_bvPi0kAeeqdbsjlz5s_WPBHIGQE6WD6VfUExRRZH1oUu_Z3lnDht2pYRfxyYIZlXOqskDL42J5eCIPsHnkOF2LRl9L6vbQMHVOsK5ps-gmVw2iZMzz8rliWjZu8o69WEpGf79iWpFttHy53M3RyyG_0ksY1bmI12lJT7vjyIKzi1Z7Bl56RS6Efb6Yk9awCw7I8jD1MOcDFVxkM4p"/>
+<div class="absolute top-4 left-4 bg-streak-red text-white font-label-mono text-xs px-2 py-1 rounded animate-pulse shadow-[0_0_10px_rgba(255,8,68,0.5)]">
+<span class="material-symbols-outlined text-[12px] align-middle mr-1">fiber_manual_record</span>LIVE
+                        </div>
+</div>
+<div class="w-full md:w-2/3 flex flex-col justify-between h-full">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-2 neon-glow tracking-tighter uppercase">Radio La Cantina</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 border-l-2 border-primary pl-4">Host: Operative Dalia // Securing frequency 108.9 MHz.</p>
+</div>
+<!-- Audio Player Module -->
+<div class="bg-surface/50 backdrop-blur-md p-4 rounded border border-glass-border shadow-inner">
+<div class="flex justify-between items-end mb-2">
+<div>
+<h3 class="font-title-md text-title-md text-primary">Noche de Cacería</h3>
+<p class="font-label-mono text-label-mono text-outline">DJ Ghost</p>
+</div>
+<span class="font-label-mono text-label-mono text-primary">01:24 / 04:55</span>
+</div>
+<!-- Fake Waveform -->
+<div class="h-12 w-full flex items-end justify-between gap-1 mb-4 opacity-70">
+<!-- Generate some random bars -->
+<script>
+                                    for(let i=0; i<40; i++) {
+                                        const h = Math.random() * 100;
+                                        document.write(`<div class="w-full bg-primary rounded-t-sm" style="height: ${h}%"></div>`);
+                                    }
+                                </script>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<button class="text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-3xl">skip_previous</span></button>
+<button class="w-12 h-12 bg-primary text-on-primary-fixed rounded-full flex items-center justify-center hover:bg-primary-fixed shadow-[0_0_15px_rgba(0,242,254,0.4)] transition-all">
+<span class="material-symbols-outlined text-3xl">pause</span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-3xl">skip_next</span></button>
+</div>
+<div class="flex items-center gap-2 w-1/3">
+<span class="material-symbols-outlined text-outline text-sm">volume_down</span>
+<div class="h-1 bg-surface-container-highest flex-1 rounded-full overflow-hidden border border-glass-border/50">
+<div class="h-full bg-primary w-2/3 shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+</div>
+<span class="material-symbols-outlined text-outline text-sm">volume_up</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/30 w-full py-8 mt-auto z-50 relative md:ml-64">
+<div class="w-full max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center px-margin-desktop">
+<p class="font-label-mono text-label-mono text-on-surface font-black opacity-80 hover:opacity-100 mb-4 md:mb-0 text-center md:text-left">© 2024 LATINO TOWER PROTOCOL // ENCRYPTED ACCESS</p>
+<div class="flex gap-6">
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Terminals</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

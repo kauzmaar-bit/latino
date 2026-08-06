@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Radio La Cantina - SIGINT TACTICAL COMMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&amp;family=JetBrains+Mono:wght@500&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#121316",
+                        "surface-container": "#1f2022",
+                        "on-surface": "#e3e2e5",
+                        "surface-tint": "#00dce6",
+                        "secondary-fixed": "#ffdf9f",
+                        "tertiary-fixed-dim": "#e8c423",
+                        "surface": "#121316",
+                        "on-primary": "#00373a",
+                        "secondary": "#ffc640",
+                        "on-secondary-fixed": "#261a00",
+                        "neon-blue": "#00F2FE",
+                        "on-primary-fixed": "#002022",
+                        "primary": "#e0fdff",
+                        "on-tertiary-fixed": "#221b00",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "surface-container-lowest": "#0d0e10",
+                        "primary-fixed-dim": "#00dce6",
+                        "outline": "#849495",
+                        "on-background": "#e3e2e5",
+                        "tertiary-fixed": "#ffe173",
+                        "surface-bright": "#38393c",
+                        "trophy-gold": "#FBBF24",
+                        "surface-container-low": "#1b1c1e",
+                        "surface-container-highest": "#343537",
+                        "inverse-on-surface": "#2f3033",
+                        "outline-variant": "#3a494b",
+                        "surface-container-high": "#292a2c",
+                        "on-primary-container": "#006a70",
+                        "inverse-surface": "#e3e2e5",
+                        "surface-gray": "#1A1C20",
+                        "text-silver": "#E2E8F0",
+                        "on-primary-fixed-variant": "#004f53",
+                        "streak-red": "#FF0844",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#fed83a",
+                        "primary-fixed": "#6ff6ff",
+                        "error-container": "#93000a",
+                        "surface-dim": "#121316",
+                        "on-tertiary": "#3b2f00",
+                        "on-secondary": "#402d00",
+                        "secondary-container": "#e3aa00",
+                        "surface-variant": "#343537",
+                        "on-surface-variant": "#b9cacb",
+                        "primary-container": "#00f2fe",
+                        "on-tertiary-container": "#725e00",
+                        "inverse-primary": "#00696f",
+                        "secondary-fixed-dim": "#f9bd22",
+                        "on-error": "#690005",
+                        "tertiary": "#fff6e4",
+                        "on-secondary-container": "#5a4100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Sora"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-xl": ["Sora"],
+                        "stat-value": ["Sora"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "stat-value": ["24px", { "lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "800" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #121316;
+            background-image: linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #e3e2e5;
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+        .module-card {
+            background: rgba(31, 32, 34, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.1);
+        }
+        .module-card:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.1);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-background flex flex-col min-h-screen relative overflow-x-hidden">
+<!-- TopNavBar (Web) -->
+<header class="hidden md:flex bg-background/60 backdrop-blur-xl docked full-width top-0 border-b border-outline-variant/30 shadow-[0_0_15px_rgba(0,242,254,0.15)] flex justify-between items-center w-full px-margin-desktop py-4 z-50 sticky">
+<div class="flex items-center gap-8">
+<h1 class="font-headline-lg text-neon-blue uppercase tracking-widest neon-glow">SIGINT_TACTICAL_COMMS</h1>
+<nav class="flex gap-6">
+<a class="font-title-md text-title-md text-neon-blue font-bold border-b-2 border-neon-blue pb-1" href="#">TRANSMISSIONS</a>
+<a class="font-title-md text-title-md text-on-surface-variant font-medium hover:text-neon-blue transition-colors duration-300" href="#">ARCHIVE</a>
+<a class="font-title-md text-title-md text-on-surface-variant font-medium hover:text-neon-blue transition-colors duration-300" href="#">OPERATIVES</a>
+<a class="font-title-md text-title-md text-on-surface-variant font-medium hover:text-neon-blue transition-colors duration-300" href="#">ENCRYPTION</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-neon-blue hover:text-neon-blue transition-colors duration-300 active:scale-95 transition-transform"><span class="material-symbols-outlined">settings</span></button>
+<button class="text-neon-blue hover:text-neon-blue transition-colors duration-300 active:scale-95 transition-transform"><span class="material-symbols-outlined">notifications</span></button>
+</div>
+</header>
+<div class="flex flex-1">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col bg-surface-container/80 backdrop-blur-lg docked full-height left-0 w-80 border-r border-outline-variant/20 shadow-lg py-8 px-4 h-full sticky top-[73px]">
+<div class="mb-8">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full mb-4 flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img class="object-cover w-full h-full" data-alt="A stylized, cyberpunk-themed digital avatar portrait of a female operative named Dalia. She wears tactical headset gear glowing with cyan neon lights. The background is a dark, tech-infused command center. The style is gritty, high-contrast digital art, suitable for a dark operations interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Z35MZ4is8dTFEkmNDWc_9nKF1RM9Fc51xPxcQ-T1Ufwt4xzX8OuCN0twidksiQpafgi79DiRLUobi5cB5qYvvO2c9GnzLzhwO_Wx6WtWLNZGRycHPWKGkP9DsjNt7sq9sJVocLHmhkPBqAtBhHwiwhkIRDm4k_7YuEvQiATrR-GtYDbWB0P74TfSDoegkQx9i9dEbGCLDbh2g0f6VlvUhwjvkAEaE8WbSHZteBZGihDmLAz7Oomr"/>
+</div>
+<h2 class="font-label-mono text-label-mono text-primary-container">OPERATIVE: DALIA</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-1">STATUS: BROADCASTING_LIVE</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">radio</span>
+<span class="font-label-mono text-label-mono">Dalia_Live</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all hover:text-on-surface hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-mono text-label-mono">Tactical_Brief</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all hover:text-on-surface hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-mono text-label-mono">Radio_Log</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all hover:text-on-surface hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-mono text-label-mono">Unit_Status</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all hover:text-on-surface hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">tune</span>
+<span class="font-label-mono text-label-mono">Settings</span>
+</a>
+</nav>
+<button class="mt-auto w-full py-3 border border-streak-red text-streak-red font-label-mono text-label-mono hover:bg-streak-red hover:text-on-primary rounded transition-colors uppercase tracking-widest text-center shadow-[0_0_10px_rgba(255,8,68,0.2)]">
+                EMERGENCY_OVERRIDE
+            </button>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter md:gap-6 relative z-10 w-full max-w-container-max mx-auto">
+<!-- Hero / Transmitting Live -->
+<section class="col-span-1 md:col-span-12 module-card rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 opacity-30 group-hover:opacity-100 transition-opacity">
+<span class="font-label-mono text-label-mono text-neon-blue text-xs">MOD_ID: TX-01</span>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-center md:items-start relative z-10">
+<div class="w-full md:w-1/3 aspect-square bg-surface-container-highest rounded-lg overflow-hidden border border-outline-variant/30 relative">
+<img class="object-cover w-full h-full opacity-80 mix-blend-screen" data-alt="A highly detailed, cinematic shot of a female cyberpunk DJ or communications operative, named Dalia, in a dark, high-tech broadcasting booth. She is wearing illuminated headphones and adjusting complex mixing equipment. The lighting is low-key, dominated by cyan and neon-blue screens casting a cool glow on her face. The style is hyper-realistic futuristic digital art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJV_3dUPiKvy54br61lBozLQy3mjMQME0iel_bvPi0kAeeqdbsjlz5s_WPBHIGQE6WD6VfUExRRZH1oUu_Z3lnDht2pYRfxyYIZlXOqskDL42J5eCIPsHnkOF2LRl9L6vbQMHVOsK5ps-gmVw2iZMzz8rliWjZu8o69WEpGf79iWpFttHy53M3RyyG_0ksY1bmI12lJT7vjyIKzi1Z7Bl56RS6Efb6Yk9awCw7I8jD1MOcDFVxkM4p"/>
+<div class="absolute top-4 left-4 bg-streak-red text-white font-label-mono text-xs px-2 py-1 rounded animate-pulse shadow-[0_0_10px_rgba(255,8,68,0.5)]">
+<span class="material-symbols-outlined text-[12px] align-middle mr-1">fiber_manual_record</span>LIVE
+                        </div>
+</div>
+<div class="w-full md:w-2/3 flex flex-col justify-between h-full">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-2 neon-glow tracking-tighter uppercase">Radio La Cantina</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 border-l-2 border-neon-blue pl-4">Host: Operative Dalia // Securing frequency 108.9 MHz.</p>
+</div>
+<!-- Audio Player Module -->
+<div class="bg-surface-container-lowest/80 p-4 rounded border border-outline-variant/20 shadow-inner">
+<div class="flex justify-between items-end mb-2">
+<div>
+<h3 class="font-title-md text-title-md text-primary-container">Noche de Cacería</h3>
+<p class="font-label-mono text-label-mono text-outline">DJ Ghost</p>
+</div>
+<span class="font-label-mono text-label-mono text-neon-blue">01:24 / 04:55</span>
+</div>
+<!-- Fake Waveform -->
+<div class="h-12 w-full flex items-end justify-between gap-1 mb-4 opacity-70">
+<!-- Generate some random bars -->
+<script>
+                                    for(let i=0; i<40; i++) {
+                                        const h = Math.random() * 100;
+                                        document.write(`<div class="w-full bg-neon-blue rounded-t-sm" style="height: ${h}%"></div>`);
+                                    }
+                                </script>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex gap-4">
+<button class="text-on-surface hover:text-neon-blue transition-colors"><span class="material-symbols-outlined text-3xl">skip_previous</span></button>
+<button class="w-12 h-12 bg-neon-blue text-on-primary rounded-full flex items-center justify-center hover:bg-primary-fixed shadow-[0_0_15px_rgba(0,242,254,0.4)] transition-all">
+<span class="material-symbols-outlined text-3xl">pause</span>
+</button>
+<button class="text-on-surface hover:text-neon-blue transition-colors"><span class="material-symbols-outlined text-3xl">skip_next</span></button>
+</div>
+<div class="flex items-center gap-2 w-1/3">
+<span class="material-symbols-outlined text-outline text-sm">volume_down</span>
+<div class="h-1 bg-surface-container-highest flex-1 rounded-full overflow-hidden">
+<div class="h-full bg-neon-blue w-2/3 shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+</div>
+<span class="material-symbols-outlined text-outline text-sm">volume_up</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest docked full-width bottom-0 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center px-margin-desktop py-8 z-50 relative mt-auto">
+<p class="font-label-mono text-label-mono text-outline opacity-80 hover:opacity-100 mb-4 md:mb-0">© 2024 TOWER_GUILD_OPS. ALL ENCRYPTION MANDATORY.</p>
+<div class="flex gap-6">
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">PROTOCOL_ALPHA</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">SQUAD_LINKS</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">OPS_RESOURCES</a>
+</div>
+</footer>
+</body></html>

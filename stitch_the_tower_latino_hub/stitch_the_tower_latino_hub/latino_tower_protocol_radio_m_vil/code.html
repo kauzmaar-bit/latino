@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Radio La Cantina - Mobile Player</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#121316",
+                    "surface-container": "#1f2022",
+                    "on-surface": "#e3e2e5",
+                    "surface-tint": "#00dce6",
+                    "secondary-fixed": "#ffdf9f",
+                    "tertiary-fixed-dim": "#e8c423",
+                    "surface": "#121316",
+                    "on-primary": "#00373a",
+                    "secondary": "#ffc640",
+                    "on-secondary-fixed": "#261a00",
+                    "neon-blue": "#00F2FE",
+                    "on-primary-fixed": "#002022",
+                    "primary": "#e0fdff",
+                    "on-tertiary-fixed": "#221b00",
+                    "on-tertiary-fixed-variant": "#554500",
+                    "surface-container-lowest": "#0d0e10",
+                    "primary-fixed-dim": "#00dce6",
+                    "outline": "#849495",
+                    "on-background": "#e3e2e5",
+                    "tertiary-fixed": "#ffe173",
+                    "surface-bright": "#38393c",
+                    "trophy-gold": "#FBBF24",
+                    "surface-container-low": "#1b1c1e",
+                    "surface-container-highest": "#343537",
+                    "inverse-on-surface": "#2f3033",
+                    "outline-variant": "#3a494b",
+                    "surface-container-high": "#292a2c",
+                    "on-primary-container": "#006a70",
+                    "inverse-surface": "#e3e2e5",
+                    "surface-gray": "#1A1C20",
+                    "text-silver": "#E2E8F0",
+                    "on-primary-fixed-variant": "#004f53",
+                    "streak-red": "#FF0844",
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "error": "#ffb4ab",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-container": "#fed83a",
+                    "primary-fixed": "#6ff6ff",
+                    "error-container": "#93000a",
+                    "surface-dim": "#121316",
+                    "on-tertiary": "#3b2f00",
+                    "on-secondary": "#402d00",
+                    "secondary-container": "#e3aa00",
+                    "surface-variant": "#343537",
+                    "on-surface-variant": "#b9cacb",
+                    "primary-container": "#00f2fe",
+                    "on-tertiary-container": "#725e00",
+                    "inverse-primary": "#00696f",
+                    "secondary-fixed-dim": "#f9bd22",
+                    "on-error": "#690005",
+                    "tertiary": "#fff6e4",
+                    "on-secondary-container": "#5a4100"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "body-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "title-md": [
+                            "Sora"
+                    ],
+                    "label-mono": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-lg-mobile": [
+                            "Sora"
+                    ],
+                    "headline-lg": [
+                            "Sora"
+                    ],
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-xl": [
+                            "Sora"
+                    ],
+                    "stat-value": [
+                            "Sora"
+                    ]
+            },
+            "fontSize": {
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "title-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-mono": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-xl": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "stat-value": [
+                            "24px",
+                            {
+                                    "lineHeight": "24px",
+                                    "letterSpacing": "0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        /* Cyberpunk Grid Background Overlay */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        
+        /* Neon Glow Effect */
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(0,242,254,0.3);
+        }
+        
+        /* Progress Bar Segments */
+        .progress-segment {
+            transition: background-color 0.3s ease;
+        }
+        
+        /* Pulse Animation for Live Indicator */
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(255, 8, 68, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 8, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 8, 68, 0); }
+        }
+        .animate-pulse-red {
+            animation: pulse-red 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#07080A] text-on-surface font-body-md min-h-screen flex flex-col antialiased relative overflow-hidden">
+<!-- Background Grid Texture -->
+<div class="absolute inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+<!-- Mobile Header -->
+<header class="w-full px-margin-mobile py-4 flex justify-between items-center z-10 sticky top-0 bg-background/80 backdrop-blur-md">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-neon-blue font-bold text-2xl" style="font-variation-settings: 'FILL' 1;">radio</span>
+<h1 class="font-headline-lg-mobile text-on-surface uppercase tracking-wider">LA CANTINA</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container border border-outline-variant/30 text-on-surface hover:text-neon-blue transition-colors">
+<span class="material-symbols-outlined">cast</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col w-full max-w-[600px] mx-auto px-margin-mobile pt-6 pb-24 z-10 relative space-y-8 overflow-y-auto">
+<!-- Album Art / Immersive Player Area -->
+<div class="relative w-full aspect-square rounded-xl overflow-hidden border border-outline-variant/30 shadow-[0_0_30px_rgba(0,0,0,0.8)] flex-shrink-0">
+<!-- Background Image -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A dark, cinematic cyberpunk DJ booth setting. The scene is illuminated by striking neon blue and deep red lights reflecting off metallic surfaces and sound equipment. A mysterious figure, 'Dalia', is partially visible operating a complex digital mixing console with glowing buttons and holographic interfaces. The atmosphere is tense, underground, and highly technical, blending high-end gaming guild aesthetics with gritty futuristic radio broadcast elements." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCyxlfaIyqEV-i5jnCfwes7rEDSyjA_hoNZRGp8dvptx9X8qCZvazA1bHkCnMGuoEP9XEPCyhdEbTkVyDJ7XjV_-DbcvJED8leOKFVKoLYTAJaDrIdR0YsMSDsasrdqMvWy7ChGdsxBu2h5YbCMuABgfh6dLj9um6XvGZMKK_g0TYSVCsSluJpcdUJoteALrdMhk_I-RBSPZNbpimLy0wjS_iyp2WznT3ZQxdK4pcv23Zgn_ZzcRdQm')"></div>
+<!-- Gradient Overlay for Contrast -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#07080A] via-transparent to-transparent"></div>
+<!-- Live Status Indicator -->
+<div class="absolute top-4 left-4 bg-surface-container/80 backdrop-blur-md border border-outline-variant/50 rounded-full px-3 py-1 flex items-center space-x-2 shadow-lg">
+<div class="w-2.5 h-2.5 rounded-full bg-streak-red animate-pulse-red"></div>
+<span class="font-label-mono text-label-mono text-on-surface tracking-wider">DALIA_LIVE</span>
+</div>
+<!-- Module ID (Corner) -->
+<div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-2 py-0.5 rounded font-label-mono text-[10px] text-neon-blue/70 border border-neon-blue/20">
+                MDL-77B
+            </div>
+</div>
+<!-- Track Info & Controls -->
+<div class="flex flex-col space-y-6">
+<!-- Metadata -->
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-label-mono text-label-mono text-neon-blue mb-1">CURRENT_TRANSMISSION</span>
+<h2 class="font-title-md text-title-md text-on-surface">Neon Syndicate Anthem</h2>
+<p class="font-body-md text-body-md text-outline">Operative Dalia Mix</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-outline hover:text-streak-red transition-colors">
+<span class="material-symbols-outlined text-3xl">favorite</span>
+</button>
+</div>
+<!-- Tactical Progress Bar -->
+<div class="flex flex-col space-y-2">
+<div class="flex justify-between font-label-mono text-[12px] text-outline">
+<span>02:14</span>
+<span>-01:46</span>
+</div>
+<!-- Segmented Bar -->
+<div class="w-full h-3 bg-surface-container-highest rounded flex space-x-[2px] overflow-hidden p-[2px]">
+<!-- Active Segments -->
+<div class="h-full bg-neon-blue rounded-[1px] flex-1"></div>
+<div class="h-full bg-neon-blue rounded-[1px] flex-1"></div>
+<div class="h-full bg-neon-blue rounded-[1px] flex-1"></div>
+<div class="h-full bg-neon-blue rounded-[1px] flex-1"></div>
+<div class="h-full bg-neon-blue rounded-[1px] flex-1"></div>
+<div class="h-full bg-neon-blue rounded-[1px] flex-1"></div>
+<!-- Current Position Highlight -->
+<div class="h-full bg-primary rounded-[1px] flex-1 shadow-[0_0_8px_#00F2FE]"></div>
+<!-- Inactive Segments -->
+<div class="h-full bg-surface-container rounded-[1px] flex-1"></div>
+<div class="h-full bg-surface-container rounded-[1px] flex-1"></div>
+<div class="h-full bg-surface-container rounded-[1px] flex-1"></div>
+<div class="h-full bg-surface-container rounded-[1px] flex-1"></div>
+<div class="h-full bg-surface-container rounded-[1px] flex-1"></div>
+</div>
+</div>
+<!-- Playback Controls -->
+<div class="flex justify-between items-center px-4">
+<button class="text-outline hover:text-neon-blue transition-colors">
+<span class="material-symbols-outlined text-3xl">shuffle</span>
+</button>
+<button class="text-on-surface hover:text-neon-blue transition-colors">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">skip_previous</span>
+</button>
+<!-- Main Play/Pause Button -->
+<button class="w-20 h-20 rounded-full bg-neon-blue text-background flex items-center justify-center neon-glow hover:scale-105 transition-transform active:scale-95 shadow-[0_0_20px_rgba(0,242,254,0.4)]">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">pause</span>
+</button>
+<button class="text-on-surface hover:text-neon-blue transition-colors">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">skip_next</span>
+</button>
+<button class="text-outline hover:text-neon-blue transition-colors">
+<span class="material-symbols-outlined text-3xl">repeat</span>
+</button>
+</div>
+</div>
+<!-- Up Next (Próximamente) List -->
+<div class="bg-surface-container/60 backdrop-blur-lg border border-outline-variant/20 rounded-xl p-4 flex flex-col space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant/20 pb-2">
+<h3 class="font-label-mono text-label-mono text-on-surface uppercase">Próximamente</h3>
+<span class="font-label-mono text-[10px] text-neon-blue border border-neon-blue/30 px-2 py-0.5 rounded">QUEUE_03</span>
+</div>
+<div class="flex flex-col space-y-3">
+<!-- Queue Item 1 -->
+<div class="flex items-center space-x-3 group cursor-pointer">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center text-outline group-hover:text-neon-blue group-hover:border group-hover:border-neon-blue/50 transition-all">
+<span class="material-symbols-outlined text-xl">music_note</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="font-title-md text-[14px] font-semibold text-on-surface">Data Breach Lullaby</span>
+<span class="font-body-md text-[12px] text-outline">Glitch Mob</span>
+</div>
+<span class="font-label-mono text-[12px] text-outline">04:12</span>
+</div>
+<!-- Queue Item 2 -->
+<div class="flex items-center space-x-3 group cursor-pointer">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center text-outline group-hover:text-neon-blue group-hover:border group-hover:border-neon-blue/50 transition-all">
+<span class="material-symbols-outlined text-xl">music_note</span>
+</div>
+<div class="flex-1 flex flex-col">
+<span class="font-title-md text-[14px] font-semibold text-on-surface">Mainframe Override</span>
+<span class="font-body-md text-[12px] text-outline">System.Error</span>
+</div>
+<span class="font-label-mono text-[12px] text-outline">03:45</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<!-- Applying styling based on BottomNavBar logic, suppressing on desktop -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface-container/90 backdrop-blur-xl border-t border-outline-variant/20 pb-safe">
+<div class="flex justify-around items-center px-4 py-3">
+<!-- Inactive Tab -->
+<a class="flex flex-col items-center justify-center w-16 space-y-1 text-on-surface-variant group" href="#">
+<div class="px-4 py-1 rounded-full group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">radar</span>
+</div>
+<span class="font-label-mono text-[10px] uppercase">Radar</span>
+</a>
+<!-- Active Tab (Radio/Audio context implies Dalia_Live or equivalent) -->
+<a class="flex flex-col items-center justify-center w-16 space-y-1 text-neon-blue" href="#">
+<div class="px-4 py-1 rounded-full bg-primary-container/20 border border-neon-blue/30 shadow-[0_0_10px_rgba(0,242,254,0.2)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">radio</span>
+</div>
+<span class="font-label-mono text-[10px] uppercase font-bold">Cantina</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex flex-col items-center justify-center w-16 space-y-1 text-on-surface-variant group" href="#">
+<div class="px-4 py-1 rounded-full group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">groups</span>
+</div>
+<span class="font-label-mono text-[10px] uppercase">Squad</span>
+</a>
+<!-- Inactive Tab -->
+<a class="flex flex-col items-center justify-center w-16 space-y-1 text-on-surface-variant group" href="#">
+<div class="px-4 py-1 rounded-full group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</div>
+<span class="font-label-mono text-[10px] uppercase">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Safe area padding for newer mobile devices -->
+<style>
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+    </style>
+</body></html>

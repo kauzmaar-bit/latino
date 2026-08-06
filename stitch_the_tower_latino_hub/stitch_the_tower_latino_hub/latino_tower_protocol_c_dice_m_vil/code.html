@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Códice Táctico - Latino Tower Protocol</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&amp;family=Hanken+Grotesk:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "streak-red": "#FF0844",
+                        "inverse-on-surface": "#2f3033",
+                        "tertiary-container": "#fed83a",
+                        "surface-container": "#1f2022",
+                        "trophy-gold": "#FBBF24",
+                        "on-error": "#690005",
+                        "surface": "#121316",
+                        "secondary-fixed": "#ffdf9f",
+                        "primary-fixed": "#6ff6ff",
+                        "inverse-surface": "#e3e2e5",
+                        "surface-dim": "#121316",
+                        "on-tertiary-fixed": "#221b00",
+                        "surface-container-highest": "#343537",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "outline-variant": "#3a494b",
+                        "outline": "#849495",
+                        "surface-container-lowest": "#0d0e10",
+                        "surface-container-low": "#1b1c1e",
+                        "surface-gray": "#1A1C20",
+                        "primary-container": "#00f2fe",
+                        "primary": "#e0fdff",
+                        "surface-variant": "#343537",
+                        "surface-container-high": "#292a2c",
+                        "secondary-container": "#e3aa00",
+                        "text-silver": "#E2E8F0",
+                        "primary-fixed-dim": "#00dce6",
+                        "on-secondary-fixed": "#261a00",
+                        "on-primary-container": "#006a70",
+                        "background": "#121316",
+                        "tertiary-fixed-dim": "#e8c423",
+                        "secondary-fixed-dim": "#f9bd22",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#b9cacb",
+                        "on-tertiary-container": "#725e00",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#004f53",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#5a4100",
+                        "neon-blue": "#00F2FE",
+                        "on-primary-fixed": "#002022",
+                        "tertiary": "#fff6e4",
+                        "on-background": "#e3e2e5",
+                        "surface-bright": "#38393c",
+                        "surface-tint": "#00dce6",
+                        "on-tertiary": "#3b2f00",
+                        "inverse-primary": "#00696f",
+                        "secondary": "#ffc640",
+                        "on-surface": "#e3e2e5",
+                        "on-secondary": "#402d00",
+                        "on-primary": "#00373a",
+                        "tertiary-fixed": "#ffe173"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.125rem",
+                        lg: "0.25rem",
+                        xl: "0.5rem",
+                        full: "0.75rem"
+                    },
+                    spacing: {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "gutter": "16px",
+                        "unit": "4px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Sora"],
+                        "headline-xl": ["Sora"],
+                        "title-md": ["Sora"],
+                        "stat-value": ["Sora"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Sora"],
+                        "label-mono": ["JetBrains Mono"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+                        "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "title-md": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "stat-value": ["24px", { lineHeight: "24px", letterSpacing: "0.02em", fontWeight: "800" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+                        "label-mono": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #07080A;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glass-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.1);
+        }
+        .glow-active {
+            box-shadow: 0px 0px 15px rgba(0, 242, 254, 0.3);
+            border-color: rgba(0, 242, 254, 0.5);
+        }
+        .search-input:focus {
+            border-bottom-color: #00f2fe;
+            box-shadow: 0 1px 0 0 #00f2fe;
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased min-h-screen flex flex-col pb-20 md:pb-0">
+<!-- TopNavBar (Mobile Adaptation) -->
+<header class="bg-surface/60 backdrop-blur-md w-full z-50 flex justify-between items-center px-gutter py-4 border-b border-outline-variant/10 shadow-[0px_0px_15px_rgba(0,242,254,0.3)] sticky top-0">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-black tracking-tighter text-primary-container">LATINO TOWER PROTOCOL</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim hover:text-primary-container transition-colors cursor-pointer" data-icon="account_circle">account_circle</span>
+<span class="material-symbols-outlined text-primary-fixed-dim hover:text-primary-container transition-colors cursor-pointer" data-icon="settings">settings</span>
+</div>
+</header>
+<main class="flex-1 px-margin-mobile py-6 flex flex-col gap-6 max-w-container-max mx-auto w-full">
+<!-- Header & Search -->
+<div class="flex flex-col gap-4">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Códice Táctico</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Glosario de términos operativos</p>
+</div>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant ml-2 pointer-events-none" data-icon="search">search</span>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/30 text-on-surface font-label-mono text-label-mono py-3 pl-10 pr-4 focus:ring-0 search-input transition-colors placeholder:text-on-surface-variant/50" placeholder="&gt; Buscar término..." type="text"/>
+</div>
+</div>
+<!-- Dictionary List -->
+<div class="flex flex-col gap-4" id="dictionary-list">
+<!-- Item 1 -->
+<div class="glass-card rounded-lg p-4 cursor-pointer hover:border-primary-fixed/30 transition-colors" onclick="this.classList.toggle('glow-active')">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono text-primary-fixed-dim bg-primary-fixed-dim/10 px-2 py-1 rounded">AoE</span>
+<span class="font-label-mono text-[10px] text-outline">MOD-01</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-1">Area of Effect</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Ataques o habilidades que afectan una zona específica en lugar de un solo objetivo. Crucial para control de masas en asedios.</p>
+</div>
+<!-- Item 2 -->
+<div class="glass-card rounded-lg p-4 cursor-pointer hover:border-primary-fixed/30 transition-colors" onclick="this.classList.toggle('glow-active')">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono text-primary-fixed-dim bg-primary-fixed-dim/10 px-2 py-1 rounded">DPS</span>
+<span class="font-label-mono text-[10px] text-outline">MOD-02</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-1">Damage Per Second</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Métrica de daño infligido. También se refiere a las unidades especializadas en causar la mayor cantidad de daño posible.</p>
+</div>
+<!-- Item 3 -->
+<div class="glass-card rounded-lg p-4 cursor-pointer hover:border-primary-fixed/30 transition-colors" onclick="this.classList.toggle('glow-active')">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono text-primary-fixed-dim bg-primary-fixed-dim/10 px-2 py-1 rounded">CC</span>
+<span class="font-label-mono text-label-mono text-outline">MOD-03</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-1">Crowd Control</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Habilidades que limitan el movimiento o las acciones del enemigo. Aturdimientos, ralentizaciones, etc.</p>
+</div>
+<!-- Item 4 -->
+<div class="glass-card rounded-lg p-4 cursor-pointer hover:border-primary-fixed/30 transition-colors" onclick="this.classList.toggle('glow-active')">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-mono text-label-mono text-primary-fixed-dim bg-primary-fixed-dim/10 px-2 py-1 rounded">Aggro</span>
+<span class="font-label-mono text-[10px] text-outline">MOD-04</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-1">Aggravation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">El nivel de amenaza que un jugador genera. Los tanques deben mantener el 'aggro' para proteger a las unidades más débiles.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full bg-surface-container-lowest/90 backdrop-blur-md border-t border-outline-variant/10 flex justify-around items-center py-3 px-2 z-50 md:hidden">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary-fixed-dim transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:-translate-y-1 transition-transform" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-mono text-[10px]">Ranking</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary-fixed-dim transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:-translate-y-1 transition-transform" data-icon="school">school</span>
+<span class="font-label-mono text-[10px]">Academia</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary-fixed-dim group relative" href="#">
+<div class="absolute inset-0 bg-primary-fixed-dim/10 rounded-full blur-md -z-10"></div>
+<span class="material-symbols-outlined text-2xl drop-shadow-[0_0_8px_rgba(0,242,254,0.5)]" data-icon="menu_book" data-weight="fill" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-mono text-[10px] font-bold">Códice</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary-fixed-dim transition-colors group" href="#">
+<span class="material-symbols-outlined text-2xl group-hover:-translate-y-1 transition-transform" data-icon="radio">radio</span>
+<span class="font-label-mono text-[10px]">Radio</span>
+</a>
+</nav>
+</body></html>

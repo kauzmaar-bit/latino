@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE TOWER - Player Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400..800&amp;family=JetBrains+Mono:wght@400..700&amp;family=Hanken+Grotesk:wght@400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#5a4100",
+                      "on-surface": "#e3e2e5",
+                      "trophy-gold": "#FBBF24",
+                      "tertiary-container": "#fed83a",
+                      "primary-container": "#00f2fe",
+                      "surface-container": "#1f2022",
+                      "inverse-surface": "#e3e2e5",
+                      "on-background": "#e3e2e5",
+                      "neon-blue": "#00F2FE",
+                      "surface-bright": "#38393c",
+                      "secondary-fixed": "#ffdf9f",
+                      "on-primary-fixed": "#002022",
+                      "on-error": "#690005",
+                      "surface-dim": "#121316",
+                      "tertiary": "#fff6e4",
+                      "on-surface-variant": "#b9cacb",
+                      "on-secondary-fixed": "#261a00",
+                      "on-tertiary": "#3b2f00",
+                      "surface-variant": "#343537",
+                      "inverse-on-surface": "#2f3033",
+                      "secondary-container": "#e3aa00",
+                      "on-primary-container": "#006a70",
+                      "error": "#ffb4ab",
+                      "on-secondary": "#402d00",
+                      "background": "#121316",
+                      "text-silver": "#E2E8F0",
+                      "secondary": "#ffc640",
+                      "on-tertiary-fixed": "#221b00",
+                      "on-secondary-fixed-variant": "#5c4300",
+                      "primary-fixed-dim": "#00dce6",
+                      "streak-red": "#FF0844",
+                      "surface-container-highest": "#343537",
+                      "surface-container-lowest": "#0d0e10",
+                      "tertiary-fixed": "#ffe173",
+                      "outline-variant": "#3a494b",
+                      "on-primary": "#00373a",
+                      "surface": "#121316",
+                      "surface-container-high": "#292a2c",
+                      "primary-fixed": "#6ff6ff",
+                      "on-tertiary-container": "#725e00",
+                      "on-tertiary-fixed-variant": "#554500",
+                      "surface-container-low": "#1b1c1e",
+                      "primary": "#e0fdff",
+                      "surface-tint": "#00dce6",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#00696f",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#f9bd22",
+                      "outline": "#849495",
+                      "on-primary-fixed-variant": "#004f53",
+                      "surface-gray": "#1A1C20",
+                      "tertiary-fixed-dim": "#e8c423"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "title-md": [
+                              "Sora"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg": [
+                              "Sora"
+                      ],
+                      "headline-xl": [
+                              "Sora"
+                      ],
+                      "headline-lg-mobile": [
+                              "Sora"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "stat-value": [
+                              "Sora"
+                      ]
+              },
+              "fontSize": {
+                      "title-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "stat-value": [
+                              "24px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #07080A;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+            color: #e3e2e5;
+        }
+        
+        .glass-panel {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.1);
+        }
+        
+        .glass-panel:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+        
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        .stat-card-red {
+            border-left: 4px solid #FF0844;
+        }
+
+        .stat-card-blue {
+            border-left: 4px solid #00F2FE;
+        }
+        
+        .stat-card-gold {
+            border-left: 4px solid #FBBF24;
+        }
+
+        /* Scanline effect */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: rgba(0, 242, 254, 0.1);
+            opacity: 0.4;
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        @keyframes scan {
+            0% { top: -10px; }
+            100% { top: 100vh; }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<div class="scanline"></div>
+<!-- TopNavBar -->
+<nav class="bg-surface-dim/80 backdrop-blur-xl fixed top-0 w-full border-b border-outline-variant/20 shadow-[0_0_15px_rgba(0,242,254,0.15)] transition-all duration-300 ease-out z-40 hidden md:flex justify-between items-center px-margin-desktop h-16">
+<div class="flex items-center gap-8">
+<span class="font-headline-lg text-headline-lg tracking-tighter text-neon-blue uppercase neon-glow">THE TOWER</span>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-neon-blue transition-colors font-title-md text-title-md" href="#">Ranking</a>
+<a class="text-on-surface-variant hover:text-neon-blue transition-colors font-title-md text-title-md" href="#">Academia</a>
+<a class="text-on-surface-variant hover:text-neon-blue transition-colors font-title-md text-title-md" href="#">Códice</a>
+<a class="text-on-surface-variant hover:text-neon-blue transition-colors font-title-md text-title-md" href="#">Radio</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-neon-blue transition-colors p-2 hover:bg-surface-bright/50 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-neon-blue border-b-2 border-neon-blue pb-1 p-2 hover:bg-surface-bright/50 rounded-full">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<aside class="bg-surface-container-lowest/90 backdrop-blur-lg fixed left-0 h-full w-64 border-r border-outline-variant/10 flex flex-col py-8 z-30 hidden lg:flex mt-16">
+<div class="px-6 mb-8 flex flex-col items-center">
+<div class="w-24 h-24 rounded-full bg-surface-variant border-2 border-neon-blue mb-4 overflow-hidden relative">
+<img alt="Tactical Avatar" class="w-full h-full object-cover" data-alt="A highly detailed close-up portrait of a cyberpunk operative avatar. The character wears tactical, matte black tactical gear with glowing electric blue accents. The background is a dark, out-of-focus server room, conveying a secretive, high-tech mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCitfW4fYz0xPfVa9tXQiuL4WDJoTLSXT-TW9Orj4h1lNXbCQkf7Ia6Jhg7G1yiU5Wc7zkxwTIn5AfjNgOB5L3GcYxnRyvyRnnEt001kX_DCr_4yUJ-XkpTtMMmgWOtSZAtplct9p5zzp7bUggl3-FS4vgLzuLLw6s0vAtMYTyeACR6cSPZzmNxW6RpMGINXatG3jqUkQimuCfhEMNWui3QWdvX5Qw-PXPrCdvLQ5Eh9k5Y3SRfIVEJ"/>
+<div class="absolute inset-0 border-2 border-neon-blue rounded-full shadow-[0_0_15px_rgba(0,242,254,0.5)] pointer-events-none"></div>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile text-neon-blue tracking-tight">OPERATIVE_01</h2>
+<p class="font-label-mono text-label-mono text-trophy-gold mt-1">Rank: Gold Tier</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2 px-4">
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 scale-95 active:scale-90 transition-all font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">terminal</span> Command
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg bg-primary-container/20 text-neon-blue border-l-4 border-neon-blue scale-95 active:scale-90 transition-all font-label-mono text-label-mono shadow-[inset_4px_0_0_rgba(0,242,254,1)]" href="#">
+<span class="material-symbols-outlined">query_stats</span> Evolution
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 scale-95 active:scale-90 transition-all font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">history_edu</span> Reliquias
+            </a>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant/30 scale-95 active:scale-90 transition-all font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">hub</span> Intel
+            </a>
+</nav>
+<div class="px-6 mt-auto flex flex-col gap-4">
+<button class="w-full py-3 bg-neon-blue text-surface-container-lowest font-label-mono text-label-mono font-bold rounded hover:bg-primary-fixed transition-colors">DECODE DATA</button>
+<div class="flex justify-between border-t border-outline-variant/30 pt-4">
+<button class="text-on-surface-variant hover:text-neon-blue transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-neon-blue transition-colors">
+<span class="material-symbols-outlined">contact_support</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 pt-24 pb-24 lg:pl-72 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full relative z-10">
+<!-- Dossier Header -->
+<header class="mb-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-6 border-b border-outline-variant/30 pb-6">
+<div>
+<p class="font-label-mono text-label-mono text-neon-blue mb-2 tracking-widest uppercase opacity-80">Expediente Oficial // Classified</p>
+<h1 class="font-headline-xl text-headline-xl text-on-surface neon-glow">GhostRider</h1>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low px-4 py-2 rounded border border-outline-variant/50">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-neon-blue"></span>
+</span>
+<span class="font-label-mono text-label-mono text-on-surface">STATUS: ONLINE</span>
+</div>
+</header>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+<!-- Left Column: Identity & Primary Stats -->
+<div class="xl:col-span-4 flex flex-col gap-6">
+<!-- ID Card -->
+<div class="glass-panel rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 font-label-mono text-[10px] text-outline-variant opacity-50">MOD-ID-77A</div>
+<div class="flex flex-col items-center text-center">
+<div class="w-32 h-32 rounded-full border-2 border-trophy-gold mb-4 relative p-1">
+<img alt="GhostRider Profile" class="w-full h-full rounded-full object-cover" data-alt="A tactical ID badge portrait of a cyberpunk operator. The face is partially obscured by a sleek, high-tech visor emitting a faint blue light. The background is a stark, gridded concrete wall. High contrast, cinematic lighting, gritty modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSwi_bWPUpN2N6zGPD2ERbgb0e7mZFy9k__hSxIK6Q6ZBJKyPPx3vhxyqo4nyOj16W8_4cwBi710177-xAtfhUNsp6c9jdWSx_Na-bsI1fKEB_-K1gbOiMgYcdCwl_MSXvVdC-LmmY0sCKq4Sffr5uwAGN3PEI0XBnYnI291zxlklmDLhAT2yu3fQoucjK_NJEmULZJhTls_LZjCplnKJCrOunHQpxC_bwdCw6VMG5AQuWamX3SwGJ"/>
+</div>
+<h3 class="font-headline-lg text-headline-lg-mobile text-on-surface mb-1">GhostRider</h3>
+<p class="font-label-mono text-label-mono text-trophy-gold bg-trophy-gold/10 px-3 py-1 rounded-full border border-trophy-gold/30">Diamante I</p>
+</div>
+<div class="mt-8 space-y-4">
+<div class="flex justify-between items-center border-b border-outline-variant/20 pb-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Guild</span>
+<span class="font-body-md text-body-md text-on-surface">Neon Vanguard</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/20 pb-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Join Date</span>
+<span class="font-body-md text-body-md text-on-surface">2023.11.04</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant/20 pb-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Role</span>
+<span class="font-body-md text-body-md text-neon-blue">Striker</span>
+</div>
+</div>
+</div>
+<!-- Combat Evolution Summary -->
+<div class="glass-panel rounded-xl p-6">
+<h3 class="font-title-md text-title-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-blue">timeline</span> Evolución General
+                    </h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Tower Ascension</span>
+<span class="font-label-mono text-label-mono text-neon-blue">Level 84</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden flex">
+<!-- Segmented progress bar -->
+<div class="h-full bg-neon-blue w-[84%] border-r border-background"></div>
+<div class="h-full bg-neon-blue/20 w-[16%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Combat Efficiency</span>
+<span class="font-label-mono text-label-mono text-streak-red">92%</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden flex">
+<div class="h-full bg-streak-red w-[92%] border-r border-background"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Detailed Metrics & Relics -->
+<div class="xl:col-span-8 flex flex-col gap-6">
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<!-- Metric 1 -->
+<div class="glass-panel rounded-xl p-5 stat-card-red flex flex-col justify-between h-32 hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Max Waves</span>
+<span class="material-symbols-outlined text-streak-red opacity-50">tsunami</span>
+</div>
+<div class="font-stat-value text-stat-value text-on-surface text-3xl">4,289</div>
+</div>
+<!-- Metric 2 -->
+<div class="glass-panel rounded-xl p-5 stat-card-gold flex flex-col justify-between h-32 hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Total Coins</span>
+<span class="material-symbols-outlined text-trophy-gold opacity-50">monetization_on</span>
+</div>
+<div class="font-stat-value text-stat-value text-on-surface text-3xl">12.5M</div>
+</div>
+<!-- Metric 3 -->
+<div class="glass-panel rounded-xl p-5 stat-card-blue flex flex-col justify-between h-32 hover:-translate-y-1 transition-transform">
+<div class="flex justify-between items-start">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase">Stone Yield</span>
+<span class="material-symbols-outlined text-neon-blue opacity-50">diamond</span>
+</div>
+<div class="font-stat-value text-stat-value text-on-surface text-3xl">8,402</div>
+</div>
+</div>
+<!-- Recent Activity Table -->
+<div class="glass-panel rounded-xl overflow-hidden flex-1">
+<div class="p-4 border-b border-outline-variant/30 bg-surface-container/50">
+<h3 class="font-title-md text-title-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">receipt_long</span> Registros de Combate
+                        </h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50 font-label-mono text-label-mono text-on-surface-variant">
+<th class="p-4 border-b border-outline-variant/20">Date</th>
+<th class="p-4 border-b border-outline-variant/20">Operation</th>
+<th class="p-4 border-b border-outline-variant/20">Waves</th>
+<th class="p-4 border-b border-outline-variant/20 text-right">Result</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-outline-variant/10 hover:bg-surface-variant/20 transition-colors">
+<td class="p-4 text-on-surface-variant">2024.03.15</td>
+<td class="p-4 text-on-surface">Sector 7 Sweep</td>
+<td class="p-4 text-neon-blue font-label-mono">150</td>
+<td class="p-4 text-right text-streak-red font-bold">WIPED</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-variant/20 transition-colors bg-white/[0.02]">
+<td class="p-4 text-on-surface-variant">2024.03.14</td>
+<td class="p-4 text-on-surface">Core Defense</td>
+<td class="p-4 text-neon-blue font-label-mono">210</td>
+<td class="p-4 text-right text-trophy-gold font-bold">VICTORY</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-variant/20 transition-colors">
+<td class="p-4 text-on-surface-variant">2024.03.12</td>
+<td class="p-4 text-on-surface">Resource Raid</td>
+<td class="p-4 text-neon-blue font-label-mono">85</td>
+<td class="p-4 text-right text-trophy-gold font-bold">EXTRACTED</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Reliquias Section -->
+<div class="glass-panel rounded-xl p-6">
+<h3 class="font-title-md text-title-md text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-trophy-gold">workspace_premium</span> Historial de Reliquias
+                    </h3>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<!-- Relic Item -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-4 flex flex-col items-center justify-center gap-3 hover:border-trophy-gold/50 hover:bg-surface-variant/30 transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-trophy-gold text-3xl">key</span>
+</div>
+<span class="font-label-mono text-[12px] text-on-surface text-center">Golden Key</span>
+</div>
+<!-- Relic Item -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-4 flex flex-col items-center justify-center gap-3 hover:border-neon-blue/50 hover:bg-surface-variant/30 transition-all group cursor-pointer">
+<div class="w-12 h-12 rounded bg-surface-container-highest flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-neon-blue text-3xl">memory</span>
+</div>
+<span class="font-label-mono text-[12px] text-on-surface text-center">Core Crystal</span>
+</div>
+<!-- Relic Item Empty Slot -->
+<div class="bg-surface-container-lowest border border-dashed border-outline-variant/20 rounded-lg p-4 flex flex-col items-center justify-center gap-3 opacity-50">
+<div class="w-12 h-12 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">lock</span>
+</div>
+<span class="font-label-mono text-[12px] text-on-surface-variant text-center">Undiscovered</span>
+</div>
+<!-- Relic Item Empty Slot -->
+<div class="bg-surface-container-lowest border border-dashed border-outline-variant/20 rounded-lg p-4 flex flex-col items-center justify-center gap-3 opacity-50">
+<div class="w-12 h-12 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl">lock</span>
+</div>
+<span class="font-label-mono text-[12px] text-on-surface-variant text-center">Undiscovered</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim w-full mt-auto border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center px-margin-desktop py-8 z-20 relative">
+<div class="font-title-md text-title-md text-neon-blue mb-4 md:mb-0">THE TOWER</div>
+<div class="font-label-mono text-label-mono text-trophy-gold mb-4 md:mb-0">© 2024 THE TOWER // SIGINT COMMAND</div>
+<div class="flex gap-6">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-neon-blue opacity-80 hover:opacity-100 transition-all" href="#">Discord</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-neon-blue opacity-80 hover:opacity-100 transition-all" href="#">Telegram</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-neon-blue opacity-80 hover:opacity-100 transition-all" href="#">GitHub</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-neon-blue opacity-80 hover:opacity-100 transition-all" href="#">Protocols</a>
+</div>
+</footer>
+</body></html>

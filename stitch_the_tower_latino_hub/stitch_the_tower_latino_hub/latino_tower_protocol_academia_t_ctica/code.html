@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academia Táctica | LATINO TOWER PROTOCOL</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#5c4300",
+                    "streak-red": "#FF0844",
+                    "inverse-on-surface": "#2f3033",
+                    "tertiary-container": "#fed83a",
+                    "surface-container": "#1f2022",
+                    "trophy-gold": "#FBBF24",
+                    "on-error": "#690005",
+                    "surface": "#121316",
+                    "secondary-fixed": "#ffdf9f",
+                    "primary-fixed": "#6ff6ff",
+                    "inverse-surface": "#e3e2e5",
+                    "surface-dim": "#121316",
+                    "on-tertiary-fixed": "#221b00",
+                    "surface-container-highest": "#343537",
+                    "on-tertiary-fixed-variant": "#554500",
+                    "outline-variant": "#3a494b",
+                    "outline": "#849495",
+                    "surface-container-lowest": "#0d0e10",
+                    "surface-container-low": "#1b1c1e",
+                    "surface-gray": "#1A1C20",
+                    "primary-container": "#00f2fe",
+                    "primary": "#e0fdff",
+                    "surface-variant": "#343537",
+                    "surface-container-high": "#292a2c",
+                    "secondary-container": "#e3aa00",
+                    "text-silver": "#E2E8F0",
+                    "primary-fixed-dim": "#00dce6",
+                    "on-secondary-fixed": "#261a00",
+                    "on-primary-container": "#006a70",
+                    "background": "#121316",
+                    "tertiary-fixed-dim": "#e8c423",
+                    "secondary-fixed-dim": "#f9bd22",
+                    "error-container": "#93000a",
+                    "on-surface-variant": "#b9cacb",
+                    "on-tertiary-container": "#725e00",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#004f53",
+                    "error": "#ffb4ab",
+                    "on-secondary-container": "#5a4100",
+                    "neon-blue": "#00F2FE",
+                    "on-primary-fixed": "#002022",
+                    "tertiary": "#fff6e4",
+                    "on-background": "#e3e2e5",
+                    "surface-bright": "#38393c",
+                    "surface-tint": "#00dce6",
+                    "on-tertiary": "#3b2f00",
+                    "inverse-primary": "#00696f",
+                    "secondary": "#ffc640",
+                    "on-surface": "#e3e2e5",
+                    "on-secondary": "#402d00",
+                    "on-primary": "#00373a",
+                    "tertiary-fixed": "#ffe173"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "container-max": "1280px",
+                    "gutter": "16px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Sora", "sans-serif"],
+                    "headline-xl": ["Sora", "sans-serif"],
+                    "title-md": ["Sora", "sans-serif"],
+                    "stat-value": ["Sora", "sans-serif"],
+                    "body-md": ["Hanken Grotesk", "sans-serif"],
+                    "body-lg": ["Hanken Grotesk", "sans-serif"],
+                    "headline-lg-mobile": ["Sora", "sans-serif"],
+                    "label-mono": ["JetBrains Mono", "monospace"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                    "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                    "title-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                    "stat-value": ["24px", { "lineHeight": "24px", "letterSpacing": "0.02em", "fontWeight": "800" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                    "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                    "label-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }]
+            }
+          },
+        },
+      }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Sora:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Cyberpunk Circuit Grid Texture */
+        .circuit-bg {
+            background-image: 
+                linear-gradient(to right, rgba(132, 148, 149, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(132, 148, 149, 0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased circuit-bg min-h-screen flex flex-col lg:flex-row">
+<!-- JSON Component: SideNavBar (Hidden on Mobile, Visible on LG Desktop) -->
+<nav class="hidden lg:flex flex-col fixed left-0 top-0 h-full z-40 bg-surface-container-lowest/80 backdrop-blur-xl docked left-0 h-full w-64 border-r border-outline-variant/10 shadow-2xl shadow-black">
+<div class="p-6 border-b border-outline-variant/10 flex items-center gap-4">
+<div class="w-10 h-10 bg-surface-variant rounded-lg flex items-center justify-center border border-primary-fixed/20">
+<img class="w-8 h-8 object-cover rounded-md" data-alt="A highly detailed, neon-lit cyberpunk guild emblem featuring a stylized geometric tower crest in electric blue and chrome, set against a dark obsidian background, sharp focus, 8k resolution, cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlXbmyge1fz_f7bffSiCFVtW43ZXhDGMjA4VE4cDsb0TtvhKHDgLkBA-DQn57N5jeiRPKCfilNe95rkiTK-VDE4alhjbS2y2OpcXLsNKyQjCpr1uvFeqqsc4d4__g3xA0Zs5B0HgtkBDMUU3g-eRYnmaw0-7N8-4Ixzgk5MDxRlT4VBKrCbNBZfi3JfIuJqlM18LZjt_O3ImKfu2BvV5ZvBJrdpXFafvrgvZTJI52YS5GgXq7C_w3m"/>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary-container text-[20px] leading-tight tracking-tight">LATINO</h1>
+<p class="font-label-mono text-label-mono text-on-surface-variant text-[10px]">Protocol v2.4</p>
+</div>
+</div>
+<div class="flex-1 py-6 px-4 space-y-2">
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary-fixed-dim hover:bg-surface-variant/20 hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="terminal">terminal</span>
+<span class="font-title-md text-[14px]">Operaciones</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary-fixed-dim hover:bg-surface-variant/20 hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="leaderboard">leaderboard</span>
+<span class="font-title-md text-[14px]">Ranking</span>
+</a>
+<!-- Active -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container/10 text-primary-fixed-dim border-r-4 border-primary-fixed-dim font-bold cursor-pointer active:scale-98" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-title-md text-[14px]">Academia</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary-fixed-dim hover:bg-surface-variant/20 hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="menu_book">menu_book</span>
+<span class="font-title-md text-[14px]">Códice</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary-fixed-dim hover:bg-surface-variant/20 hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="radio">radio</span>
+<span class="font-title-md text-[14px]">Radio</span>
+</a>
+</div>
+<div class="p-6 border-t border-outline-variant/10">
+<button class="w-full bg-streak-red/10 text-streak-red border border-streak-red/30 py-2 rounded-md font-label-mono text-label-mono uppercase hover:bg-streak-red/20 transition-colors">Modo Batalla</button>
+<div class="mt-6 flex justify-around">
+<a class="text-on-surface-variant hover:text-primary-fixed-dim" href="#"><span class="material-symbols-outlined" data-icon="help">help</span></a>
+<a class="text-on-surface-variant hover:text-primary-fixed-dim" href="#"><span class="material-symbols-outlined" data-icon="settings">settings</span></a>
+</div>
+</div>
+</nav>
+<!-- Main Wrapper (Offset for SideNav on Desktop) -->
+<div class="flex-1 lg:ml-64 flex flex-col min-h-screen relative">
+<!-- JSON Component: TopNavBar (Visible on Mobile/Tablet, Hidden on Desktop to favor SideNav, or keep it per instructions. I will keep it but hide on lg) -->
+<nav class="lg:hidden fixed top-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-surface/60 backdrop-blur-md docked full-width top-0 border-b border-outline-variant/10 shadow-[0px_0px_15px_rgba(0,242,254,0.3)]">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-black tracking-tighter text-primary-container">LATINO TOWER PROTOCOL</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer transition-all duration-300 ease-in-out active:scale-95" data-icon="account_circle">account_circle</span>
+<span class="material-symbols-outlined text-primary-fixed-dim cursor-pointer transition-all duration-300 ease-in-out active:scale-95" data-icon="settings">settings</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-container-max mx-auto px-gutter md:px-margin-desktop py-8 pt-24 lg:pt-8 relative z-10">
+<!-- Page Header -->
+<header class="mb-12">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary-fixed text-3xl" data-icon="hub">hub</span>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Academia <span class="text-primary-container glow-text">Táctica</span></h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Centro de recursos operacionales. Accede a las bases de datos de inteligencia, simuladores de combate y manuales de campo.</p>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+<!-- Main Modules Area -->
+<div class="xl:col-span-8 flex flex-col gap-6">
+<!-- Module 1: Tier List de Laboratorios -->
+<div class="group bg-surface-gray/60 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-6 relative overflow-hidden transition-all duration-300 hover:border-primary-container/40 hover:shadow-[0px_0px_15px_rgba(0,242,254,0.15)] hover:bg-surface-gray/80">
+<div class="absolute top-4 left-4 font-label-mono text-[10px] text-outline/50 uppercase">MOD-01 // DATABASE</div>
+<div class="mt-6 flex flex-col md:flex-row gap-6 items-start">
+<div class="w-16 h-16 rounded-lg bg-surface-container border border-outline-variant/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-4xl text-trophy-gold" data-icon="table_chart">table_chart</span>
+</div>
+<div class="flex-1">
+<h2 class="font-title-md text-title-md text-on-surface mb-2 group-hover:text-primary-container transition-colors">Tier List de Laboratorios</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Accede a la matriz de datos actualizada en tiempo real (Excel). Clasificación táctica de todos los nodos de investigación disponibles.</p>
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<button class="bg-primary-container text-on-primary-container font-label-mono text-label-mono px-6 py-2.5 rounded hover:bg-primary-fixed-dim transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+                                        ACCEDER ARCHIVO
+                                    </button>
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-[12px] text-primary-fixed-dim">SYNC:</span>
+<div class="flex gap-1">
+<!-- Retro Power Meter Style -->
+<div class="w-3 h-4 bg-primary-fixed-dim rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+<div class="w-3 h-4 bg-primary-fixed-dim rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+<div class="w-3 h-4 bg-primary-fixed-dim rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+<div class="w-3 h-4 bg-primary-fixed-dim rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+<div class="w-3 h-4 bg-primary-fixed-dim rounded-sm shadow-[0_0_5px_rgba(0,242,254,0.8)]"></div>
+</div>
+<span class="font-label-mono text-[12px] text-primary-fixed-dim">100%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Module 2: Guía Definitiva -->
+<div class="group bg-surface-gray/60 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-6 relative overflow-hidden transition-all duration-300 hover:border-secondary-container/40 hover:shadow-[0px_0px_15px_rgba(227,170,0,0.15)] hover:bg-surface-gray/80">
+<div class="absolute top-4 left-4 font-label-mono text-[10px] text-outline/50 uppercase">MOD-02 // TACTICS</div>
+<div class="mt-6 flex flex-col md:flex-row gap-6 items-start">
+<div class="w-16 h-16 rounded-lg bg-surface-container border border-outline-variant/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-4xl text-secondary-fixed" data-icon="menu_book">menu_book</span>
+</div>
+<div class="flex-1">
+<h2 class="font-title-md text-title-md text-on-surface mb-2 group-hover:text-secondary-fixed transition-colors">Guía Definitiva de Kairo</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">El compendio oficial de estrategias, formaciones y análisis de armamento. Lectura obligatoria para ascensos de rango.</p>
+<button class="border border-secondary-fixed/50 text-secondary-fixed font-label-mono text-label-mono px-6 py-2.5 rounded hover:bg-secondary-fixed/10 hover:border-secondary-fixed transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_stories">auto_stories</span>
+                                    LEER CÓDICE
+                                </button>
+</div>
+</div>
+</div>
+<!-- Module 3: Simulador MyTower -->
+<div class="group bg-surface-gray/60 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-6 relative overflow-hidden transition-all duration-300 hover:border-streak-red/40 hover:shadow-[0px_0px_15px_rgba(255,8,68,0.15)] hover:bg-surface-gray/80">
+<div class="absolute top-4 left-4 font-label-mono text-[10px] text-outline/50 uppercase">MOD-03 // VIRTUAL ENV</div>
+<!-- Subtle background glow for simulator -->
+<div class="absolute -bottom-10 -right-10 w-48 h-48 bg-streak-red/10 blur-[50px] rounded-full pointer-events-none"></div>
+<div class="mt-6 flex flex-col md:flex-row gap-6 items-start relative z-10">
+<div class="w-16 h-16 rounded-lg bg-surface-container border border-outline-variant/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-4xl text-streak-red" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<div class="flex-1">
+<h2 class="font-title-md text-title-md text-on-surface mb-2 group-hover:text-streak-red transition-colors">Simulador MyTower</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Entorno de pruebas holográfico. Calcula sinergias, optimiza construcciones y simula escenarios de asedio antes de desplegar recursos reales.</p>
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<button class="bg-surface-bright border border-outline-variant text-on-surface font-label-mono text-label-mono px-6 py-2.5 rounded hover:bg-surface-container-high hover:border-streak-red/50 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_arrow">play_arrow</span>
+                                        INICIAR SIMULACIÓN
+                                    </button>
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded border border-outline-variant/30">
+<span class="material-symbols-outlined text-[14px] text-green-400" data-icon="check_circle">check_circle</span>
+<span class="font-label-mono text-[12px] text-on-surface-variant">Servidor en línea</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Area -->
+<div class="xl:col-span-4">
+<aside class="bg-surface-container-lowest/80 backdrop-blur-xl border border-outline-variant/20 rounded-xl p-6 sticky top-24">
+<div class="flex items-center gap-3 mb-6 border-b border-outline-variant/20 pb-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="radar">radar</span>
+<h3 class="font-title-md text-title-md text-on-surface">Tips para Reclutas</h3>
+</div>
+<div class="space-y-4">
+<!-- Tip 1 -->
+<div class="flex gap-3 group">
+<span class="material-symbols-outlined text-primary-container text-[18px] mt-0.5 group-hover:text-primary-fixed transition-colors" data-icon="chevron_right">chevron_right</span>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Consulta la <strong>Tier List</strong> antes de invertir materiales raros en un laboratorio nuevo.</p>
+</div>
+<!-- Tip 2 -->
+<div class="flex gap-3 group">
+<span class="material-symbols-outlined text-primary-container text-[18px] mt-0.5 group-hover:text-primary-fixed transition-colors" data-icon="chevron_right">chevron_right</span>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">La <strong>Guía de Kairo</strong> se actualiza con cada parche del juego. Revisa las notas de versión al final del documento.</p>
+</div>
+<!-- Tip 3 -->
+<div class="flex gap-3 group">
+<span class="material-symbols-outlined text-primary-container text-[18px] mt-0.5 group-hover:text-primary-fixed transition-colors" data-icon="chevron_right">chevron_right</span>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">Usa el <strong>Simulador</strong> para probar configuraciones de defensa contra el meta actual de asedios.</p>
+</div>
+<!-- Tip 4 -->
+<div class="flex gap-3 group">
+<span class="material-symbols-outlined text-primary-container text-[18px] mt-0.5 group-hover:text-primary-fixed transition-colors" data-icon="chevron_right">chevron_right</span>
+<p class="font-body-md text-body-md text-on-surface-variant group-hover:text-on-surface transition-colors">¿Problemas técnicos? Contacta al canal de <span class="text-primary-fixed-dim font-label-mono text-[12px]">#soporte-tech</span> en Discord.</p>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- JSON Component: Footer -->
+<footer class="w-full py-8 px-gutter flex flex-col md:flex-row justify-between items-center gap-4 mt-auto bg-surface-container-lowest border-t border-outline-variant/10 z-10 relative">
+<div class="font-label-mono text-label-mono text-on-surface-variant">
+                LATINO TOWER PROTOCOL © 2024 | TACTICAL OPS DIVISION
+            </div>
+<div class="flex gap-6">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container underline transition-all opacity-80 hover:opacity-100" href="#">Discord</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container underline transition-all opacity-80 hover:opacity-100" href="#">Telegram</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container underline transition-all opacity-80 hover:opacity-100" href="#">Contribuir</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary-container underline transition-all opacity-80 hover:opacity-100" href="#">Soporte</a>
+</div>
+</footer>
+</div>
+</body></html>
