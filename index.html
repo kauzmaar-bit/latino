@@ -1346,7 +1346,8 @@ body {
 
             const idEl = document.getElementById('modalPlayerId');
             if(idEl) {
-                idEl.innerText = 'ID: ' + (typeof playerIDs !== 'undefined' ? (playerIDs[playerName] || 'TOWER-000000') : 'TOWER-000000');
+                const pid = (typeof playerIDs !== 'undefined' ? (playerIDs[playerName] || 'TOWER-000000') : 'TOWER-000000');
+                idEl.innerHTML = `ID: <span class="select-all cursor-text text-white font-bold px-1 rounded hover:bg-white/10 transition-colors" title="Haz clic para seleccionar">${pid}</span>`;
             }
 
             const img = document.getElementById('modalImg');
